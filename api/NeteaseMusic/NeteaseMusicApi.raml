@@ -1,0 +1,83 @@
+#%RAML 0.8
+
+title: NeteaseMusic API
+mediaType: application/json
+
+/users:
+  get:
+    description: as admin, I can get all the users then I can manage them.
+    responses:
+      200:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["uri", "id", "username", "email"]
+                }
+              }
+            example: |
+              [
+                {
+                  "id": "1",
+                  "uri": "/products/1",
+                  "username": "apple",
+                  "email": "xxx@xxx.com"
+                }
+              ]
+      403:
+  post:
+    description: sign up
+    responses:
+      201:
+      400:
+  /{userId}:
+    get:
+      description:
+      responses:
+        200:
+        404:
+        403:
+    post:
+      description:
+      responses:
+        201:
+        400:
+    /session:
+      post:
+        description:
+        responses:
+          201:
+          400:
+      delete:
+        description:
+        responses:
+          200:
+    /orders:
+      /{orderId}:
+        /payment:
+    /downloads:
+      /{downlodId}:
+/music-items:
+  /{musicItemId}:
+/music-groups:
+  /{groupId}:
+/memberships:
+  /{membershipId}:
