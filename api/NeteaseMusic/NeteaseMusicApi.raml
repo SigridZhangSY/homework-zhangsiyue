@@ -43,41 +43,348 @@ mediaType: application/json
                 }
               ]
       403:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "message": "string"
+                    },
+                    "required": ["message"]
+                  }
+              }
+            example: |
+              {
+                "message": "permission denied"
+              }
   post:
-    description: sign up
+    description: as a user, I can sign up to use system
+    body:
+      application/json:
+        schema: |
+          {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "email": {
+              "type": "string"
+              },
+            "password":{
+                "type": "string"
+              },
+            "required": ["email", "password"]
+            }
+          }
     responses:
       201:
+        headers:
+          Location:
+            description: "sign up"
+            type: string
+        body:
       400:
+        body:
+          application/json:
+            schema: |
+              {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "array",
+                    "items":{
+                      "type": "string"
+                    }
+                  },
+                "message":{
+                    "type": "string"
+                  },
+                "required": ["field", "message"]
+                }
+              }
+            example: |
+              {
+                "field": ["email", "password"],
+                "message": "required"
+              }
   /{userId}:
     get:
-      description:
+      description: as admin or user himself, I can get user information
       responses:
         200:
+          body:
+            application/json:
+              schema: |
+                {
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    },
+                    "email":{
+                      "type": "string"
+                    },
+                    "orders":{
+                        "type": "arrays",
+                        "items": {
+                          "properties": {
+                            "id": {
+                              "type": "string"
+                              },
+                            "uri": {
+                              "type": "string"
+                              },
+                            "required": ["id", "uri"]
+                            }
+                          }
+                      },
+                    "download": {
+                      "type": "arrays",
+                      "items": {
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                            },
+                          "uri": {
+                            "type": "string"
+                            },
+                          "name": {
+                            "type": "string"
+                            },
+                            "date": {
+                              "type": "string"
+                              },
+                          "required": ["id", "uri", "name", "date"]
+                          }
+                        }
+                      },
+                    "required": ["email", "orders", "download"]
+                  }
+                }
         404:
+          body:
+            application/json:
+              schema: |
+                {
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "message": "string"
+                      },
+                      "required": ["message"]
+                    }
+                }
+              example: |
+                {
+                  "message": "not found"
+                }
         403:
+          body:
+            application/json:
+              schema: |
+                {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "array",
+                      "items":{
+                        "type": "string"
+                      }
+                    },
+                  "message":{
+                      "type": "string"
+                    },
+                  "required": ["field", "message"]
+                  }
+                }
+              example: |
+                {
+                  "field": ["email", "password"],
+                  "message": "required"
+                }
     post:
-      description:
+      description: as a user, I can update my password
+      body:
+        application/json:
+          schema: |
+            {
+            "$schema": "http://json-schema.org/draft-04/schema#",
+            "type": "object",
+            "properties": {
+              "password": {
+                "type": "string"
+                },
+              "new_password":{
+                  "type": "string"
+                },
+              "required": ["new_password", "password"]
+              }
+            }
       responses:
-        201:
+        200:
+          body:
+            application/json:
+              schema: |
+                {
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "message": "string"
+                      },
+                      "required": ["message"]
+                    }
+                }
+              example: |
+                {
+                  "message": "update success"
+                }
         400:
+          body:
+            application/json:
+              schema: |
+                {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "field": {
+                    "type": "array",
+                      "items":{
+                        "type": "string"
+                      }
+                    },
+                  "message":{
+                      "type": "string"
+                    },
+                  "required": ["field", "message"]
+                  }
+                }
+              example: |
+                {
+                  "field": ["new_password", "password"],
+                  "message": "required"
+                }
     /session:
       post:
-        description:
+        description: as a user, I can log in
+        body:
+          application/json:
+            schema: |
+              {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string"
+                  },
+                "password":{
+                    "type": "string"
+                  },
+                "required": ["email", "password"]
+                }
+              }
         responses:
           201:
+            headers:
+              Location:
+                description: "log in"
+                type: string
           400:
+            body:
+              application/json:
+                schema: |
+                  {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "message": "string"
+                        },
+                        "required": ["message"]
+                      }
+                  }
+                example: |
+                  {
+                    "message": "wrong password"
+                  }
       delete:
-        description:
+        description: as a login user, I can log out
         responses:
           200:
+            body:
+              application/json:
+                schema: |
+                  {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "message": "string"
+                        },
+                        "required": ["message"]
+                      }
+                  }
+                example: |
+                  {
+                    "message": "log out success"
+                  }
+          403:
+            body:
+              application/json:
+                schema: |
+                  {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "message": "string"
+                        },
+                        "required": ["message"]
+                      }
+                  }
+                example: |
+                  {
+                    "message": "permission denied"
+                  }
     /orders:
+      get:
+      post:
       /{orderId}:
+        get:
+        post:
         /payment:
+          get:
+          post:
     /downloads:
+      get:
+      post:
       /{downlodId}:
+        get:
+        post:
 /music-items:
+  get:
+  post:
   /{musicItemId}:
+    get:
+    post:
 /music-groups:
+  get:
+  post:
   /{groupId}:
+    get:
+    post:
 /memberships:
+  get:
+  post:
   /{membershipId}:
+    get:
+    post:
