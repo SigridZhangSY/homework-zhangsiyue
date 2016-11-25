@@ -8,6 +8,8 @@ import rich.Player;
 import rich.place.Estate;
 import rich.place.Place;
 
+import java.util.Optional;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
@@ -35,6 +37,7 @@ public class WaitCommandHandlerRollTest {
     public void should_return_wait_response_handler_when_roll_to_empty() throws Exception {
         Estate target  = mock(Estate.class);
         when(target.getOwner()).thenReturn(null);
+        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.of(new WaitBuyResponseHandler()));
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
@@ -47,6 +50,7 @@ public class WaitCommandHandlerRollTest {
         Estate target  = mock(Estate.class);
         when(target.getOwner()).thenReturn(player);
         when(map.move(eq(start), eq(1))).thenReturn(target);
+        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.of(new WaitBuildResponseHandler()));
 
         player.executed("roll");
         assertThat(player.getHandler() instanceof WaitBuildResponseHandler, is(true));
@@ -58,6 +62,7 @@ public class WaitCommandHandlerRollTest {
         Player otherPlayer = mock(Player.class);
         Estate target  = mock(Estate.class);
         when(target.getOwner()).thenReturn(otherPlayer);
+        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.empty());
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
