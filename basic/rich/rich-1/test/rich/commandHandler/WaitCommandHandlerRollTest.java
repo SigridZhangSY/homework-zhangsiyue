@@ -38,7 +38,7 @@ public class WaitCommandHandlerRollTest {
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
-        assertThat(player.getHandler() instanceof WaitResponseHandler, is(true));
+        assertThat(player.getHandler() instanceof WaitBuyResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
     }
 
@@ -49,7 +49,7 @@ public class WaitCommandHandlerRollTest {
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
-        assertThat(player.getHandler() instanceof WaitResponseHandler, is(true));
+        assertThat(player.getHandler() instanceof WaitBuildResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
     }
 

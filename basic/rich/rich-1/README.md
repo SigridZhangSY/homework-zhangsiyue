@@ -10,7 +10,7 @@
 
 5. waitCommandHandler status should return null after execute roll to other estate  -10min 9min
 
-6. refactor: when need response ,return detail response handler  -7min
+6. refactor: when need response ,return detail response handler  -7min 4min
 
     change waitResponseHandler to waitBuyResponseHandler after execute roll to empty
     

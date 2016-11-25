@@ -23,8 +23,10 @@ public class WaitCommandHandler implements CommandHandler{
             player.moveTo(map, dice);
         if(player.getCurrentPlace() instanceof Estate) {
             Player owner = ((Estate) player.getCurrentPlace()).getOwner();
-            if ( owner == null || owner.equals(player))
-                return Optional.of(new WaitResponseHandler());
+            if ( owner == null)
+            return Optional.of(new WaitBuyResponseHandler());
+            if (owner.equals(player))
+                return Optional.of(new WaitBuildResponseHandler());
         }
         return Optional.empty();
     }
