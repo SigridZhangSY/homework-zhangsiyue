@@ -32,6 +32,39 @@ public class PlayerActionTest {
         assertThat(player.getBalance(), is(INIT_BALANCE));
         assertThat(player.getEstates().contains(empty), is(false));
         assertThat(empty.getOwner(), is(nullValue()));
+    }
+
+    @Test
+    public void should_build_estate() throws Exception {
+        Estate estate = new Estate(IN_BALANCE);
+        Player player = new Player(null, estate, INIT_BALANCE);
+
+        player.buildEstate();
+
+        assertThat(player.getBalance(), is(INIT_BALANCE - IN_BALANCE));
+        assertThat(estate.getLevel(), is(Estate.LEVEL.ONE));
+    }
+
+    @Test
+    public void should_not_build_when_estate_is_top() throws Exception {
+        Estate estate = Estate.createEstateWithLevel(IN_BALANCE, Estate.LEVEL.TOP);
+        Player player = new Player(null, estate, INIT_BALANCE);
+
+        player.buildEstate();
+
+        assertThat(player.getBalance(), is(INIT_BALANCE));
+        assertThat(estate.getLevel(), is(Estate.LEVEL.TOP));
+    }
+
+    @Test
+    public void should_not_build_estate_without_enough_balance() throws Exception {
+        Estate estate = Estate.createEstateWithLevel(IN_BALANCE, Estate.LEVEL.ZERO);
+        Player player = new Player(null, estate, IN_BALANCE - 1);
+
+        player.buildEstate();
+
+        assertThat(player.getBalance(), is(IN_BALANCE - 1));
+        assertThat(estate.getLevel(), is(Estate.LEVEL.ZERO));
 
     }
 }

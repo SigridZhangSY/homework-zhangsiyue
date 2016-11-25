@@ -13,12 +13,21 @@ public class Estate implements Place {
 
     private double price;
 
+    private LEVEL level;
+
     public Estate(Player owner) {
         this.owner = owner;
     }
 
     public Estate(double price) {
         this.price = price;
+        level = LEVEL.ZERO;
+    }
+
+    public static Estate createEstateWithLevel(double price, LEVEL level){
+        Estate estate = new Estate(price);
+        estate.level = level;
+        return estate;
     }
 
     public Optional<CommandHandler> nextCommandHandler(Player player){
@@ -33,6 +42,13 @@ public class Estate implements Place {
         owner = player;
     }
 
+    public boolean build(){
+        if (level.equals(LEVEL.TOP))
+            return false;
+        level = level.next();
+        return true;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -40,4 +56,38 @@ public class Estate implements Place {
     public Player getOwner() {
         return owner;
     }
+
+    public LEVEL getLevel() {
+        return level;
+    }
+
+    public enum LEVEL{
+        ZERO {
+            @Override
+            public LEVEL next() {
+                return ONE;
+            }
+        },
+        ONE {
+            @Override
+            public LEVEL next() {
+                return TWO;
+            }
+        },
+        TWO {
+            @Override
+            public LEVEL next() {
+                return TOP;
+            }
+        },
+        TOP {
+            @Override
+            public LEVEL next() {
+                return TOP;
+            }
+        };
+
+        public abstract LEVEL next();
+    }
+
 }

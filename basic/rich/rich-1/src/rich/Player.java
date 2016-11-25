@@ -54,6 +54,12 @@ public class Player {
         }
     }
 
+    public void buildEstate(){
+        Estate estate = (Estate)currentPlace;
+        if(balance >= estate.getPrice() && estate.build())
+            balance -= estate.getPrice();
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }
