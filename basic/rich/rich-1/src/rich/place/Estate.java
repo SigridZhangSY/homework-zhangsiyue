@@ -11,8 +11,14 @@ public class Estate implements Place {
 
     private Player owner;
 
+    private double price;
+
     public Estate(Player owner) {
         this.owner = owner;
+    }
+
+    public Estate(double price) {
+        this.price = price;
     }
 
     public Optional<CommandHandler> nextCommandHandler(Player player){
@@ -21,5 +27,17 @@ public class Estate implements Place {
         if(owner.equals(player))
             return Optional.of(new WaitBuildResponseHandler());
         return Optional.empty();
+    }
+
+    public void buy(Player player){
+        owner = player;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public Player getOwner() {
+        return owner;
     }
 }

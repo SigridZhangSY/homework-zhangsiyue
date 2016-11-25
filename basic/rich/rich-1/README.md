@@ -26,11 +26,25 @@
 
 12. waitCommandHandler status should return waitMagicResponseHandler after execute roll to magic house  -5min 3min
 
-9. waitCommandHandler status should return null after execute roll to mine  -5min
+9. waitCommandHandler status should return null after execute roll to mine  -5min 2min
 
-10. waitCommandHandler status should return null after execute roll to prison  -5min
+10. waitCommandHandler status should return null after execute roll to prison  -5min 2min
 
-11. waitCommandHandler status should return null after execute roll to hospital  -5min
+11. waitCommandHandler status should return null after execute roll to hospital  -5min 2min
+
+12. buy empty -7min 10min
+
+5. waitBuyResponseHandler should return null after execute yes at empty -5min
+
+6. waitBuyResponseHandler should return null after execute no at empty  -5min
+
+13. build estate -7min
+
+5. waitBuildResponseHandler should return null after execute yes at empty -5min
+
+6. waitBuildResponseHandler should return null after execute no at empty  -5min
+
+14. pay fee when go to other estate -7min
 
 13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min
 
@@ -45,7 +59,3 @@
 18. waitCommandHandler status should return waitCommandHandler after execute query command  -7min
 
 
-
-5. waitResponseHandler should return null after execute yes at empty -5min
-
-6. waitResponseHandler should return null after execute no at empty  -5min
