@@ -20,17 +20,17 @@
 
 8. implement estate class  - 10min 10min
 
-7. waitCommandHandler status should return waitGiftResponseHandler after execute roll to gift house  -5min
+7. waitCommandHandler status should return waitGiftResponseHandler after execute roll to gift house  -5min 6min
 
-8. waitCommandHandler status should return waitToolResponseHandler after execute roll to tool house  -5min 
+8. waitCommandHandler status should return waitToolResponseHandler after execute roll to tool house  -5min 3min
+
+12. waitCommandHandler status should return waitMagicResponseHandler after execute roll to magic house  -5min 3min
 
 9. waitCommandHandler status should return null after execute roll to mine  -5min
 
 10. waitCommandHandler status should return null after execute roll to prison  -5min
 
 11. waitCommandHandler status should return null after execute roll to hospital  -5min
-
-12. waitCommandHandler status should return waitMagicResponseHandler after execute roll to magic house  -5min
 
 13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min
 

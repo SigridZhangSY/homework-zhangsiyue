@@ -5,10 +5,7 @@ import org.junit.Test;
 import rich.Dice;
 import rich.Map;
 import rich.Player;
-import rich.place.Estate;
-import rich.place.Place;
-
-import java.util.Optional;
+import rich.place.*;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -65,5 +62,39 @@ public class WaitCommandHandlerRollTest {
 
         assertThat(player.getHandler(), is(nullValue()));
         assertThat(player.getCurrentPlace(), is(target));
+    }
+
+    @Test
+    public void should_return_wait_gift_response_after_roll_to_gift_house() throws Exception {
+        GiftHouse target = new GiftHouse();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler() instanceof WaitGiftResponseHandler, is(true));
+        assertThat(player.getCurrentPlace(), is(target));
+    }
+
+    @Test
+    public void should_return_wait_tool_response_after_roll_to_tool_house() throws Exception {
+        ToolHouse target = new ToolHouse();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler() instanceof WaitToolResponse, is(true));
+        assertThat(player.getCurrentPlace(), is(target));
+    }
+
+    @Test
+    public void should_return_wait_magic_reponse_when_roll_to_magic_house() throws Exception {
+        MagicHouse target = new MagicHouse();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler() instanceof WaitMagicResponse, is(true));
+        assertThat(player.getCurrentPlace(), is(target));
+
     }
 }
