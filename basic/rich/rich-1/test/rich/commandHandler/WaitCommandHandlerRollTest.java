@@ -35,24 +35,22 @@ public class WaitCommandHandlerRollTest {
 
     @Test
     public void should_return_wait_response_handler_when_roll_to_empty() throws Exception {
-        Estate target  = mock(Estate.class);
-        when(target.getOwner()).thenReturn(null);
-        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.of(new WaitBuyResponseHandler()));
+        Estate target  = new Estate(null);
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
+
         assertThat(player.getHandler() instanceof WaitBuyResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
     }
 
     @Test
     public void should_return_wait_response_handler_when_roll_to_owned_estate() throws Exception {
-        Estate target  = mock(Estate.class);
-        when(target.getOwner()).thenReturn(player);
+        Estate target  = new Estate(player);
         when(map.move(eq(start), eq(1))).thenReturn(target);
-        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.of(new WaitBuildResponseHandler()));
 
         player.executed("roll");
+
         assertThat(player.getHandler() instanceof WaitBuildResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
     }
@@ -60,12 +58,11 @@ public class WaitCommandHandlerRollTest {
     @Test
     public void should_return_null_when_roll_to_other_estate() throws Exception {
         Player otherPlayer = mock(Player.class);
-        Estate target  = mock(Estate.class);
-        when(target.getOwner()).thenReturn(otherPlayer);
-        when(target.nextCommandHandler(eq(player))).thenReturn(Optional.empty());
+        Estate target  = new Estate(otherPlayer);
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
+
         assertThat(player.getHandler(), is(nullValue()));
         assertThat(player.getCurrentPlace(), is(target));
     }

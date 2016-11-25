@@ -18,6 +18,8 @@
     
 7. refactor: move return logic for handler after roll command into place  -10min 5min
 
+8. implement estate class  - 10min 10min
+
 7. waitCommandHandler status should return waitGiftResponseHandler after execute roll to gift house  -5min
 
 8. waitCommandHandler status should return waitToolResponseHandler after execute roll to tool house  -5min 
