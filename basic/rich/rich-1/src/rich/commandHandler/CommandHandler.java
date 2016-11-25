@@ -1,4 +1,6 @@
-package rich;
+package rich.commandHandler;
+
+import rich.Player;
 
 import java.util.Optional;
 

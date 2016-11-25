@@ -1,6 +1,7 @@
 package rich;
 
 import org.junit.Test;
+import rich.commandHandler.CommandHandler;
 
 import java.util.Optional;
 
