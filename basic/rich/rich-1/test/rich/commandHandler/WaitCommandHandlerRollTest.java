@@ -97,4 +97,40 @@ public class WaitCommandHandlerRollTest {
         assertThat(player.getCurrentPlace(), is(target));
 
     }
+
+    @Test
+    public void should_return_null_when_roll_to_mine() throws Exception {
+        Mine target = new Mine();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler(), is(nullValue()));
+        assertThat(player.getCurrentPlace(), is(target));
+
+    }
+
+    @Test
+    public void should_return_null_when_roll_to_hospital() throws Exception {
+        Hospital target = new Hospital();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler(), is(nullValue()));
+        assertThat(player.getCurrentPlace(), is(target));
+
+    }
+
+    @Test
+    public void should_return_null_when_roll_to_prison() throws Exception {
+        Prison target = new Prison();
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler(), is(nullValue()));
+        assertThat(player.getCurrentPlace(), is(target));
+
+    }
 }
