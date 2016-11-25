@@ -6,6 +6,8 @@
 
 4. waitCommandHandler status should return waitResponseHandler after execute roll to owned estate  -10min 10min
 
+5. waitCommandHandler status should return waitResponseHandler after execute roll to owned estate  -10min 9min
+
 5. waitResponseHandler should return null after execute yes at empty -5min
 
 6. waitResponseHandler should return null after execute no at empty  -5min

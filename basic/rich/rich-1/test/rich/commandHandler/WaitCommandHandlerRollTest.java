@@ -9,6 +9,7 @@ import rich.place.Estate;
 import rich.place.Place;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
@@ -19,12 +20,14 @@ public class WaitCommandHandlerRollTest {
     private Dice dice;
     private Place start;
     private Map map;
+    private Player player;
 
     @Before
     public void setUp() throws Exception {
         start  = mock(Place.class);
         map = mock(Map.class);
         dice = mock(Dice.class);
+        player = new Player(new WaitCommandHandler(map, dice), start);
         when(dice.next()).thenReturn(1);
     }
 
@@ -33,7 +36,6 @@ public class WaitCommandHandlerRollTest {
         Estate target  = mock(Estate.class);
         when(target.getOwner()).thenReturn(null);
         when(map.move(eq(start), eq(1))).thenReturn(target);
-        Player player = new Player(new WaitCommandHandler(map, dice), start);
 
         player.executed("roll");
         assertThat(player.getHandler() instanceof WaitResponseHandler, is(true));
@@ -42,13 +44,24 @@ public class WaitCommandHandlerRollTest {
 
     @Test
     public void should_return_wait_response_handler_when_roll_to_owned_estate() throws Exception {
-        Player player = new Player(new WaitCommandHandler(map, dice), start);
         Estate target  = mock(Estate.class);
         when(target.getOwner()).thenReturn(player);
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
         assertThat(player.getHandler() instanceof WaitResponseHandler, is(true));
+        assertThat(player.getCurrentPlace(), is(target));
+    }
+
+    @Test
+    public void should_return_null_when_roll_to_other_estate() throws Exception {
+        Player otherPlayer = mock(Player.class);
+        Estate target  = mock(Estate.class);
+        when(target.getOwner()).thenReturn(otherPlayer);
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+        assertThat(player.getHandler(), is(nullValue()));
         assertThat(player.getCurrentPlace(), is(target));
     }
 }
