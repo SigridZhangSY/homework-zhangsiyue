@@ -357,34 +357,131 @@ mediaType: application/json
                   }
     /orders:
       get:
+        description: as a user himself or admin, I can get order list of a user
+        responses:
+          200:
+          403:
       post:
+        description: as a user, I can make a order
+        responses:
+          201:
+          400:
+          403:
       /{orderId}:
         get:
+          description: as a user himself or admin, I can get detail of a order
+          responses:
+            200:
+            404:
+            403:
         post:
+          description: as a user, I can update my order
+          responses:
+            200:
+            404:
+            403:
         /payment:
           get:
+            description: as a user himself or admin, I can get detail of a order
+            responses:
+              200:
+              404:
+              403:
           post:
+            description: as a user, I can pay for my order
+            responses:
+              201:
+              404:
+              403:
     /downloads:
       get:
+        description: as a user himself or admin, I can get download history of a user
+        responses:
+          200:
+          403:
       post:
+        description: as a user, I download a song
+        responses:
+          201:
+            headers:
+              Location:
+                type: string
+          404:
+          403:
       /{downlodId}:
         get:
-        post:
+          description: as a user himself or admin, I can get detail of a dowmload record
+          responses:
+            200:
+            404:
+            403:
 /music-items:
   get:
+    description: as a user or admin, I can get music item list
+    responses:
+      200:
   post:
+    description: as a admin, I can create a new music item
+    responses:
+      201:
+        headers:
+          Location:
+            type: string
+      403:
+      400:
   /{musicItemId}:
     get:
+      description: as a user or admin, I can get detail of music item
+      responses:
+        200:
+        404:
     post:
+      description: as a admin, I can chage detail of a music item
+      responses:
+        200:
+        403:
 /music-groups:
   get:
+    description: as a admin or a user, I can get the list of music group
+    responses:
+      200:
   post:
+    description: as a admin, I can create a new music group
+    responses:
+      201:
+      400:
+      403:
   /{groupId}:
     get:
+      description: as a admin or a user, I can get detail of music group
+      responses:
+        200:
+        404:
     post:
+      description: as a admin, I can update a music group
+      responses:
+        200:
+        400:
+        403:
 /memberships:
   get:
+    description: as a admin or a user, I can get all member ships
+    responses:
+      200:
   post:
+    description: as a admin, I can get detail of a membership
+    responses:
+      201:
+      400:
+      403:
   /{membershipId}:
     get:
+      description: as a user, I get detail of a membership
+      responses:
+        200:
     post:
+      description: as admin, I can update a membership
+      responses:
+        200:
+        400:
+        403:
