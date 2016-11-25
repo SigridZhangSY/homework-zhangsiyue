@@ -34,9 +34,9 @@
 
 12. buy empty -7min 10min
 
-5. waitBuyResponseHandler should return null after execute yes at empty -5min
+5. waitBuyResponseHandler should return null after execute yes at empty -5min -7min
 
-6. waitBuyResponseHandler should return null after execute no at empty  -5min
+6. waitBuyResponseHandler should return null after execute no at empty  -5min -2min
 
 13. build estate -7min
 
