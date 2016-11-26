@@ -44,7 +44,9 @@
 
 6. waitBuildResponseHandler should return null after execute no at empty  -5min 3min
 
-14. pay fee when go to other estate -7min 
+14. pay fee when go to other estate -7min 10min
+
+15. should pay fee when roll to other estate -5min
 
 13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min
 

@@ -46,6 +46,8 @@ public class Player {
 
     public void moveTo(Map map, Dice dice){
         currentPlace = map.move(currentPlace, dice.next());
+        if(currentPlace instanceof Estate)
+            ((Estate) currentPlace).arrive(this);
     }
 
     public void buyEmpty(){

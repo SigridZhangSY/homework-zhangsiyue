@@ -21,6 +21,9 @@ public class WaitCommandHandlerRollTest {
     private Map map;
     private Player player;
 
+    final double INIT_BALANCE = 1000;
+    final double IN_BALANCE = 200;
+
     @Before
     public void setUp() throws Exception {
         start  = mock(Place.class);
@@ -54,14 +57,18 @@ public class WaitCommandHandlerRollTest {
 
     @Test
     public void should_return_null_when_roll_to_other_estate() throws Exception {
-        Player otherPlayer = mock(Player.class);
-        Estate target  = new Estate(otherPlayer);
+        Place ownerLocation = mock(Place.class);
+        Player otherPlayer = new Player(null, ownerLocation, INIT_BALANCE);
+        Estate target  = Estate.createEstateWithOwner(IN_BALANCE, otherPlayer);
+        player = new Player(new WaitCommandHandler(map, dice), start, INIT_BALANCE);
         when(map.move(eq(start), eq(1))).thenReturn(target);
 
         player.executed("roll");
 
         assertThat(player.getHandler(), is(nullValue()));
         assertThat(player.getCurrentPlace(), is(target));
+        assertThat(player.getBalance(), is(INIT_BALANCE - target.getPrice()*0.5));
+        assertThat(otherPlayer.getBalance(), is(INIT_BALANCE + target.getPrice()*0.5));
     }
 
     @Test
