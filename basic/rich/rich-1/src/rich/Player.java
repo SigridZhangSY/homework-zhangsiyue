@@ -80,6 +80,12 @@ public class Player {
         balance += fee;
     }
 
+    public void sellEstate(Estate estate){
+        estate.backToGame();
+        balance += estate.getPrice() * (estate.getLevel().ordinal() + 1) * 2;
+        estates.remove(estate);
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }

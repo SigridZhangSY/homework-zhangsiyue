@@ -3,6 +3,8 @@ package rich.commandHandler;
 import rich.Dice;
 import rich.Map;
 import rich.Player;
+import rich.place.Estate;
+import rich.place.Place;
 
 import java.util.Optional;
 
@@ -18,9 +20,21 @@ public class WaitCommandHandler implements CommandHandler{
 
     @Override
     public Optional<CommandHandler> execute(String input, Player player) {
-        if(input.equalsIgnoreCase("roll")) {
+        String[] inputs = input.split(" ");
+        if(inputs[0].equalsIgnoreCase("roll")) {
             player.moveTo(map, dice);
             return player.getCurrentPlace().nextCommandHandler(player);
+        }
+
+        if(inputs[0].equalsIgnoreCase("sell")) {
+            int position = Integer.valueOf(inputs[1]);
+            Place place = map.getPlace(position);
+            if(place instanceof Estate){
+                Estate estate = (Estate)place;
+                if(estate.getOwner() == player)
+                    player.sellEstate(estate);
+            }
+            return Optional.of(new WaitCommandHandler(map, dice));
         }
         return Optional.empty();
     }

@@ -46,9 +46,9 @@
 
 14. pay fee when go to other estate -7min 10min
 
-15. should pay fee when roll to other estate -5min
+15. should pay fee when roll to other estate -5min 3min
 
-13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min
+13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min 
 
 14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min
 

@@ -6,6 +6,7 @@ import rich.place.Estate;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
 
 public class PlayerActionTest {
 
@@ -65,6 +66,20 @@ public class PlayerActionTest {
 
         assertThat(player.getBalance(), is(IN_BALANCE - 1));
         assertThat(estate.getLevel(), is(Estate.LEVEL.ZERO));
+    }
 
+    @Test
+    public void should_sell_estate() throws Exception {
+        Estate estate = new Estate(IN_BALANCE);
+        Player player = new Player(null, estate, INIT_BALANCE);
+
+        player.buyEmpty();
+        assertThat(player.getBalance(), is(INIT_BALANCE - IN_BALANCE));
+        assertThat(player.getEstates().size(), is(1));
+
+        player.sellEstate(estate);
+
+        assertThat(player.getEstates().size(), is(0));
+        assertThat(player.getBalance(), is(INIT_BALANCE + IN_BALANCE));
     }
 }
