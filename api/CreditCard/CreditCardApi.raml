@@ -5,13 +5,45 @@ mediaType: application/json
 
 /users:
   get:
-    description:
+    description: as a admin, I can get user list to manage them
     responses:
       200:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "uri": {
+                      "type": "string"
+                      },
+                    "id": {
+                      "type": "string"
+                      },
+                    "required": ["uri", "id"]
+                  }
+                }
+              }
       403:
+        body:
+          application/json:
+            schema: |
+              {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "message": "string"
+                    },
+                    "required": ["message"]
+                  }
+              }
   /{user_id}:
     get:
-      description:
+      description: as a user himself or admin, I can get user detail
       responses:
         200:
         403:
