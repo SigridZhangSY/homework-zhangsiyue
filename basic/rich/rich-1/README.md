@@ -48,7 +48,12 @@
 
 15. should pay fee when roll to other estate -5min 3min
 
-13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min 
+13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min 15min
+
+14. waitGiftResponseHandler should return null and get gift after executed -10min
+
+15. waitToolResponseHandler should return waitToolResponseHandler and get tool -15min
+    (get tool, F- quite tool house, 10 tools quite)
 
 14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min
 

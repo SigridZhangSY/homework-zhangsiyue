@@ -3,6 +3,7 @@ package rich;
 import rich.commandHandler.CommandHandler;
 import rich.place.Estate;
 import rich.place.Place;
+import rich.place.ToolHouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,10 @@ public class Player {
 
     private boolean endGame;
 
+    private int points;
+
+    private int freeTimes;
+
     public Player(CommandHandler handler) {
         this.handler = handler;
     }
@@ -34,6 +39,8 @@ public class Player {
         this.balance = balance;
         estates = new ArrayList<>();
         endGame = false;
+        points = 0;
+        freeTimes = 0;
     }
 
     public void executed(String input){
@@ -86,6 +93,22 @@ public class Player {
         estates.remove(estate);
     }
 
+    public void selectGift(int n){
+        switch (n){
+            case 1:
+                balance += 2000;
+                break;
+            case 2:
+                points += 200;
+                break;
+            case 3:
+                freeTimes = 5;
+                break;
+            default:
+                return;
+        }
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }
@@ -101,5 +124,13 @@ public class Player {
 
     public boolean isEndGame() {
         return endGame;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public int getFreeTimes() {
+        return freeTimes;
     }
 }
