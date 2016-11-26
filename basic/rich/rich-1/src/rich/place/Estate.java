@@ -30,6 +30,25 @@ public class Estate implements Place {
         return estate;
     }
 
+    public static Estate createEstateWithOwner(double price, Player owner){
+        Estate estate = new Estate(price);
+        estate.owner = owner;
+        return estate;
+    }
+
+    public void arrive(Player player){
+        if (owner != null &&
+                !owner.equals(player) &&
+                !(owner.getCurrentPlace() instanceof Hospital) &&
+                !(owner.getCurrentPlace() instanceof Prison))
+            player.payFee(price * Math.pow(2, level.ordinal() - 1), owner);
+    }
+
+    public void backToGame(){
+        owner = null;
+        level = LEVEL.ZERO;
+    }
+
     public Optional<CommandHandler> nextCommandHandler(Player player){
         if (owner == null)
             return Optional.of(new WaitBuyResponseHandler());

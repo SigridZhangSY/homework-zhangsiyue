@@ -17,6 +17,8 @@ public class Player {
 
     private List<Estate> estates;
 
+    private boolean endGame;
+
     public Player(CommandHandler handler) {
         this.handler = handler;
     }
@@ -31,6 +33,7 @@ public class Player {
         this.currentPlace = currentPlace;
         this.balance = balance;
         estates = new ArrayList<>();
+        endGame = false;
     }
 
     public void executed(String input){
@@ -60,6 +63,21 @@ public class Player {
             balance -= estate.getPrice();
     }
 
+    public void payFee(double fee, Player owner) {
+        if(balance >= fee) {
+            balance -= fee;
+            owner.getFee(fee);
+        }
+        else {
+            estates.stream().forEach(estate -> estate.backToGame());
+            endGame = true;
+        }
+    }
+
+    public void getFee(double fee){
+        balance += fee;
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }
@@ -73,4 +91,7 @@ public class Player {
         return estates;
     }
 
+    public boolean isEndGame() {
+        return endGame;
+    }
 }
