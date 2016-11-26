@@ -46,6 +46,51 @@ mediaType: application/json
       description: as a user himself or admin, I can get user detail
       responses:
         200:
+          body:
+            application/json:
+              schema: |
+                {
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                        "uri": {
+                            "type": "string"
+                          },
+                        "cards": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "uri": {
+                                  "type": "string"
+                                  },
+                                "id": {
+                                  "type": "string"
+                                  },
+                                "card-type": {
+                                  "type": "object",
+                                  "properties": {
+                                      "uri": {
+                                        "type": "string"
+                                        },
+                                      "id": {
+                                        "type": "string"
+                                        },
+                                      "type-name": {
+                                        "type": "string"
+                                        },
+                                      "required": ["uri", "id", "type-name"]
+                                      }
+                                  },
+                                "required": ["uri", "id", "card-type"]
+                                }
+                              }
+                          }
+                    }
+                  }
+                }
         403:
         404:
     post:
