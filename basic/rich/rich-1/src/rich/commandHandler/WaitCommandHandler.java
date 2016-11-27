@@ -36,6 +36,12 @@ public class WaitCommandHandler implements CommandHandler{
             }
             return Optional.of(new WaitCommandHandler(map, dice));
         }
+
+        if(inputs[0].equalsIgnoreCase("sellTool")){
+            int choice = Integer.valueOf(inputs[1]) - 1;
+            player.sellTool(choice);
+            return Optional.of(new WaitCommandHandler(map, dice));
+        }
         return Optional.empty();
     }
 }

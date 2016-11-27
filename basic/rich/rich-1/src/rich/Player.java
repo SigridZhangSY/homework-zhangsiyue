@@ -7,6 +7,7 @@ import rich.place.ToolHouse;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Player {
 
@@ -124,6 +125,15 @@ public class Player {
         points -= tool.getPointPrice();
     }
 
+    public void sellTool(int choice) {
+        Tool.ToolType type = Tool.ToolType.values()[choice];
+        Optional<Tool> tool = tools.stream().filter(t -> t.getType() == type).findFirst();
+        if(tool.isPresent()){
+            tools.remove(tool.get());
+            points += tool.get().getPointPrice();
+        }
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }
@@ -152,4 +162,5 @@ public class Player {
     public List<Tool> getTools() {
         return tools;
     }
+
 }
