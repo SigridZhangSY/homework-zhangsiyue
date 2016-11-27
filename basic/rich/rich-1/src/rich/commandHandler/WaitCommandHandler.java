@@ -45,13 +45,13 @@ public class WaitCommandHandler implements CommandHandler{
         }
 
         if(inputs[0].equalsIgnoreCase("block")){
-            Place place = map.getPlace(Integer.valueOf(inputs[1]));
+            Place place = map.getPlace(player.getCurrentPlace(), Integer.valueOf(inputs[1]));
             player.userTool(Tool.ToolType.BLOCK, place);
             return Optional.of(new WaitCommandHandler(map, dice));
         }
 
         if(inputs[0].equalsIgnoreCase("bomb")){
-            Place place = map.getPlace(Integer.valueOf(inputs[1]));
+            Place place = map.getPlace(player.getCurrentPlace(), Integer.valueOf(inputs[1]));
             player.userTool(Tool.ToolType.BOMB, place);
             return Optional.of(new WaitCommandHandler(map, dice));
         }

@@ -63,9 +63,15 @@
 
 15. waitCommandHandler status should return waitCommandHandler after execute block command  -7min 10min
 
-16. waitCommandHandler status should return waitCommandHandler after execute bomb command  -7min
+16. waitCommandHandler status should return waitCommandHandler after execute bomb command  -7min 5min
+
+17. implement map -10min
 
 17. waitCommandHandler status should return waitCommandHandler after execute robot command  -7min
+
+18. roll pass by block -10min
+
+19. roll pass by bomb -10min
 
 18. waitCommandHandler status should return waitCommandHandler after execute query command  -7min
 

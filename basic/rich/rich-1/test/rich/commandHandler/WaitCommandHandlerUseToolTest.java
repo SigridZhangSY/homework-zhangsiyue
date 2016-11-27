@@ -9,6 +9,7 @@ import rich.place.Place;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -28,7 +29,7 @@ public class WaitCommandHandlerUseToolTest {
         dice = mock(Dice.class);
         target = new Place();
         player = Player.createPlayerWithPoints(new WaitCommandHandler(map, dice), target, INIT_BALANCE, INIT_POINTS);
-        when(map.getPlace(anyInt())).thenReturn(target);
+        when(map.getPlace(any(), anyInt())).thenReturn(target);
     }
 
     @Test
