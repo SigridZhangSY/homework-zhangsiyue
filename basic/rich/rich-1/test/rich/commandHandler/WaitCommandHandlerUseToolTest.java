@@ -7,6 +7,8 @@ import rich.Map;
 import rich.Player;
 import rich.place.Place;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Matchers.any;
@@ -80,5 +82,25 @@ public class WaitCommandHandlerUseToolTest {
         assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
         assertThat(player.getTools().size(), is(1));
         assertThat(target.isBombed(), is(false));
+    }
+
+    @Test
+    public void should_clear_tools_when_use_robot() throws Exception {
+        Place start = new Place();
+        Place target = new Place();
+        target.setBlock();
+        map = new Map(new ArrayList<Place>(){{
+            add(start);
+            add(target);
+        }});
+
+        player = Player.createPlayerWithPoints(new WaitCommandHandler(map, dice), start, INIT_BALANCE, INIT_POINTS);
+        player.buyTool(1);
+
+        player.executed("robot");
+
+        assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
+        assertThat(player.getTools().size(), is(0));
+        assertThat(target.isBlocked(), is(false));
     }
 }

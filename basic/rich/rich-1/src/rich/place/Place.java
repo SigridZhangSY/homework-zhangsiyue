@@ -44,4 +44,9 @@ public class Place {
     public boolean isBombed() {
         return isBombed;
     }
+
+    public void clearTool(){
+        isBlocked = false;
+        isBombed = false;
+    }
 }

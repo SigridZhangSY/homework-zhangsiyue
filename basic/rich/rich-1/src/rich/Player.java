@@ -133,7 +133,7 @@ public class Player {
         }
     }
 
-    public void userTool(Tool.ToolType type, Place place){
+    public void userTool(Tool.ToolType type, Place place, Map map){
         Optional<Tool> tool = tools.stream().filter(t -> t.getType() == type).findFirst();
         if(tool.isPresent()){
             switch (type){
@@ -145,6 +145,9 @@ public class Player {
                     if(place.setBomb())
                         tools.remove(tool.get());
                     break;
+                case ROBOT:
+                    map.clearTool(currentPlace, 10);
+                    tools.remove(tool.get());
                 default:
                     return;
             }
@@ -154,7 +157,6 @@ public class Player {
     public Place getCurrentPlace() {
         return currentPlace;
     }
-
 
     public double getBalance() {
         return balance;

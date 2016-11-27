@@ -34,4 +34,10 @@ public class Map {
     public Place getPlace(int position){
         return places.get(position);
     }
+
+    public void clearTool(Place start, int distance){
+        int currentPosition = places.indexOf(start);
+        for (int i = 1; i <= distance; i++)
+            places.get((currentPosition + i) % places.size()).clearTool();
+    }
 }
