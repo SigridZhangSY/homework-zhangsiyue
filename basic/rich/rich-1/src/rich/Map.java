@@ -13,7 +13,13 @@ public class Map {
 
     public Place move(Place start, int step){
         int current = places.indexOf(start);
-        return places.get((current + step) % places.size());
+        Place target = start;
+        for (int i = 1 ; i <= step; i++){
+            target = places.get((current + i) % places.size());
+            if(target.isBlocked() || target.isBombed())
+                return target;
+        }
+        return target;
     }
 
     public Place getPlace(Place currentPlace, int distance){

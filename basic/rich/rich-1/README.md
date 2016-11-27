@@ -65,7 +65,7 @@
 
 16. waitCommandHandler status should return waitCommandHandler after execute bomb command  -7min 5min
 
-17. implement map -10min
+17. implement map -10min 7min
 
 17. waitCommandHandler status should return waitCommandHandler after execute robot command  -7min
 

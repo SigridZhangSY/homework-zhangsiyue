@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class MapTest {
     private Place start;
@@ -44,5 +45,12 @@ public class MapTest {
     public void should_get_place_with_position() throws Exception {
         assertThat(map.getPlace(0), is(start));
         assertThat(map.getPlace(2), is(target));
+    }
+
+    @Test
+    public void should_stop_when_pass_by_tool_in_move() throws Exception {
+        when(passBy.isBlocked()).thenReturn(true);
+
+        assertThat(map.move(start, 2), is(passBy));
     }
 }
