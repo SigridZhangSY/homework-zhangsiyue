@@ -3,7 +3,6 @@ package rich.commandHandler;
 import org.junit.Before;
 import org.junit.Test;
 import rich.Player;
-import rich.place.Estate;
 import rich.place.GiftHouse;
 
 import static org.hamcrest.CoreMatchers.is;

@@ -89,7 +89,7 @@ public class WaitCommandHandlerRollTest {
 
         player.executed("roll");
 
-        assertThat(player.getHandler() instanceof WaitToolResponse, is(true));
+        assertThat(player.getHandler() instanceof WaitToolResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
     }
 

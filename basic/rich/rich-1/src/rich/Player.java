@@ -24,6 +24,8 @@ public class Player {
 
     private int freeTimes;
 
+    private List<Tool> tools;
+
     public Player(CommandHandler handler) {
         this.handler = handler;
     }
@@ -41,6 +43,13 @@ public class Player {
         endGame = false;
         points = 0;
         freeTimes = 0;
+        tools = new ArrayList<>();
+    }
+
+    public static Player createPlayerWithPoints(CommandHandler handler, Place currentPlace, double balance, int points){
+        Player player = new Player(handler, currentPlace, balance);
+        player.points = points;
+        return player;
     }
 
     public void executed(String input){
@@ -109,6 +118,12 @@ public class Player {
         }
     }
 
+    public void buyTool(int choice) {
+        Tool tool = new Tool(Tool.ToolType.values()[choice]);
+        tools.add(tool);
+        points -= tool.getPointPrice();
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }
@@ -132,5 +147,9 @@ public class Player {
 
     public int getFreeTimes() {
         return freeTimes;
+    }
+
+    public List<Tool> getTools() {
+        return tools;
     }
 }

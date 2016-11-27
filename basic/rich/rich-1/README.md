@@ -50,10 +50,14 @@
 
 13. waitCommandHandler status should return waitCommandHandler after execute sell command  -7min 15min
 
-14. waitGiftResponseHandler should return null and get gift after executed -10min
+14. waitGiftResponseHandler should return null and get gift after executed -10min 7min
 
 15. waitToolResponseHandler should return waitToolResponseHandler and get tool -15min
     (get tool, F- quite tool house, 10 tools quite)
+
+16. with 10 tools/without enough points, quite tool when roll to tool house - 10min
+
+17. do not pay fee with free time - 5min
 
 14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min
 
