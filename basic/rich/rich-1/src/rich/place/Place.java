@@ -29,7 +29,7 @@ public class Place {
         return false;
     }
 
-    public boolean setBombed(){
+    public boolean setBomb(){
         if(!isBombed && !isBlocked){
             isBombed = true;
             return true;

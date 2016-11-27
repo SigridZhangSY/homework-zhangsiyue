@@ -32,7 +32,7 @@ public class WaitCommandHandlerUseToolTest {
     }
 
     @Test
-    public void should_return_wait_command_handler_fater_use_block() throws Exception {
+    public void should_return_wait_command_handler_after_use_block() throws Exception {
         player.buyTool(0);
         assertThat(player.getTools().size(), is(1));
 
@@ -55,5 +55,29 @@ public class WaitCommandHandlerUseToolTest {
         assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
         assertThat(player.getTools().size(), is(1));
         assertThat(target.isBlocked(), is(true));
+    }
+
+    @Test
+    public void should_return_wait_command_handler_after_use_bomb() throws Exception {
+        player.buyTool(2);
+        assertThat(player.getTools().size(), is(1));
+
+        player.executed("bomb 1");
+
+        assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
+        assertThat(player.getTools().size(), is(0));
+        assertThat(target.isBombed(), is(true));
+    }
+
+    @Test
+    public void should_not_use_not_owned_tool() throws Exception {
+        player.buyTool(1);
+        assertThat(player.getTools().size(), is(1));
+
+        player.executed("bomb 1");
+
+        assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
+        assertThat(player.getTools().size(), is(1));
+        assertThat(target.isBombed(), is(false));
     }
 }

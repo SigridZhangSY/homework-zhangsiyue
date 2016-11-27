@@ -3,7 +3,6 @@ package rich;
 import rich.commandHandler.CommandHandler;
 import rich.place.Estate;
 import rich.place.Place;
-import rich.place.ToolHouse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -140,6 +139,10 @@ public class Player {
             switch (type){
                 case BLOCK:
                     if(place.setBlock())
+                        tools.remove(tool.get());
+                    break;
+                case BOMB:
+                    if(place.setBomb())
                         tools.remove(tool.get());
                     break;
                 default:
