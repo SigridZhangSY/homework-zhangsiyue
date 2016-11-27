@@ -8,6 +8,7 @@ import java.util.Optional;
 public class Prison extends Place {
     @Override
     public Optional<CommandHandler> nextCommandHandler(Player player) {
+        player.goToPrison();
         return Optional.empty();
     }
 }

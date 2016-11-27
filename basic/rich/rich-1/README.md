@@ -67,11 +67,9 @@
 
 17. implement map -10min 7min
 
-17. waitCommandHandler status should return waitCommandHandler after execute robot command  -7min
+17. waitCommandHandler status should return waitCommandHandler after execute robot command  -7min 7min
 
-18. roll pass by block -10min
-
-19. roll pass by bomb -10min
+18. roll pass by block/bomb -10min 6min
 
 18. waitCommandHandler status should return waitCommandHandler after execute query command  -7min
 

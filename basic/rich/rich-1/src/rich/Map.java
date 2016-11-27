@@ -1,5 +1,6 @@
 package rich;
 
+import rich.place.Hospital;
 import rich.place.Place;
 
 import java.util.List;
@@ -39,5 +40,9 @@ public class Map {
         int currentPosition = places.indexOf(start);
         for (int i = 1; i <= distance; i++)
             places.get((currentPosition + i) % places.size()).clearTool();
+    }
+
+    public Place findHospital(){
+        return places.stream().filter(place -> place instanceof Hospital).findFirst().get();
     }
 }

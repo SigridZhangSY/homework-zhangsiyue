@@ -24,6 +24,8 @@ public class Player {
 
     private int freeTimes;
 
+    private int waitTimes;
+
     private List<Tool> tools;
 
     public Player(CommandHandler handler) {
@@ -43,6 +45,7 @@ public class Player {
         endGame = false;
         points = 0;
         freeTimes = -1;
+        waitTimes = -1;
         tools = new ArrayList<>();
     }
 
@@ -62,8 +65,25 @@ public class Player {
 
     public void moveTo(Map map, Dice dice){
         currentPlace = map.move(currentPlace, dice.next());
-        if(currentPlace instanceof Estate)
-            ((Estate) currentPlace).arrive(this);
+        if(currentPlace.isBombed()){
+           currentPlace.clearTool();
+            goToHospital(map);
+        }else {
+            if(currentPlace.isBlocked()){
+                currentPlace.clearTool();
+            }
+            if (currentPlace instanceof Estate)
+                ((Estate) currentPlace).arrive(this);
+        }
+    }
+
+    private void goToHospital(Map map) {
+        waitTimes = 3;
+        currentPlace = map.findHospital();
+    }
+
+    public void goToPrison(){
+        waitTimes = 2;
     }
 
     public void buyEmpty(){
@@ -182,4 +202,7 @@ public class Player {
         return tools;
     }
 
+    public int getWaitTimes() {
+        return waitTimes;
+    }
 }

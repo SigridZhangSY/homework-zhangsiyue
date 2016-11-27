@@ -7,9 +7,12 @@ import rich.Map;
 import rich.Player;
 import rich.place.*;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -154,5 +157,44 @@ public class WaitCommandHandlerRollTest {
         assertThat(player.getHandler(), is(nullValue()));
         assertThat(player.getCurrentPlace(), is(target));
 
+    }
+
+    @Test
+    public void should_stop_when_pass_by_block() throws Exception {
+        Place passBy = new Estate(null);
+        Place start = mock(Place.class);
+        passBy.setBlock();
+        map = new Map(new ArrayList<Place>(){{
+            add(start);
+            add(passBy);
+        }});
+        when(dice.next()).thenReturn(2);
+        player = new Player(new WaitCommandHandler(map, dice), start);
+
+        player.executed("roll");
+
+        assertThat(player.getCurrentPlace(), is(passBy));
+        assertThat(passBy.isBlocked(), is(false));
+    }
+
+    @Test
+    public void should_go_to_hospital_when_pass_by_bomb() throws Exception {
+        Place passBy = new Estate(null);
+        Hospital hospital = new Hospital();
+        Place start = mock(Place.class);
+        passBy.setBomb();
+        map = new Map(new ArrayList<Place>(){{
+            add(start);
+            add(passBy);
+            add(hospital);
+        }});
+        when(dice.next()).thenReturn(2);
+        player = new Player(new WaitCommandHandler(map, dice), start);
+
+        player.executed("roll");
+
+        assertThat(player.getCurrentPlace(), is(hospital));
+        assertThat(player.getWaitTimes(), is(3));
+        assertThat(passBy.isBombed(), is(false));
     }
 }
