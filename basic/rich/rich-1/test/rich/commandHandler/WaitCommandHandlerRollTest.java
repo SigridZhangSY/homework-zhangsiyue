@@ -86,11 +86,26 @@ public class WaitCommandHandlerRollTest {
     public void should_return_wait_tool_response_after_roll_to_tool_house() throws Exception {
         ToolHouse target = new ToolHouse();
         when(map.move(eq(start), eq(1))).thenReturn(target);
+        player = Player.createPlayerWithPoints(new WaitCommandHandler(map, dice), start, INIT_BALANCE, 1000);
 
         player.executed("roll");
 
         assertThat(player.getHandler() instanceof WaitToolResponseHandler, is(true));
         assertThat(player.getCurrentPlace(), is(target));
+    }
+
+    @Test
+    public void should_return_empty_handler_when_roll_to_tool_house_with_ten_tools() throws Exception {
+        ToolHouse target = new ToolHouse();
+        player = Player.createPlayerWithPoints(new WaitCommandHandler(map, dice), start, INIT_BALANCE, 1000);
+        for (int i = 0; i < 10; i ++)
+            player.buyTool(0);
+        assertThat(player.getTools().size(), is(10));
+        when(map.move(eq(start), eq(1))).thenReturn(target);
+
+        player.executed("roll");
+
+        assertThat(player.getHandler(), is(nullValue()));
     }
 
     @Test
