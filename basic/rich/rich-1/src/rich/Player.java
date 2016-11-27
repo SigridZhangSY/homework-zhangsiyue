@@ -134,6 +134,20 @@ public class Player {
         }
     }
 
+    public void userTool(Tool.ToolType type, Place place){
+        Optional<Tool> tool = tools.stream().filter(t -> t.getType() == type).findFirst();
+        if(tool.isPresent()){
+            switch (type){
+                case BLOCK:
+                    if(place.setBlock())
+                        tools.remove(tool.get());
+                    break;
+                default:
+                    return;
+            }
+        }
+    }
+
     public Place getCurrentPlace() {
         return currentPlace;
     }

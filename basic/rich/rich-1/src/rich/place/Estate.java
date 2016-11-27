@@ -7,7 +7,7 @@ import rich.commandHandler.WaitBuyResponseHandler;
 
 import java.util.Optional;
 
-public class Estate implements Place {
+public class Estate extends Place {
 
     private Player owner;
 

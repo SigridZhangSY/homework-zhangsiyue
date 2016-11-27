@@ -3,6 +3,7 @@ package rich.commandHandler;
 import rich.Dice;
 import rich.Map;
 import rich.Player;
+import rich.Tool;
 import rich.place.Estate;
 import rich.place.Place;
 
@@ -40,6 +41,12 @@ public class WaitCommandHandler implements CommandHandler{
         if(inputs[0].equalsIgnoreCase("sellTool")){
             int choice = Integer.valueOf(inputs[1]) - 1;
             player.sellTool(choice);
+            return Optional.of(new WaitCommandHandler(map, dice));
+        }
+
+        if(inputs[0].equalsIgnoreCase("block")){
+            Place place = map.getPlace(Integer.valueOf(inputs[1]));
+            player.userTool(Tool.ToolType.BLOCK, place);
             return Optional.of(new WaitCommandHandler(map, dice));
         }
         return Optional.empty();

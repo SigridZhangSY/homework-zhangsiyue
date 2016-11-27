@@ -6,7 +6,7 @@ import rich.commandHandler.WaitGiftResponseHandler;
 
 import java.util.Optional;
 
-public class GiftHouse implements Place {
+public class GiftHouse extends Place {
     @Override
     public Optional<CommandHandler> nextCommandHandler(Player player) {
         return Optional.of(new WaitGiftResponseHandler());

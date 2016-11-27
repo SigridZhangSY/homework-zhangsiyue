@@ -59,9 +59,9 @@
 
 17. do not pay fee with free time - 5min 3min
 
-14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min
+14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min 10min
 
-15. waitCommandHandler status should return waitCommandHandler after execute block command  -7min
+15. waitCommandHandler status should return waitCommandHandler after execute block command  -7min 10min
 
 16. waitCommandHandler status should return waitCommandHandler after execute bomb command  -7min
 

@@ -6,7 +6,7 @@ import rich.commandHandler.WaitToolResponseHandler;
 
 import java.util.Optional;
 
-public class ToolHouse implements Place {
+public class ToolHouse extends Place {
     @Override
     public Optional<CommandHandler> nextCommandHandler(Player player) {
         if (player.getTools().size() == 10 || player.getPoints() < 30)

@@ -5,7 +5,7 @@ import rich.commandHandler.CommandHandler;
 
 import java.util.Optional;
 
-public class Mine implements Place {
+public class Mine extends Place {
     @Override
     public Optional<CommandHandler> nextCommandHandler(Player player) {
         return Optional.empty();
