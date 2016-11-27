@@ -37,7 +37,8 @@ public class Estate implements Place {
     }
 
     public void arrive(Player player){
-        if (owner != null &&
+        if (player.getFreeTimes() < 0 &&
+                owner != null &&
                 !owner.equals(player) &&
                 !(owner.getCurrentPlace() instanceof Hospital) &&
                 !(owner.getCurrentPlace() instanceof Prison))

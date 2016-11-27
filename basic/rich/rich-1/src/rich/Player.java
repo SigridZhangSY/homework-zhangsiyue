@@ -42,7 +42,7 @@ public class Player {
         estates = new ArrayList<>();
         endGame = false;
         points = 0;
-        freeTimes = 0;
+        freeTimes = -1;
         tools = new ArrayList<>();
     }
 

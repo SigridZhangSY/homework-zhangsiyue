@@ -54,4 +54,20 @@ public class EstateTest {
         assertThat(owner.getBalance(), is(INIT_BALANCE));
 
     }
+
+    @Test
+    public void should_not_pay_fee_with_free_times() throws Exception {
+        Estate ownerLocation = mock(Estate.class);
+        Player owner = new Player(null, ownerLocation, INIT_BALANCE);
+        Estate estate = Estate.createEstateWithOwner(IN_BALANCE, owner);
+        Player player = new Player(null, estate, INIT_BALANCE);
+        player.selectGift(3);
+
+        estate.arrive(player);
+
+        assertThat(player.getBalance(), is(INIT_BALANCE));
+        assertThat(player.isEndGame(), is(false));
+        assertThat(owner.getBalance(), is(INIT_BALANCE));
+
+    }
 }

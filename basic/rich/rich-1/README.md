@@ -57,7 +57,7 @@
 
 16. with 10 tools/without enough points, quite tool when roll to tool house - 10min 5min
 
-17. do not pay fee with free time - 5min
+17. do not pay fee with free time - 5min 3min
 
 14. waitCommandHandler status should return waitCommandHandler after execute sellTool command  -7min
 
