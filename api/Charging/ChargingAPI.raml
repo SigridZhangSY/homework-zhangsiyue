@@ -9,29 +9,182 @@ mediaType: application/json
       description: as a user or admin, I can get user information
       responses:
         200:
+          body:
+            application/json:
+              schema: |
+                {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "type": "object",
+                "properties":{
+                  "uri": {
+                    "type": "string"
+                    },
+                  "id": {
+                    "type": "string"
+                    },
+                  "number": {
+                    "type": "string"
+                    },
+                  "location": {
+                    "type": "string"
+                    },
+                  "balance": {
+                    "type": "object",
+                    "properties": {
+                      "amount": {
+                        "type": "number"
+                        },
+                      "freeCallDuration": {
+                        "type": "number"
+                        },
+                      "freeData": {
+                        "type": "number"
+                        },
+                      "required": ["amount", "freeCallDuration", "freeData"]
+                      }
+                    },
+                  "required": ["uri", "id", "number", "location", "balance"]
+                  }
+                }
         404:
     /product-orders:
       get:
         description: as a user or admin, I can get product order list of a user
         responses:
           200:
+            body:
+              application/json:
+                schema: |
+                  {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri":{
+                          "type": "string"
+                          },
+                        "id":{
+                          "type": "string"
+                          },
+                        "name":{
+                          "type": "string"
+                          },
+                        "price":{
+                          "type": "number"
+                          },
+                        "date":{
+                          "type": "number"
+                          },
+                        "timeLimit":{
+                          "type": "number"
+                          },
+                        "required": ["uri", "id", "name", "price", "date", "timeLimit"]
+                        }
+                      }
+                  }
           404:
       /{pid}:
         get:
           description: as a user or admin, I can get product order detail of a user
           responses:
             200:
+              body:
+                application/json:
+                  schema: |
+                    {
+                      "$schema": "http://json-schema.org/draft-04/schema#",
+                      "type": "object",
+                      "properties": {
+                        "uri":{
+                          "type": "string"
+                          },
+                        "id":{
+                          "type": "string"
+                          },
+                        "name":{
+                          "type": "string"
+                          },
+                        "price":{
+                          "type": "number"
+                          },
+                        "date":{
+                          "type": "number"
+                          },
+                        "timeLimit":{
+                          "type": "number"
+                          },
+                        "freeCallDuration":{
+                          "type": "number"
+                          },
+                        "freeData": {
+                          "type": "number"
+                          },
+                        "callPrice":{
+                          "type": "number"
+                          },
+                        "dataPrice": {
+                          "type": "number"
+                          },
+                        "required": ["uri", "id", "name", "price", "date", "timeLimit", "freeCallDuration", "freeData", "callPrice", "dataPrice"]
+                        }
+                    }
             404:
     /recharges:
       get:
         description: as a user or admin, I can get recharge list of a user
         responses:
           200:
+            body:
+              application/json:
+                schema: |
+                  {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "uri": {
+                          "type": "string"
+                          },
+                        "id":{
+                          "type": "string"
+                          },
+                        "amount":{
+                          "type": "number"
+                          },
+                        "date": {
+                          "type": "number"
+                          },
+                        "required": ["uri", "id", "amount", "date"]
+                        }
+                      }
+                  }
           404:
       post:
         description: as a user, I can create a recharge
+        body:
+          application/json:
+            schema: |
+              {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "amount":{
+                  "type": "number"
+                  },
+                "date": {
+                  "type": "number"
+                  },
+                "required": ["amount", "date"]
+                }
+              }
         responses:
           201:
+            headers:
+              Location:
+                description: "create recharge uri"
+                type: string
           404:
           400:
       /{rid}:
@@ -39,17 +192,110 @@ mediaType: application/json
           description: as a user or admin, I can get recharge detail of a user
           responses:
             200:
+              body:
+                application/json:
+                  schema: |
+                    {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "type": "string"
+                        },
+                      "id":{
+                        "type": "string"
+                        },
+                      "amount":{
+                        "type": "number"
+                        },
+                      "date": {
+                        "type": "number"
+                        },
+                      "required": ["uri", "id", "amount", "date"]
+                      }
+                    }
             404:
     /consumption-recoreds:
       get:
         description: as a user or admin, I can get consumption recored list of a user
         responses:
           200:
+            body:
+              application/json:
+                schema: |
+                  {
+                  "$schema": "http://json-schema.org/draft-04/schema#",
+                  "type": "array",
+                  "itmes":{
+                    "type": "object",
+                    "properties": {
+                      "uri": {
+                        "type": "string"
+                        },
+                      "id": {
+                        "type": "string"
+                        },
+                      "consumption_type": {
+                        "enum": ["CALL", "DATA"]
+                        },
+                      "date":{
+                        "type": "number"
+                        },
+                      "required": ["uri", "id", "consumption_type", "date"]
+                      }
+                    }
+                  }
           404:
       post:
         description: as a user, I can create a consumption recored
+        body:
+          application/json:
+            schema: |
+              {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "enum": [{
+                "type": "object",
+                "properties": {
+                  "consumption_type": {
+                    "enum": ["CALL"]
+                    },
+                  "number": {
+                    "type": "string"
+                    },
+                  "duration": {
+                    "type": "number"
+                    },
+                  "date": {
+                    "type": "number"
+                    },
+                  "required": ["consumption_type", "number", "duration", "date"]
+                  }
+              },
+              {
+              "type": "object",
+              "properties": {
+                "consumption_type": {
+                  "enum": ["DATA"]
+                  },
+                "target_uri": {
+                  "type": "string"
+                  },
+                "voulume": {
+                  "type": "number"
+                  },
+                "date": {
+                  "type": "number"
+                  },
+                "required": ["consumption_type", "target_uri", "voulume", "date"]
+                }
+              }]
+              }
         responses:
           201:
+            headers:
+              Location:
+                description: "create consumption record uri"
+                type: string
           400:
           404:
       /{cid}:
@@ -57,4 +303,58 @@ mediaType: application/json
           description: as a user or admin, I can get consumption recored detail
           responses:
             200:
+              body:
+                application/json:
+                  schema: |
+                    {
+                    "$schema": "http://json-schema.org/draft-04/schema#",
+                    "enum": [{
+                      "type": "object",
+                      "properties": {
+                        "uri":{
+                          "type": "string"
+                          },
+                        "id": {
+                          "type": "string"
+                          },
+                        "consumption_type": {
+                          "enum": ["CALL"]
+                          },
+                        "number": {
+                          "type": "string"
+                          },
+                        "duration": {
+                          "type": "number"
+                          },
+                        "date": {
+                          "type": "number"
+                          },
+                        "required": ["uri", "id","consumption_type", "number", "duration", "date"]
+                        }
+                    },
+                    {
+                    "type": "object",
+                    "properties": {
+                      "uri":{
+                        "type": "string"
+                        },
+                      "id": {
+                        "type": "string"
+                        },
+                      "consumption_type": {
+                        "enum": ["DATA"]
+                        },
+                      "target_uri": {
+                        "type": "string"
+                        },
+                      "voulume": {
+                        "type": "number"
+                        },
+                      "date": {
+                        "type": "number"
+                        },
+                      "required": ["uri", "id","consumption_type", "target_uri", "voulume", "date"]
+                      }
+                    }]
+                    }
             404:
