@@ -73,9 +73,9 @@
 
 18. waitCommandHandler status should return waitCommandHandler after execute query command  -7min
 
-19. place record player who is here - 5min
+19. place record player who is here - 5min 5min
 
-20. can not set tool at place with player - 5min
+20. can not set tool at place with player - 5min 3min
 
 19. game control - find next player  -7min
                    player start turn -5min
