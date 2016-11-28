@@ -1,0 +1,60 @@
+#%RAML 0.8
+
+title: Charging API
+mediaType: application/json
+
+/users:
+  /{uid}:
+    get:
+      description: as a user or admin, I can get user information
+      responses:
+        200:
+        404:
+    /product-orders:
+      get:
+        description: as a user or admin, I can get product order list of a user
+        responses:
+          200:
+          404:
+      /{pid}:
+        get:
+          description: as a user or admin, I can get product order detail of a user
+          responses:
+            200:
+            404:
+    /recharges:
+      get:
+        description: as a user or admin, I can get recharge list of a user
+        responses:
+          200:
+          404:
+      post:
+        description: as a user, I can create a recharge
+        responses:
+          201:
+          404:
+          400:
+      /{rid}:
+        get:
+          description: as a user or admin, I can get recharge detail of a user
+          responses:
+            200:
+            404:
+    /consumption-recoreds:
+      get:
+        description: as a user or admin, I can get consumption recored list of a user
+        responses:
+          200:
+          404:
+      post:
+        description: as a user, I can create a consumption recored
+        responses:
+          201:
+          400:
+          404:
+      /{cid}:
+        get:
+          description: as a user or admin, I can get consumption recored detail
+          responses:
+            200:
+            404:
