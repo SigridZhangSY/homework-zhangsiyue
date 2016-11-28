@@ -26,7 +26,7 @@ public class Place {
     }
 
     public boolean setBlock(){
-        if(!isBlocked && !isBombed){
+        if(!isBlocked && !isBombed && players.size() == 0){
             isBlocked = true;
             return true;
         }
@@ -34,7 +34,7 @@ public class Place {
     }
 
     public boolean setBomb(){
-        if(!isBombed && !isBlocked){
+        if(!isBombed && !isBlocked && players.size() == 0){
             isBombed = true;
             return true;
         }

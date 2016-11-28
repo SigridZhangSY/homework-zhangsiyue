@@ -61,6 +61,22 @@ public class WaitCommandHandlerUseToolTest {
     }
 
     @Test
+    public void should_not_use_tool_when_there_is_any_player() throws Exception {
+        Player otherPlayer = mock(Player.class);
+        target.arrive(otherPlayer);
+
+        player.buyTool(0);
+        assertThat(player.getTools().size(), is(1));
+
+        player.executed("block 1");
+
+        assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
+        assertThat(player.getTools().size(), is(1));
+        assertThat(target.isBlocked(), is(false));
+
+    }
+
+    @Test
     public void should_return_wait_command_handler_after_use_bomb() throws Exception {
         player.buyTool(2);
         assertThat(player.getTools().size(), is(1));
