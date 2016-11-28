@@ -36,7 +36,9 @@ public class Estate extends Place {
         return estate;
     }
 
+    @Override
     public void arrive(Player player){
+        super.arrive(player);
         if (player.getFreeTimes() < 0 &&
                 owner != null &&
                 !owner.equals(player) &&

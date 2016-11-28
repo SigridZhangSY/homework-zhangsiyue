@@ -2,11 +2,16 @@ package rich;
 
 import org.junit.Test;
 import rich.place.Estate;
+import rich.place.Place;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class PlayerActionTest {
 
@@ -81,5 +86,28 @@ public class PlayerActionTest {
 
         assertThat(player.getEstates().size(), is(0));
         assertThat(player.getBalance(), is(INIT_BALANCE + IN_BALANCE));
+    }
+
+    @Test
+    public void should_change_record_when_arrive_and_leave_a_place() throws Exception {
+        Place start = new Place();
+        Place target = new Place();
+        Player player = new Player(null, start);
+        Map map = mock(Map.class);
+        Dice dice = mock(Dice.class);
+        when(dice.next()).thenReturn(1);
+        when(map.move(eq(start), anyInt())).thenReturn(target);
+
+        player.moveTo(map, dice);
+
+        assertThat(player.getCurrentPlace(), is(target));
+        assertThat(target.getPlayers().contains(player), is(true));
+
+        when(map.move(eq(target), anyInt())).thenReturn(start);
+
+        player.moveTo(map, dice);
+
+        assertThat(player.getCurrentPlace(), is(start));
+        assertThat(target.getPlayers().contains(player), is(false));
     }
 }

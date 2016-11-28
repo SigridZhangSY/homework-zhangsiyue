@@ -64,6 +64,7 @@ public class Player {
     }
 
     public void moveTo(Map map, Dice dice){
+        currentPlace.leave(this);
         currentPlace = map.move(currentPlace, dice.next());
         if(currentPlace.isBombed()){
            currentPlace.clearTool();
@@ -72,14 +73,14 @@ public class Player {
             if(currentPlace.isBlocked()){
                 currentPlace.clearTool();
             }
-            if (currentPlace instanceof Estate)
-                ((Estate) currentPlace).arrive(this);
+            currentPlace.arrive(this);
         }
     }
 
     private void goToHospital(Map map) {
         waitTimes = 3;
         currentPlace = map.findHospital();
+        currentPlace.arrive(this);
     }
 
     public void goToPrison(){
