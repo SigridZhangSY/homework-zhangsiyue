@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.api.CardsApi;
 import com.thoughtworks.ketsu.api.jersey.RecordListWriter;
 import com.thoughtworks.ketsu.api.jersey.RecordWriter;
 import com.thoughtworks.ketsu.api.jersey.RoutesFeature;
@@ -64,7 +65,7 @@ public class ApiSupport {
         test = new JerseyTest() {
             @Override
             protected Application configure() {
-                application = new ResourceConfig()
+                application = new ResourceConfig(CardsApi.class)
                         .register(RecordWriter.class)
                         .register(RoutesFeature.class)
                         .register(RecordListWriter.class)

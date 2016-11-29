@@ -3,8 +3,14 @@
 1. /cards/{cid} 
    - get 
      200 -10min
-     404 -7min
+     404 -7min 9min
      403 -7min
+     
+2. /cars
+   - post
+     201
+     400
+     403
                     
 2. /cards/{cid}/plans/{pid} 
    - get 

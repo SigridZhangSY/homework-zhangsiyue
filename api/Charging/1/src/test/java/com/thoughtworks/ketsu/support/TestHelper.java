@@ -1,5 +1,9 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.domain.card.Balance;
+import com.thoughtworks.ketsu.domain.card.Card;
+import com.thoughtworks.ketsu.domain.card.Location;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,5 +29,11 @@ public class TestHelper {
             put("name", name);
             put("email", email);
         }};
+    }
+
+    public static Card getACard(){
+        Location location = new Location("xian", "www.xxx/location/1.com");
+        Balance balance = new Balance(10, 10, 10);
+        return new Card(1, "12345678901", location, balance);
     }
 }

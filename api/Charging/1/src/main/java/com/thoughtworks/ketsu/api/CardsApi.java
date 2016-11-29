@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.Optional;
 
 @Path("cards")
-public class CarsApi {
+public class CardsApi {
 
     @GET
     @Path("{cid}")
@@ -19,6 +19,9 @@ public class CarsApi {
 
         Optional<Card> card = cards.getCardById(cid);
 
-        throw new NotFoundException();
+        if (!card.isPresent())
+            throw new NotFoundException();
+
+        return card.get();
     }
 }

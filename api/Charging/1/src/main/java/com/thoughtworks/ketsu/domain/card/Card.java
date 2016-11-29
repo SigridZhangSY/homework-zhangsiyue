@@ -1,4 +1,41 @@
 package com.thoughtworks.ketsu.domain.card;
 
-public class Card {
+import com.thoughtworks.ketsu.api.jersey.Routes;
+import com.thoughtworks.ketsu.infrastructure.records.Record;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Card implements Record{
+    private long id;
+    private String number;
+    private Location location;
+    private Balance balance;
+
+    public Card(long id, String number, Location location, Balance balance) {
+        this.id = id;
+        this.number = number;
+        this.location = location;
+        this.balance = balance;
+    }
+
+    @Override
+    public Map<String, Object> toRefJson(Routes routes) {
+        return toJson(routes);
+    }
+
+    @Override
+    public Map<String, Object> toJson(Routes routes) {
+        return new HashMap<String, Object>(){{
+            put("uri", routes.cardUrl(Card.this));
+            put("id", id);
+            put("number", number);
+            put("location", location.toJson(routes));
+            put("balance", balance.toJson(routes));
+        }};
+    }
+
+    public long getId() {
+        return id;
+    }
 }
