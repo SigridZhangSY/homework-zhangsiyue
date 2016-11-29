@@ -90,7 +90,15 @@ public class PaymentsApiTest extends ApiSupport {
 
     @Test
     public void should_return_201_and_uri_when_create_payment() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
         when(plan.createPayment()).thenReturn(TestHelper.getAPayment());
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+        when(plan.getCard()).thenReturn(card);
+        Balance balance = mock(Balance.class);
+        when(card.getBalance()).thenReturn(balance);
+        when(balance.getAmount()).thenReturn(11.0);
+        when(plan.getTotalPrice()).thenReturn(10.0);
+
         Response post = post("/cards/1/plans/1/payments", new HashMap<>());
 
         assertThat(post.getStatus(), is(201));
@@ -99,6 +107,7 @@ public class PaymentsApiTest extends ApiSupport {
 
     @Test
     public void should_return_400_when_create_payment_without_enough_amount() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
         when(plan.getCard()).thenReturn(card);
         Balance balance = mock(Balance.class);
         when(card.getBalance()).thenReturn(balance);
@@ -108,5 +117,15 @@ public class PaymentsApiTest extends ApiSupport {
         Response post = post("/cards/1/plans/1/payments", new HashMap<>());
 
         assertThat(post.getStatus(), is(400));
+    }
+
+    @Test
+    public void should_return_403_when_try_to_create_payment_of_other_card() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+        when(plan.getCard()).thenReturn(card);
+        when(card.getId()).thenReturn(Long.valueOf(1));
+        Response post = post("/cards/1/plans/1/payments", new HashMap<>());
+
+        assertThat(post.getStatus(), is(403));
     }
 }

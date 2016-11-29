@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.api.jersey;
 
 import com.thoughtworks.ketsu.domain.Card;
+import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.domain.Plan;
 
@@ -20,7 +21,11 @@ public class PaymentsApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createPayment(@Context Routes routes){
+    public Response createPayment(@Context Routes routes,
+                                  @Context CurrentUser currentUser){
+        if (!currentUser.isUserHimself(plan.getCard().getId()))
+            throw new ForbiddenException();
+
         Card card = plan.getCard();
         if(card.getBalance().getAmount() < plan.getTotalPrice())
             throw new BadRequestException("Balance amount is not enough");
