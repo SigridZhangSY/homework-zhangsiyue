@@ -21,6 +21,6 @@ public class PlansApi {
         Optional<Plan> plan = card.getPlansById(pid);
         if (!plan.isPresent())
             throw new NotFoundException();
-        return null;
+        return plan.get();
     }
 }

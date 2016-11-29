@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.domain.Plan;
 import com.thoughtworks.ketsu.domain.card.Balance;
 import com.thoughtworks.ketsu.domain.card.Card;
 import com.thoughtworks.ketsu.domain.card.Location;
@@ -35,5 +36,9 @@ public class TestHelper {
         Location location = new Location("xian", "www.xxx/location/1.com");
         Balance balance = new Balance(10, 10, 10);
         return new Card(1, "12345678901", location, balance);
+    }
+
+    public static Plan getAPlan(){
+        return Plan.createPlan(300, 1024, 100, 0.1, 0.1, 0.1, 10000, 30, "20150612", "www.xxx/plans/1.com", "planA");
     }
 }
