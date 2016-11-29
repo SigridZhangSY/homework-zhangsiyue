@@ -4,30 +4,30 @@
    - get 
      200 -10min 20min
      404 -7min 9min
-     403 -7min 
+     403 -7min 5min
      
-2. /cars
+2. /cards
    - post
-     201
-     400
-     403
+     403 -5min 3min
+     201 -15min
+     400 -10min
                     
 2. /cards/{cid}/plans/{pid} 
    - get 
-     200
-     404
-     403
+     200 -10min
+     404 -5min
+     403 -5min
                                 
 3. /cards/{cid}/plans 
    - get
-     200
-     403
+     200 -7min
+     403 -5min
 
 4. /cards/{cid}/plans/{pid}/payments/{pid}
    - get 
-     200
-     404
-     403
+     200 -10min
+     404 -5min
+     403 -5min
 
 5. /cards/{cid}/plans/{pid}/payments 
    - get

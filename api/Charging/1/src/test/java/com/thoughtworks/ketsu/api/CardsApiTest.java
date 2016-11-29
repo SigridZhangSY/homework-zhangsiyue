@@ -3,6 +3,7 @@ package com.thoughtworks.ketsu.api;
 import javax.ws.rs.core.Response;
 
 import com.thoughtworks.ketsu.domain.card.Card;
+import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
 import com.thoughtworks.ketsu.support.TestHelper;
@@ -10,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -62,5 +64,14 @@ public class CardsApiTest extends ApiSupport {
 
         Response get = get("cards/1");
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_403_when_non_admin_create_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+
+        Response post = post("cards", new HashMap<>());
+
+        assertThat(post.getStatus(), is(403));
     }
 }
