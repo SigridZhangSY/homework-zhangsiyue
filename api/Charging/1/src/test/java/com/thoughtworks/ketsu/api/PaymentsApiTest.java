@@ -54,4 +54,13 @@ public class PaymentsApiTest extends ApiSupport {
         Response get = get("cards/1/plans/1/payments/1");
         assertThat(get.getStatus(), is(404));
     }
+
+    @Test
+    public void should_return_403_when_try_to_get_payment_of_other_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response get = get("cards/1/plans/1/payments/1");
+        assertThat(get.getStatus(), is(403));
+    }
 }
