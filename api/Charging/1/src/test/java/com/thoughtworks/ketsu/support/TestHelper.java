@@ -46,4 +46,11 @@ public class TestHelper {
     public static  Recharge getARecharge(){
         return Recharge.createRecharge(100, "20160101", 1, getACard());
     }
+
+    public static Map<String, Object> rechargeMap(double amount, String date){
+        return new HashMap<String, Object>(){{
+            put("amount", amount);
+            put("date", date);
+        }};
+    }
 }

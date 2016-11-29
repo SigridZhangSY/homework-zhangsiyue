@@ -41,11 +41,11 @@
 
 7. /cards/{cid}/recharges
    - get
-     200 -7min 
-     403 -3min
+     200 -7min 5min
+     403 -3min 3min
      
    - post 
-     201 -10min
+     201 -10min 
      400 -7min
      403 -3min
 

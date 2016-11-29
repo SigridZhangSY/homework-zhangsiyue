@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyMap;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -91,5 +92,16 @@ public class RechargesApiTest extends ApiSupport {
         Response get = get("cards/1/recharges");
 
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_201_when_create_recharge() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+        when(card.createRecharge(anyMap())).thenReturn(TestHelper.getARecharge());
+
+        Response post = post("cards/1/recharges", TestHelper.rechargeMap(100, "20160101"));
+
+        assertThat(post.getStatus(), is(201));
+        assertThat(post.getLocation().toString().contains("/recharges/1"), is(true));
     }
 }
