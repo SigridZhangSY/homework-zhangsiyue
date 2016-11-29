@@ -57,6 +57,7 @@ public class ApiSupport {
     protected String token = "";
 
     protected Cards cards = mock(Cards.class);
+    protected CurrentUser currentUser = mock(CurrentUser.class);
 
     @Before
     public void setUp() throws Exception {
@@ -73,6 +74,7 @@ public class ApiSupport {
                             @Override
                             protected void configure() {
                                 bind(cards).to(Cards.class);
+                                bind(currentUser).to(CurrentUser.class);
                             }
                         });
                 return application;

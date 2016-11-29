@@ -2,9 +2,9 @@
 
 1. /cards/{cid} 
    - get 
-     200 -10min
+     200 -10min 20min
      404 -7min 9min
-     403 -7min
+     403 -7min 
      
 2. /cars
    - post
