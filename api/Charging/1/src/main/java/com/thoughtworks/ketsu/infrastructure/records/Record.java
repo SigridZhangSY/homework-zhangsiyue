@@ -1,6 +1,6 @@
 package com.thoughtworks.ketsu.infrastructure.records;
 
-import com.thoughtworks.ketsu.web.jersey.Routes;
+import com.thoughtworks.ketsu.api.jersey.Routes;
 
 import java.util.Map;
 

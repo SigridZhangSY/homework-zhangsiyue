@@ -1,6 +1,6 @@
 package com.thoughtworks.ketsu;
 
-import com.thoughtworks.ketsu.web.jersey.Api;
+import com.thoughtworks.ketsu.api.jersey.Api;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.servlet.ServletRegistration;
 import org.glassfish.grizzly.servlet.WebappContext;

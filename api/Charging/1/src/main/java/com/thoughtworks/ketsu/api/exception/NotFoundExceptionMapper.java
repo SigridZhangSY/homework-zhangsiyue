@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.exception;
+package com.thoughtworks.ketsu.api.exception;
 
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.core.Response;

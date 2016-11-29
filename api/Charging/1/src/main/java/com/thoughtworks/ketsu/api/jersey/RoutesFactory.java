@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.jersey;
+package com.thoughtworks.ketsu.api.jersey;
 
 import org.glassfish.hk2.api.Factory;
 

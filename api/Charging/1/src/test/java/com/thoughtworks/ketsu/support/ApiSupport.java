@@ -1,9 +1,15 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.api.jersey.RecordListWriter;
+import com.thoughtworks.ketsu.api.jersey.RecordWriter;
+import com.thoughtworks.ketsu.api.jersey.RoutesFeature;
+import com.thoughtworks.ketsu.domain.CurrentUser;
+import com.thoughtworks.ketsu.domain.card.Cards;
 import com.thoughtworks.ketsu.util.Json;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.servlet.ServletRegistration;
 import org.glassfish.grizzly.servlet.WebappContext;
+import org.glassfish.hk2.utilities.binding.AbstractBinder;
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -30,6 +36,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
+import static org.mockito.Mockito.mock;
+
 public class ApiSupport {
     JerseyTest test;
 
@@ -47,6 +55,8 @@ public class ApiSupport {
     private String serverUri;
     protected String token = "";
 
+    protected Cards cards = mock(Cards.class);
+
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
@@ -54,6 +64,16 @@ public class ApiSupport {
         test = new JerseyTest() {
             @Override
             protected Application configure() {
+                application = new ResourceConfig()
+                        .register(RecordWriter.class)
+                        .register(RoutesFeature.class)
+                        .register(RecordListWriter.class)
+                        .register(new AbstractBinder() {
+                            @Override
+                            protected void configure() {
+                                bind(cards).to(Cards.class);
+                            }
+                        });
                 return application;
             }
 

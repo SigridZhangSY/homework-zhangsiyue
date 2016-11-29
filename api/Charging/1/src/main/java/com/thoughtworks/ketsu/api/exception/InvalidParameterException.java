@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.exception;
+package com.thoughtworks.ketsu.api.exception;
 
 public class InvalidParameterException extends RuntimeException {
     public InvalidParameterException(String message) {

@@ -1,8 +1,7 @@
-package com.thoughtworks.ketsu.web.jersey;
+package com.thoughtworks.ketsu.api.jersey;
 
 
 import javax.ws.rs.core.UriInfo;
-import java.net.URI;
 
 public class Routes {
 

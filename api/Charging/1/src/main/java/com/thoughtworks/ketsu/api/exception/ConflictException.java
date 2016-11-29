@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.exception;
+package com.thoughtworks.ketsu.api.exception;
 
 public class ConflictException extends RuntimeException {
 }

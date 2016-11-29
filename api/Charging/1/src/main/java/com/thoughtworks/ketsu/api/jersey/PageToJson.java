@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.jersey;
+package com.thoughtworks.ketsu.api.jersey;
 
 
 import com.thoughtworks.ketsu.domain.Page;

@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.jersey;
+package com.thoughtworks.ketsu.api.jersey;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
@@ -46,7 +46,7 @@ public class Api extends ResourceConfig {
         }));
 
         property(org.glassfish.jersey.server.ServerProperties.RESPONSE_SET_STATUS_OVER_SEND_ERROR, true);
-        packages("com.thoughtworks.ketsu.web");
+        packages("com.thoughtworks.ketsu.api");
         register(RoutesFeature.class);
         register(LoggingFilter.class);
         register(CORSResponseFilter.class);

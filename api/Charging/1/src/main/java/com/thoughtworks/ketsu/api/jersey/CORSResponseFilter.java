@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.web.jersey;
+package com.thoughtworks.ketsu.api.jersey;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerResponseContext;
