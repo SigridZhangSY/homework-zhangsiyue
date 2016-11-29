@@ -26,10 +26,10 @@
 5. /cards/{cid}/plans/{pid}/payments 
    - get
      200 -7min 4min
-     403 -3min 
+     403 -3min 3min
      
    - post 
-     201 -10min
+     201 -10min 
      400 -7min
      403 -3min
 

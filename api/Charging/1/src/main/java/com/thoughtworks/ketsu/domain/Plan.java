@@ -48,6 +48,10 @@ public class Plan implements Record {
         return null;
     }
 
+    public Payment createPayment() {
+        return null;
+    }
+
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return new HashMap<String, Object>(){{

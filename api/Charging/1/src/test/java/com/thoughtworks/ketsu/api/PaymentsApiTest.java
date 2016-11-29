@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -84,5 +85,14 @@ public class PaymentsApiTest extends ApiSupport {
 
         Response get = get("cards/1/plans/1/payments");
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_201_and_uri_when_create_payment() throws Exception {
+        when(plan.createPayment()).thenReturn(TestHelper.getAPayment());
+        Response post = post("/cards/1/plans/1/payments", new HashMap<>());
+
+        assertThat(post.getStatus(), is(201));
+        assertThat(post.getLocation().toString().contains("/cards/1/plans/1/payments/1"), is(true));
     }
 }
