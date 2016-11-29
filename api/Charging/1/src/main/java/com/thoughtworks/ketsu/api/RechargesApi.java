@@ -5,7 +5,7 @@ import com.thoughtworks.ketsu.domain.Recharge;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Optional;
 
 public class RechargesApi {
@@ -13,6 +13,12 @@ public class RechargesApi {
 
     public RechargesApi(Card card) {
         this.card = card;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Recharge> getRecharges(){
+        return card.getRecharges();
     }
 
     @GET

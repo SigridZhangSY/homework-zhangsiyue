@@ -33,6 +33,10 @@ public class Card implements Record{
         return null;
     }
 
+    public List<Recharge> getRecharges() {
+        return null;
+    }
+
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return toJson(routes);

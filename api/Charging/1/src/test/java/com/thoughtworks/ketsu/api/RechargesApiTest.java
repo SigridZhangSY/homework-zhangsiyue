@@ -10,9 +10,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -21,7 +23,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(ApiTestRunner.class)
-public class RechargeApiTest extends ApiSupport {
+public class RechargesApiTest extends ApiSupport {
 
     private Card card = mock(Card.class);
 
@@ -64,5 +66,20 @@ public class RechargeApiTest extends ApiSupport {
         Response get = get("cards/1/recharges/1");
 
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_200_when_try_to_get_recharge_list() throws Exception {
+        when(card.getRecharges()).thenReturn(asList(TestHelper.getARecharge()));
+
+        Response get = get("cards/1/recharges");
+
+        assertThat(get.getStatus(), is(200));
+        List list = get.readEntity(List.class);
+        assertThat(list.size(), is(1));
+        Map map = (Map)list.get(0);
+        assertThat(map.get("uri").toString().contains("recharges/1"), is(true));
+        assertThat(map.get("amount"), notNullValue());
+        assertThat(map.get("date"), notNullValue());
     }
 }
