@@ -11,9 +11,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -62,5 +64,16 @@ public class PaymentsApiTest extends ApiSupport {
 
         Response get = get("cards/1/plans/1/payments/1");
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_200_and_payment_list() throws Exception {
+        when(plan.getPayments()).thenReturn(asList(TestHelper.getAPayment()));
+
+        Response get = get("cards/1/plans/1/payments");
+        assertThat(get.getStatus(), is(200));
+        List list = get.readEntity(List.class);
+        assertThat(list.size(), is(1));
+        assertThat(((Map)list.get(0)).get("uri"), notNullValue());
     }
 }

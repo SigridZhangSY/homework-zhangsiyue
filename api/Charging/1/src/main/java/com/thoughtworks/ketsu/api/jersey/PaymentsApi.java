@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.Plan;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Optional;
 
 public class PaymentsApi {
@@ -12,6 +13,12 @@ public class PaymentsApi {
 
     public PaymentsApi(Plan plan) {
         this.plan = plan;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Payment> getPayments(){
+        return plan.getPayments();
     }
 
     @GET

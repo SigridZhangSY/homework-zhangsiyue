@@ -19,19 +19,19 @@
 
 4. /cards/{cid}/plans/{pid}/payments/{pid}
    - get 
-     403 -5min 
-     404 -5min -3min
-     200 -10min -17min
+     200 -10min 17min
+     403 -5min 2min
+     404 -5min 3min
 
 5. /cards/{cid}/plans/{pid}/payments 
    - get
-     200 
-     403
+     200 -7min
+     403 -3min
      
    - post 
-     201
-     400
-     403
+     201 -10min
+     400 -7min
+     403 -3min
 
 6. /cards/{cid}/recharges/{rid}
    - get 

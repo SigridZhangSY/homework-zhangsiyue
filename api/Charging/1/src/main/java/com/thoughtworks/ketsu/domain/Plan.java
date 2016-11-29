@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -40,6 +41,10 @@ public class Plan implements Record {
     }
 
     public Optional<Payment> findPaymentById(long id){
+        return null;
+    }
+
+    public List<Payment> getPayments(){
         return null;
     }
 
