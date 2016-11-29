@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -103,5 +104,14 @@ public class RechargesApiTest extends ApiSupport {
 
         assertThat(post.getStatus(), is(201));
         assertThat(post.getLocation().toString().contains("/recharges/1"), is(true));
+    }
+
+    @Test
+    public void should_return_400_when_create_recharge_with_invalid_parameter() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+
+        Response post = post("cards/1/recharges", new HashMap<>());
+
+        assertThat(post.getStatus(), is(400));
     }
 }
