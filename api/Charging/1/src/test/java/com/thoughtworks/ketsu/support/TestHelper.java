@@ -42,4 +42,8 @@ public class TestHelper {
     public static Payment getAPayment(){
         return Payment.createPayment(30, "20161220",getAPlan(), 1);
     }
+
+    public static  Recharge getARecharge(){
+        return Recharge.createRecharge(100, "20160101", 1, getACard());
+    }
 }

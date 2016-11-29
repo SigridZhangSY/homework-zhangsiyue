@@ -29,6 +29,10 @@ public class Card implements Record{
         return null;
     }
 
+    public Optional<Recharge> getRechargeById(long id){
+        return null;
+    }
+
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return toJson(routes);

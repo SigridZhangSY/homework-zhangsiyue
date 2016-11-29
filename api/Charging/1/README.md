@@ -31,23 +31,23 @@
    - post 
      201 -10min -7min
      400 -7min -3min
-     403 -3min
+     403 -3min -7min
 
 6. /cards/{cid}/recharges/{rid}
    - get 
-     200
-     404
-     403
+     200 -7min
+     404 -3min
+     403 -3min
 
 7. /cards/{cid}/recharges
    - get
-     200
-     403
+     200 -7min
+     403 -3min
      
    - post 
-     201
-     400
-     403
+     201 -10min
+     400 -7min
+     403 -3min
 
 8. /cards/{cid}/consumption-records/{rid}
    - get 

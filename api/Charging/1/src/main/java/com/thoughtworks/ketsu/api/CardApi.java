@@ -22,4 +22,9 @@ public class CardApi {
     public PlansApi getPlansApi(){
         return new PlansApi(card);
     }
+
+    @Path("recharges")
+    public RechargesApi getRecharges(){
+        return new RechargesApi(card);
+    }
 }
