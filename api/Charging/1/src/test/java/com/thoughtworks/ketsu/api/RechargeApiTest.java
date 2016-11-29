@@ -55,4 +55,14 @@ public class RechargeApiTest extends ApiSupport {
 
         assertThat(get.getStatus(), is(404));
     }
+
+    @Test
+    public void should_return_403_when_try_to_get_recharge_of_other_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response get = get("cards/1/recharges/1");
+
+        assertThat(get.getStatus(), is(403));
+    }
 }
