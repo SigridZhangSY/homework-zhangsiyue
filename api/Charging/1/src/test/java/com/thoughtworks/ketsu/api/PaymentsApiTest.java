@@ -46,4 +46,12 @@ public class PaymentsApiTest extends ApiSupport {
         assertThat(map.get("amount"), notNullValue());
         assertThat(map.get("uri").toString().contains("cards/1/plans/1/payments/1"), is(true));
     }
+
+    @Test
+    public void should_return_404_when_payment_not_existed() throws Exception {
+        when(plan.findPaymentById(anyInt())).thenReturn(Optional.empty());
+
+        Response get = get("cards/1/plans/1/payments/1");
+        assertThat(get.getStatus(), is(404));
+    }
 }

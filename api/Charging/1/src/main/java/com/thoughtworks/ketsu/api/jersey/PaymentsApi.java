@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.Plan;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.Optional;
 
 public class PaymentsApi {
     private Plan plan;
@@ -17,7 +18,9 @@ public class PaymentsApi {
     @Path("{pmid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Payment getPayment(@PathParam("pmid")long pid){
-        Payment payment = plan.findPaymentById(pid).get();
-        return payment;
+        Optional<Payment> payment = plan.findPaymentById(pid);
+        if (!payment.isPresent())
+            throw new NotFoundException();
+        return payment.get();
     }
 }
