@@ -46,4 +46,13 @@ public class RechargeApiTest extends ApiSupport {
         assertThat(map.get("amount"), notNullValue());
         assertThat(map.get("date"), notNullValue());
     }
+
+    @Test
+    public void should_return_404_when_recharge_not_exist() throws Exception {
+        when(card.getRechargeById(anyInt())).thenReturn(Optional.empty());
+
+        Response get = get("cards/1/recharges/1");
+
+        assertThat(get.getStatus(), is(404));
+    }
 }

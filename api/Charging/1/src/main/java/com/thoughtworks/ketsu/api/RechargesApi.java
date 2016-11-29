@@ -3,10 +3,7 @@ package com.thoughtworks.ketsu.api;
 import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.Recharge;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Optional;
@@ -22,7 +19,11 @@ public class RechargesApi {
     @Path("{rid}")
     @Produces(MediaType.APPLICATION_JSON)
     public Recharge getRechargeById(@PathParam("rid")long rid){
+
         Optional<Recharge> recharge = card.getRechargeById(rid);
+
+        if (!recharge.isPresent())
+            throw new NotFoundException();
         return recharge.get();
     }
 }

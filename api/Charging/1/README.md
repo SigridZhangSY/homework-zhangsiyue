@@ -35,8 +35,8 @@
 
 6. /cards/{cid}/recharges/{rid}
    - get 
-     200 -7min
-     404 -3min
+     200 -7min 10min
+     404 -3min 3min
      403 -3min
 
 7. /cards/{cid}/recharges
