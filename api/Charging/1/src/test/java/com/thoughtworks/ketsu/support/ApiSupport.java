@@ -66,7 +66,8 @@ public class ApiSupport {
         test = new JerseyTest() {
             @Override
             protected Application configure() {
-                application = new ResourceConfig(CardsApi.class)
+                application = new ResourceConfig()
+                        .packages("com.thoughtworks.ketsu.api")
                         .register(RecordWriter.class)
                         .register(RoutesFeature.class)
                         .register(RecordListWriter.class)

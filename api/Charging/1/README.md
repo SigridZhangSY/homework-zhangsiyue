@@ -5,18 +5,12 @@
      200 -10min 20min
      404 -7min 9min
      403 -7min 5min
-     
-2. /cards
-   - post
-     403 -5min 3min
-     201 -15min
-     400 -10min
                     
 2. /cards/{cid}/plans/{pid} 
    - get 
-     200 -10min
-     404 -5min
+     404 -5min 
      403 -5min
+     200 -10min 
                                 
 3. /cards/{cid}/plans 
    - get

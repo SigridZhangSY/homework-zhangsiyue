@@ -1,10 +1,12 @@
 package com.thoughtworks.ketsu.domain.card;
 
 import com.thoughtworks.ketsu.api.jersey.Routes;
+import com.thoughtworks.ketsu.domain.Plan;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Card implements Record{
     private long id;
@@ -17,6 +19,10 @@ public class Card implements Record{
         this.number = number;
         this.location = location;
         this.balance = balance;
+    }
+
+    public Optional<Plan> getPlansById(long id){
+        return null;
     }
 
     @Override

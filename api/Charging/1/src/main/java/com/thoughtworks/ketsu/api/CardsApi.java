@@ -1,7 +1,5 @@
 package com.thoughtworks.ketsu.api;
 
-import com.thoughtworks.ketsu.api.exception.ConflictException;
-import com.thoughtworks.ketsu.api.jersey.CardApi;
 import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.card.Card;
 import com.thoughtworks.ketsu.domain.card.Cards;
