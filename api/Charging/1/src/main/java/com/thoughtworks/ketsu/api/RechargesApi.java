@@ -2,6 +2,7 @@ package com.thoughtworks.ketsu.api;
 
 import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.domain.Card;
+import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.Recharge;
 import com.thoughtworks.ketsu.util.Validators;
 
@@ -31,7 +32,10 @@ public class RechargesApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createRecharge(Map<String, Object> info,
-                                   @Context Routes routes){
+                                   @Context Routes routes,
+                                   @Context CurrentUser currentUser){
+        if(!currentUser.isUserHimself(card.getId()))
+            throw new ForbiddenException();
 
         Validator userValidator =
                 all(fieldNotEmpty("amount", "amount is required"),

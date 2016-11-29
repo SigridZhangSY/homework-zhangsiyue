@@ -45,8 +45,8 @@
      403 -3min 3min
      
    - post 
-     201 -10min 
-     400 -7min
+     201 -10min 7min
+     400 -7min 5min
      403 -3min
 
 8. /cards/{cid}/consumption-records/{rid}

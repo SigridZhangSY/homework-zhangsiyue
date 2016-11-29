@@ -114,4 +114,13 @@ public class RechargesApiTest extends ApiSupport {
 
         assertThat(post.getStatus(), is(400));
     }
+
+    @Test
+    public void should_return_403_when_try_to_create_recharge_of_other_card() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response post = post("cards/1/recharges", TestHelper.rechargeMap(100, "20160101"));
+
+        assertThat(post.getStatus(), is(403));
+    }
 }
