@@ -10,7 +10,7 @@
    - get 
      404 -5min 5min
      403 -5min 2min
-     200 -10min 
+     200 -10min 12min
                                 
 3. /cards/{cid}/plans 
    - get

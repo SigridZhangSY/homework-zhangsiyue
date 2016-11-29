@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.Plan;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,6 +23,10 @@ public class Card implements Record{
     }
 
     public Optional<Plan> getPlansById(long id){
+        return null;
+    }
+
+    public List<Plan> getPlans() {
         return null;
     }
 

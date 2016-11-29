@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.card.Card;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Optional;
 
 public class PlansApi {
@@ -15,12 +16,16 @@ public class PlansApi {
     }
 
     @GET
-    @Path("{pid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Plan getPlanById(@PathParam("pid") long pid) {
+    public List<Plan> getPlanForCard(){
+        return card.getPlans();
+    }
+
+    @Path("{pid}")
+    public PlanApi getPlanById(@PathParam("pid") long pid) {
         Optional<Plan> plan = card.getPlansById(pid);
         if (!plan.isPresent())
             throw new NotFoundException();
-        return plan.get();
+        return new PlanApi(plan.get());
     }
 }

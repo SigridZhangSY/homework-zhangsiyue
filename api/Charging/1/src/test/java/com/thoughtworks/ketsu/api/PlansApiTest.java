@@ -45,7 +45,7 @@ public class PlansApiTest  extends ApiSupport {
     @Test
     public void should_not_get_plan_of_other_user() throws Exception {
         when(currentUser.isAdmin()).thenReturn(false);
-        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
 
         Response get = get("cards/1/plans/1");
 
@@ -71,5 +71,15 @@ public class PlansApiTest  extends ApiSupport {
         assertThat(map.get("timeLimit"), notNullValue());
         assertThat(map.get("date"), notNullValue());
         assertThat(map.get("totalPrice"), notNullValue());
+    }
+
+    @Test
+    public void should_return_403_when_try_to_get_plan_list_of_other_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response get = get("cards/1/plans");
+
+        assertThat(get.getStatus(), is(403));
     }
 }
