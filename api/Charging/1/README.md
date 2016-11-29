@@ -29,8 +29,8 @@
      403 -3min 3min
      
    - post 
-     201 -10min 
-     400 -7min
+     201 -10min -7min
+     400 -7min -3min
      403 -3min
 
 6. /cards/{cid}/recharges/{rid}

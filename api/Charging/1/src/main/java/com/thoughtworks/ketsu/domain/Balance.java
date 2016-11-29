@@ -31,4 +31,16 @@ public class Balance implements Record{
             put("freeData", freeData);
         }};
     }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public double getFreeCall() {
+        return freeCall;
+    }
+
+    public double getFreeData() {
+        return freeData;
+    }
 }

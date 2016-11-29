@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.api;
 
+import com.thoughtworks.ketsu.domain.Balance;
 import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.domain.Plan;
@@ -94,5 +95,18 @@ public class PaymentsApiTest extends ApiSupport {
 
         assertThat(post.getStatus(), is(201));
         assertThat(post.getLocation().toString().contains("/cards/1/plans/1/payments/1"), is(true));
+    }
+
+    @Test
+    public void should_return_400_when_create_payment_without_enough_amount() throws Exception {
+        when(plan.getCard()).thenReturn(card);
+        Balance balance = mock(Balance.class);
+        when(card.getBalance()).thenReturn(balance);
+        when(balance.getAmount()).thenReturn(0.0);
+        when(plan.getTotalPrice()).thenReturn(10.0);
+
+        Response post = post("/cards/1/plans/1/payments", new HashMap<>());
+
+        assertThat(post.getStatus(), is(400));
     }
 }

@@ -86,4 +86,8 @@ public class Plan implements Record {
     public long getId() {
         return id;
     }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 }

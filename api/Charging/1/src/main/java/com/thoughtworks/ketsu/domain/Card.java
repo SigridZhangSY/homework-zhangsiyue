@@ -48,4 +48,8 @@ public class Card implements Record{
     public long getId() {
         return id;
     }
+
+    public Balance getBalance() {
+        return balance;
+    }
 }
