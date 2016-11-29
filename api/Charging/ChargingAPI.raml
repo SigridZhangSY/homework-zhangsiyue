@@ -4,6 +4,12 @@ title: Charging API
 mediaType: application/json
 
 /cards:
+  post:
+    description: as a admin, I can add a card to record init state of a card
+    responses:
+      201:
+      400:
+      403:
   /{cid}:
     get:
       description: as a user or admin, I can get user information
@@ -139,13 +145,41 @@ mediaType: application/json
                         }
                     }
             404:
-        /plan-payment:
+        /plan-payments:
+          get:
+            description: as uaser or admin, I can get my plan-payment list
+            responses:
+              200:
+                body:
+                  application/json:
+                    schema: |
+                      {
+                      "$schema": "http://json-schema.org/draft-04/schema#",
+                        "type": "array",
+                        "items":{
+                          "type": "object",
+                          "properties": {
+                            "uri":{},
+                            "id":{},
+                            "amount":{},
+                            "date":{},
+                            "paln":{}
+                          }
+                        }
+                      }
+              404:
           post:
-            description:
+            description: as a user, I can pay my plan
             responses:
               201:
               400:
-              404:      
+              404:
+          /{pid}:
+            get:
+              description: as uaser or admin, I can get my plan-payment detail
+              responses:
+                200:
+                404:
     /recharges:
       get:
         description: as a user or admin, I can get recharge list of a user
@@ -407,7 +441,7 @@ mediaType: application/json
                   type: string
             400:
             403:
-      /SMS-records:
+      /sms-records:
         get:
           description: as admin or user, I can get call-record list
           responses:
