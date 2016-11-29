@@ -1,6 +1,6 @@
 package com.thoughtworks.ketsu.api;
 
-import com.thoughtworks.ketsu.domain.card.Card;
+import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
 import com.thoughtworks.ketsu.support.TestHelper;
@@ -9,19 +9,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import javax.ws.rs.core.Response;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.when;
 
 @RunWith(ApiTestRunner.class)
-public class PlansApiTest  extends ApiSupport {
+public class PlansApiTest extends ApiSupport {
 
     private Card card = mock(Card.class);
 
@@ -81,5 +82,21 @@ public class PlansApiTest  extends ApiSupport {
         Response get = get("cards/1/plans");
 
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_200_and_plan_list() throws Exception {
+        when(card.getPlans()).thenReturn(asList(TestHelper.getAPlan()));
+
+        Response get = get("cards/1/plans");
+
+        assertThat(get.getStatus(), is(200));
+        List list = get.readEntity(List.class);
+        assertThat(list.size(), is(1));
+        Map map = (Map)list.get(0);
+        assertThat(map.get("uri"), notNullValue());
+        assertThat(map.get("name"), notNullValue());
+        assertThat(map.get("totalPrice"), notNullValue());
+        assertThat(map.get("date"), notNullValue());
     }
 }

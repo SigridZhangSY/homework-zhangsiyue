@@ -1,7 +1,7 @@
 package com.thoughtworks.ketsu.api;
 
 import com.thoughtworks.ketsu.domain.Plan;
-import com.thoughtworks.ketsu.domain.card.Card;
+import com.thoughtworks.ketsu.domain.Card;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

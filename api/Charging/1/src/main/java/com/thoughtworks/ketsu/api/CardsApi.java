@@ -1,8 +1,8 @@
 package com.thoughtworks.ketsu.api;
 
 import com.thoughtworks.ketsu.domain.CurrentUser;
-import com.thoughtworks.ketsu.domain.card.Card;
-import com.thoughtworks.ketsu.domain.card.Cards;
+import com.thoughtworks.ketsu.domain.Card;
+import com.thoughtworks.ketsu.domain.Cards;
 import org.glassfish.grizzly.http.server.Response;
 
 import javax.ws.rs.*;

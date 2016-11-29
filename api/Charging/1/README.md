@@ -14,14 +14,14 @@
                                 
 3. /cards/{cid}/plans 
    - get
-     200 -7min
-     403 -5min
+     200 -7min 5min
+     403 -5min 3min
 
 4. /cards/{cid}/plans/{pid}/payments/{pid}
    - get 
-     200 -10min
-     404 -5min
      403 -5min
+     404 -5min
+     200 -10min
 
 5. /cards/{cid}/plans/{pid}/payments 
    - get

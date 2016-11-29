@@ -1,9 +1,6 @@
 package com.thoughtworks.ketsu.support;
 
-import com.thoughtworks.ketsu.domain.Plan;
-import com.thoughtworks.ketsu.domain.card.Balance;
-import com.thoughtworks.ketsu.domain.card.Card;
-import com.thoughtworks.ketsu.domain.card.Location;
+import com.thoughtworks.ketsu.domain.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,6 +36,10 @@ public class TestHelper {
     }
 
     public static Plan getAPlan(){
-        return Plan.createPlan(300, 1024, 100, 0.1, 0.1, 0.1, 10000, 30, "20150612", "www.xxx/plans/1.com", "planA");
+        return Plan.createPlan(300, 1024, 100, 0.1, 0.1, 0.1, 10000, 30, "20150612", 1, "planA", getACard());
+    }
+
+    public static Payment getAPayment(){
+        return Payment.createPayment(30, "20161220",getAPlan(), 1);
     }
 }

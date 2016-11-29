@@ -1,11 +1,10 @@
 package com.thoughtworks.ketsu.support;
 
-import com.thoughtworks.ketsu.api.CardsApi;
 import com.thoughtworks.ketsu.api.jersey.RecordListWriter;
 import com.thoughtworks.ketsu.api.jersey.RecordWriter;
 import com.thoughtworks.ketsu.api.jersey.RoutesFeature;
 import com.thoughtworks.ketsu.domain.CurrentUser;
-import com.thoughtworks.ketsu.domain.card.Cards;
+import com.thoughtworks.ketsu.domain.Cards;
 import com.thoughtworks.ketsu.util.Json;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.grizzly.servlet.ServletRegistration;

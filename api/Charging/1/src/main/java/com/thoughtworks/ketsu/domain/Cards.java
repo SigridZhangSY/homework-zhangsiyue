@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.domain.card;
+package com.thoughtworks.ketsu.domain;
 
 import java.util.Optional;
 

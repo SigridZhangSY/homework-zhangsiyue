@@ -1,4 +1,4 @@
-package com.thoughtworks.ketsu.domain.card;
+package com.thoughtworks.ketsu.domain;
 
 import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.infrastructure.records.Record;

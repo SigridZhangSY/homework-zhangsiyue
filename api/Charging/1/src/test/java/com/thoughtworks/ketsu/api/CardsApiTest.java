@@ -2,8 +2,7 @@ package com.thoughtworks.ketsu.api;
 
 import javax.ws.rs.core.Response;
 
-import com.thoughtworks.ketsu.domain.card.Card;
-import com.thoughtworks.ketsu.infrastructure.records.Record;
+import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
 import com.thoughtworks.ketsu.support.TestHelper;

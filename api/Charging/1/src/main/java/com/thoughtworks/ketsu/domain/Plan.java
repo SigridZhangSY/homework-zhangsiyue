@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.infrastructure.records.Record;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class Plan implements Record {
     private double freeCall;
@@ -16,11 +17,12 @@ public class Plan implements Record {
     private double timeLimit;
     private double totalPrice;
     private String date;
-    private String uri;
+    private long id;
     private String name;
+    private Card card;
 
 
-    public static Plan createPlan(double freeCall, double freeData, int freeSMS, double callPrice, double dataPrice, double smsPrice, double timeLimit, double totalPrice, String date, String uri, String name) {
+    public static Plan createPlan(double freeCall, double freeData, int freeSMS, double callPrice, double dataPrice, double smsPrice, double timeLimit, double totalPrice, String date, long id, String name, Card card) {
         Plan plan = new Plan();
         plan.freeCall = freeCall;
         plan.freeData = freeData;
@@ -31,20 +33,30 @@ public class Plan implements Record {
         plan.timeLimit = timeLimit;
         plan.totalPrice = totalPrice;
         plan.date = date;
-        plan.uri = uri;
+        plan.id = id;
         plan.name = name;
+        plan.card = card;
         return plan;
+    }
+
+    public Optional<Payment> findPaymentById(long id){
+        return null;
     }
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
-        return null;
+        return new HashMap<String, Object>(){{
+            put("uri", routes.planUrl(Plan.this));
+            put("name", name);
+            put("totalPrice", totalPrice);
+            put("date", date);
+        }};
     }
 
     @Override
     public Map<String, Object> toJson(Routes routes) {
         return new HashMap<String, Object>(){{
-            put("uri", uri);
+            put("uri", routes.planUrl(Plan.this));
             put("name", name);
             put("freeCall", freeCall);
             put("freeData", freeData);
@@ -56,5 +68,13 @@ public class Plan implements Record {
             put("date", date);
             put("totalPrice", totalPrice);
         }};
+    }
+
+    public Card getCard() {
+        return card;
+    }
+
+    public long getId() {
+        return id;
     }
 }

@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.api;
 
+import com.thoughtworks.ketsu.api.jersey.PaymentsApi;
 import com.thoughtworks.ketsu.domain.Plan;
 
 import javax.ws.rs.*;
@@ -19,5 +20,9 @@ public class PlanApi {
         return plan;
     }
 
+    @Path("payments")
+    public PaymentsApi getPaymentsApi(){
+        return new PaymentsApi(plan);
+    }
 
 }
