@@ -8,8 +8,8 @@
                     
 2. /cards/{cid}/plans/{pid} 
    - get 
-     404 -5min 
-     403 -5min
+     404 -5min 5min
+     403 -5min 2min
      200 -10min 
                                 
 3. /cards/{cid}/plans 

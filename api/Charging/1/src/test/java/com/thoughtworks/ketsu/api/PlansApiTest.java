@@ -38,4 +38,14 @@ public class PlansApiTest  extends ApiSupport {
 
         assertThat(get.getStatus(), is(404));
     }
+
+    @Test
+    public void should_not_get_plan_of_other_user() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isAdmin()).thenReturn(false);
+
+        Response get = get("cards/1/plans/1");
+
+        assertThat(get.getStatus(), is(403));
+    }
 }
