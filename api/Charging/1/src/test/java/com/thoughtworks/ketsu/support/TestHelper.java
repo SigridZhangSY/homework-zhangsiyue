@@ -74,4 +74,12 @@ public class TestHelper {
         SmsRecord smsRecord = SmsRecord.createSmsRecord(1, "12345678901", "20161130", amountPrice, getACard());
         return smsRecord;
     }
+
+    public static Map<String, Object> callRecordMap(){
+        return new HashMap<String, Object>(){{
+            put("date", "20161130");
+            put("duration", 30);
+            put("callNumer", "12345678901");
+        }};
+    }
 }

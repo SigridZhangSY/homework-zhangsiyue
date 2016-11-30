@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.domain;
 
 import com.thoughtworks.ketsu.api.jersey.Routes;
+import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
@@ -48,6 +49,11 @@ public class Card implements Record{
     }
 
     public List<ConsumptionRecord> getConsumptionRecords() {
+        return null;
+    }
+
+
+    public CallRecord createCallRecord(Map<String, Object> info) {
         return null;
     }
 

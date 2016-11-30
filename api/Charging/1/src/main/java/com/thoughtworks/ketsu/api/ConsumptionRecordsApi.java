@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.api;
 
+import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
@@ -7,8 +8,11 @@ import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.SmsRecord;
 
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -49,6 +53,16 @@ public class ConsumptionRecordsApi {
                 .filter(c -> c instanceof CallRecord).map(c -> (CallRecord) c)
                 .collect(Collectors.toList());
         return callRecords;
+    }
+
+    @POST
+    @Path("call-records")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createCallRecord(Map<String, Object> info,
+                                     @Context Routes routes){
+        CallRecord callRecord = card.createCallRecord(info);
+
+        return Response.created(routes.consumptionUrl(callRecord)).build();
     }
 
     @GET

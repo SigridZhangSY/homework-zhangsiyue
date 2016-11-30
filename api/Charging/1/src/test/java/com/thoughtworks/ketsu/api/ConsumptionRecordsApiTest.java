@@ -19,6 +19,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.anyMap;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -165,4 +166,14 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(get.getStatus(), is(403));
     }
 
+    @Test
+    public void should_return_201_and_uri_when_create_call_record() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+        when(card.createCallRecord(anyMap())).thenReturn(TestHelper.getACallRecord());
+
+        Response post =post("cards/1/consumption-records/call-records", TestHelper.callRecordMap());
+
+        assertThat(post.getStatus(), is(201));
+        assertThat(post.getLocation().toString().contains("consumption-records/1"), is(true));
+    }
 }
