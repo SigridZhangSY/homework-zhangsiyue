@@ -6,6 +6,7 @@ import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 import java.util.Optional;
 
 public class ConsumptionRecordsApi {
@@ -14,6 +15,12 @@ public class ConsumptionRecordsApi {
 
     public ConsumptionRecordsApi(Card card) {
         this.card = card;
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ConsumptionRecord> getConsumptionRecordsList(){
+        return card.getConsumptionRecords();
     }
 
     @GET
