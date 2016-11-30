@@ -100,6 +100,14 @@ public class ConsumptionRecordsApi {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createDataRecord(Map<String, Object> info,
                                      @Context Routes routes){
+
+        Validator callRecordValidator =
+                all(fieldNotEmpty("date", "date is required"),
+                        fieldNotEmpty("volume", "duration is required")
+                );
+
+        validate(callRecordValidator, info);
+
         DataRecord dataRecord = card.createDataRecord(info);
 
         return Response.created(routes.consumptionUrl(dataRecord)).build();
