@@ -51,7 +51,7 @@
 
 8. /cards/{cid}/consumption-records/{rid}
    - get 
-     200 -7min
+     200 -7min 30min
      404 -3min
      403 -3min
 

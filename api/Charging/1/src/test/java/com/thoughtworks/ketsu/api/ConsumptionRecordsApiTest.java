@@ -47,4 +47,13 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(map.get("price"), notNullValue());
         assertThat(map.get("volume"), notNullValue());
     }
+
+    @Test
+    public void return_404_when_consumption_record_not_existed() throws Exception {
+        when(card.getConsumptionRecordById(anyInt())).thenReturn(Optional.empty());
+
+        Response get = get("cards/1/consumption-records/1");
+
+        assertThat(get.getStatus(), is(404));
+    }
 }
