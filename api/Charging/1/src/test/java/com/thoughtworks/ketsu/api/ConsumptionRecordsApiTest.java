@@ -154,4 +154,15 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(map.get("uri").toString().contains("/consumption-records/1"), is(true));
 
     }
+
+    @Test
+    public void should_return_403_when_try_to_get_sms_records_of_other_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response get = get("cards/1/consumption-records/sms-records");
+
+        assertThat(get.getStatus(), is(403));
+    }
+
 }
