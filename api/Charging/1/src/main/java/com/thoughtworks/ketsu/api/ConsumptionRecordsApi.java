@@ -131,7 +131,11 @@ public class ConsumptionRecordsApi {
     @Path("sms-records")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createSmsRecord(Map<String, Object> info,
-                                    @Context Routes routes){
+                                    @Context Routes routes,
+                                    @Context CurrentUser currentUser){
+
+        if(!currentUser.isUserHimself(card.getId()))
+            throw new ForbiddenException();
 
         Validator callRecordValidator =
                 all(fieldNotEmpty("date", "date is required"),
