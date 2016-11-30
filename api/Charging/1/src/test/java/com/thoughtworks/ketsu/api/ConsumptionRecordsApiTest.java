@@ -70,7 +70,7 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
     }
 
     @Test
-    public void shRould_return_200_when_get_consumption_records_list_of_card() throws Exception {
+    public void should_return_200_when_get_consumption_records_list_of_card() throws Exception {
         when(card.getConsumptionRecords()).thenReturn(asList(TestHelper.getADataRecord()));
 
         Response get = get("cards/1/consumption-records");
@@ -93,5 +93,18 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         Response get = get("cards/1/consumption-records");
 
         assertThat(get.getStatus(), is(403));
+    }
+
+    @Test
+    public void should_return_200_when_try_to_get_call_records_list() throws Exception {
+        when(card.getConsumptionRecords()).thenReturn(asList(TestHelper.getACallRecord(), TestHelper.getADataRecord()));
+
+        Response get = get("cards/1/consumption-records/call-records");
+
+        assertThat(get.getStatus(), is(200));
+        List list = get.readEntity(List.class);
+        assertThat(list.size(), is(1));
+        Map map = (Map)list.get(0);
+        assertThat(map.get("uri").toString().contains("/consumption-records/1"), is(true));
     }
 }

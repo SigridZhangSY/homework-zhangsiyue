@@ -61,4 +61,10 @@ public class TestHelper {
         AmountPrice amountPrice = AmountPrice.createAmountPrice(10);
         return DataRecord.createDataRecord(1, amountPrice, 100, getACard(), "20121130");
     }
+
+    public static CallRecord getACallRecord(){
+        AmountPrice amountPrice = AmountPrice.createAmountPrice(10);
+        CallRecord callRecord = CallRecord.createCallRecord(1, amountPrice, "20161130", 103, "12345678901", getACard(), false);
+        return callRecord;
+    }
 }

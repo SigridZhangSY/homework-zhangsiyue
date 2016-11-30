@@ -13,10 +13,28 @@ public class CallRecord implements ConsumptionRecord, Record {
     private BalancePrice price;
     private String date;
     private double duration;
-    private Card callee;
+    private String callNumber;
     private Card caller;
     private boolean isRoaming;
 
+    public static CallRecord createCallRecord(long id,
+                                              BalancePrice price,
+                                              String date,
+                                              double duration,
+                                              String callNumber,
+                                              Card caller,
+                                              boolean isRoaming
+                                                ){
+        CallRecord callRecord = new CallRecord();
+        callRecord.id = id;
+        callRecord.price = price;
+        callRecord.date = date;
+        callRecord.duration = duration;
+        callRecord.callNumber = callNumber;
+        callRecord.caller = caller;
+        callRecord.isRoaming =isRoaming;
+        return callRecord;
+    }
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return toJson(routes);
@@ -28,7 +46,7 @@ public class CallRecord implements ConsumptionRecord, Record {
             put("uri", routes.consumptionUrl(CallRecord.this));
             put("id", id);
             put("date", date);
-            put("callee", callee);
+            put("callNumber", callNumber);
             put("duration", duration);
             put("isRoaming", isRoaming);
             put("price", price.toJson(routes));

@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.api;
 
 import com.thoughtworks.ketsu.domain.Card;
+import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
 
@@ -8,6 +9,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class ConsumptionRecordsApi {
 
@@ -34,5 +37,16 @@ public class ConsumptionRecordsApi {
             throw new NotFoundException();
 
         return consumptionRecord.get();
+    }
+
+    @GET
+    @Path("call-records")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<CallRecord> getCallRecordsList(){
+        List<ConsumptionRecord> consumptionRecords = card.getConsumptionRecords();
+        List<CallRecord> callRecords = consumptionRecords.stream()
+                .filter(c -> c instanceof CallRecord).map(c -> (CallRecord) c)
+                .collect(Collectors.toList());
+        return callRecords;
     }
 }
