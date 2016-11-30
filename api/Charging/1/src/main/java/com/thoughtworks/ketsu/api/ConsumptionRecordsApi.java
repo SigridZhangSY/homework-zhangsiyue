@@ -106,7 +106,7 @@ public class ConsumptionRecordsApi {
 
         Validator callRecordValidator =
                 all(fieldNotEmpty("date", "date is required"),
-                        fieldNotEmpty("volume", "duration is required")
+                        fieldNotEmpty("volume", "volume is required")
                 );
 
         validate(callRecordValidator, info);
@@ -132,6 +132,14 @@ public class ConsumptionRecordsApi {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createSmsRecord(Map<String, Object> info,
                                     @Context Routes routes){
+
+        Validator callRecordValidator =
+                all(fieldNotEmpty("date", "date is required"),
+                        fieldNotEmpty("number", "number is required")
+                );
+
+        validate(callRecordValidator, info);
+
         SmsRecord smsRecord = card.createSmsRecord(info);
 
         return Response.created(routes.consumptionUrl(smsRecord)).build();

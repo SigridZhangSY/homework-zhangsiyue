@@ -238,4 +238,13 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(post.getLocation().toString().contains("/consumption-records/1"), is(true));
 
     }
+
+    @Test
+    public void should_return_400_when_create_sms_record_with_invalid_parameter() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+
+        Response post =post("cards/1/consumption-records/sms-records", new HashMap<>());
+
+        assertThat(post.getStatus(), is(400));
+    }
 }
