@@ -2,6 +2,7 @@ package com.thoughtworks.ketsu.api;
 
 import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.domain.Card;
+import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
@@ -64,7 +65,10 @@ public class ConsumptionRecordsApi {
     @Path("call-records")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCallRecord(Map<String, Object> info,
-                                     @Context Routes routes){
+                                     @Context Routes routes,
+                                     @Context CurrentUser currentUser){
+        if(!currentUser.isUserHimself(card.getId()))
+            throw new ForbiddenException();
 
         Validator callRecordValidator =
                 all(fieldNotEmpty("date", "date is required"),
@@ -89,6 +93,16 @@ public class ConsumptionRecordsApi {
                 .filter(c -> c instanceof DataRecord).map(c -> (DataRecord) c)
                 .collect(Collectors.toList());
         return dataRecords;
+    }
+
+    @POST
+    @Path("data-records")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createDataRecord(Map<String, Object> info,
+                                     @Context Routes routes){
+        DataRecord dataRecord = card.createDataRecord(info);
+
+        return Response.created(routes.consumptionUrl(dataRecord)).build();
     }
 
     @GET

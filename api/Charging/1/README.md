@@ -66,9 +66,9 @@
      403 -3min 2min
      
    - post 
-     201 -10min
-     400 -7min
-     403 -3min
+     201 -10min 7min
+     400 -7min 4min
+     403 -3min 2min
 
 11. /cards/{cid}/consumption-records/data-records
    - get

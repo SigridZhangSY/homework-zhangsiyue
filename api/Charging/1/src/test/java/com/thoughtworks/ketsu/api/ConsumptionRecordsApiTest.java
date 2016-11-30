@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import javax.ws.rs.NameBinding;
 import javax.ws.rs.core.Response;
 import java.util.HashMap;
 import java.util.List;
@@ -196,4 +197,15 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(post.getStatus(), is(403));
     }
 
+    @Test
+    public void should_return_201_and_url_when_create_data_record() throws Exception {
+        when(card.createDataRecord(anyMap())).thenReturn(TestHelper.getADataRecord());
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+
+        Response post = post("cards/1/consumption-records/data-records", TestHelper.dataRecordMap());
+
+        assertThat(post.getStatus(), is(201));
+        assertThat(post.getLocation().toString().contains("/consumption-records/1"), is(true));
+
+    }
 }

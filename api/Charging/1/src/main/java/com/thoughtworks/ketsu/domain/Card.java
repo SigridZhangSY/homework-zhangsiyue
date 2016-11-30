@@ -52,8 +52,11 @@ public class Card implements Record{
         return null;
     }
 
-
     public CallRecord createCallRecord(Map<String, Object> info) {
+        return null;
+    }
+
+    public DataRecord createDataRecord(Map<String, Object> info) {
         return null;
     }
 

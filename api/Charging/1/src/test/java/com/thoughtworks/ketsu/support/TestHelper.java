@@ -82,4 +82,11 @@ public class TestHelper {
             put("callNumber", "12345678901");
         }};
     }
+
+    public static Map<String, Object> dataRecordMap(){
+        return new HashMap<String, Object>(){{
+            put("date", "20161130");
+            put("volume", 30);
+        }};
+    }
 }
