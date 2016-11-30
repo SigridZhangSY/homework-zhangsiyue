@@ -140,4 +140,18 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
 
         assertThat(get.getStatus(), is(403));
     }
+
+    @Test
+    public void should_return_200_when_get_sms_records_list() throws Exception {
+        when(card.getConsumptionRecords()).thenReturn(asList(TestHelper.getACallRecord(), TestHelper.getASmsRecord()));
+
+        Response get = get("cards/1/consumption-records/sms-records");
+
+        assertThat(get.getStatus(), is(200));
+        List list = get.readEntity(List.class);
+        assertThat(list.size(), is(1));
+        Map map = (Map)list.get(0);
+        assertThat(map.get("uri").toString().contains("/consumption-records/1"), is(true));
+
+    }
 }

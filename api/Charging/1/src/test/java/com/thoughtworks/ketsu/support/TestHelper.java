@@ -3,6 +3,7 @@ package com.thoughtworks.ketsu.support;
 import com.thoughtworks.ketsu.domain.*;
 import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
+import com.thoughtworks.ketsu.domain.consumptionRecord.SmsRecord;
 import com.thoughtworks.ketsu.domain.price.AmountPrice;
 
 import java.util.HashMap;
@@ -66,5 +67,11 @@ public class TestHelper {
         AmountPrice amountPrice = AmountPrice.createAmountPrice(10);
         CallRecord callRecord = CallRecord.createCallRecord(1, amountPrice, "20161130", 103, "12345678901", getACard(), false);
         return callRecord;
+    }
+
+    public static SmsRecord getASmsRecord(){
+        AmountPrice amountPrice = AmountPrice.createAmountPrice(10);
+        SmsRecord smsRecord = SmsRecord.createSmsRecord(1, "12345678901", "20161130", amountPrice, getACard());
+        return smsRecord;
     }
 }

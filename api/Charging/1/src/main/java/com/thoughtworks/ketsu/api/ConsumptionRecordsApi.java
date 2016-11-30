@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
+import com.thoughtworks.ketsu.domain.consumptionRecord.SmsRecord;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -55,9 +56,20 @@ public class ConsumptionRecordsApi {
     @Produces(MediaType.APPLICATION_JSON)
     public List<DataRecord> getDataRecordsList(){
         List<ConsumptionRecord> consumptionRecords = card.getConsumptionRecords();
-        List<DataRecord> callRecords = consumptionRecords.stream()
+        List<DataRecord> dataRecords = consumptionRecords.stream()
                 .filter(c -> c instanceof DataRecord).map(c -> (DataRecord) c)
                 .collect(Collectors.toList());
-        return callRecords;
+        return dataRecords;
+    }
+
+    @GET
+    @Path("sms-records")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SmsRecord> getSmsRecordsList(){
+        List<ConsumptionRecord> consumptionRecords = card.getConsumptionRecords();
+        List<SmsRecord> smsRecords = consumptionRecords.stream()
+                .filter(c -> c instanceof SmsRecord).map(c -> (SmsRecord) c)
+                .collect(Collectors.toList());
+        return smsRecords;
     }
 }

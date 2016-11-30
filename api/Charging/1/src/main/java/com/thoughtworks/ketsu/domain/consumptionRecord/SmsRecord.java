@@ -10,13 +10,23 @@ import java.util.Map;
 
 public class SmsRecord implements ConsumptionRecord, Record {
     private long id;
-    private Card receiver;
+    private String receiverNumber;
     private String date;
     private BalancePrice price;
+    private Card card;
+
+    public static SmsRecord createSmsRecord(long id, String receiverNumber, String date, BalancePrice price, Card card){
+        SmsRecord smsRecord = new SmsRecord();
+        smsRecord.id = id;
+        smsRecord.receiverNumber = receiverNumber;
+        smsRecord.price = price;
+        smsRecord.card = card;
+        return smsRecord;
+    }
 
     @Override
     public Card getCard() {
-        return receiver;
+        return card;
     }
 
     @Override
@@ -33,7 +43,7 @@ public class SmsRecord implements ConsumptionRecord, Record {
     public Map<String, Object> toJson(Routes routes) {
         return new HashMap<String, Object>(){{
             put("uri", routes.consumptionUrl(SmsRecord.this));
-            put("receiver", receiver);
+            put("receiver", receiverNumber);
             put("date", date);
             put("price", price.toJson(routes));
         }};

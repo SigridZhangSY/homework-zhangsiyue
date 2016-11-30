@@ -73,7 +73,7 @@
 11. /cards/{cid}/consumption-records/data-records
    - get
      200 -7min 4min
-     403 -3min
+     403 -3min 2min
      
    - post 
      201 -10min
@@ -82,7 +82,7 @@
 
 12. /cards/{cid}/consumption-records/sms-records
    - get
-     200 -7min
+     200 -7min 3min
      403 -3min
      
    - post 
