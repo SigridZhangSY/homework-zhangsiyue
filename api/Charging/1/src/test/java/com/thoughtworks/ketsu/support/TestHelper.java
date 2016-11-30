@@ -89,4 +89,11 @@ public class TestHelper {
             put("volume", 30);
         }};
     }
+
+    public static Map<String, Object> smsRecordMap(){
+        return new HashMap<String, Object>(){{
+            put("date", "20161130");
+            put("number", "12345678901");
+        }};
+    }
 }

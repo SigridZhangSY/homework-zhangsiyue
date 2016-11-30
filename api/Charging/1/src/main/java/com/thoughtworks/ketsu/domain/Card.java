@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
+import com.thoughtworks.ketsu.domain.consumptionRecord.SmsRecord;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 
 import java.util.HashMap;
@@ -57,6 +58,10 @@ public class Card implements Record{
     }
 
     public DataRecord createDataRecord(Map<String, Object> info) {
+        return null;
+    }
+
+    public SmsRecord createSmsRecord(Map<String, Object> info) {
         return null;
     }
 

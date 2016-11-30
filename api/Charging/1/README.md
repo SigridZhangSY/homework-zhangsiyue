@@ -78,7 +78,7 @@
    - post 
      201 -10min 5min
      400 -5min 3min
-     403 -3min 3minz
+     403 -3min 3min
 
 12. /cards/{cid}/consumption-records/sms-records
    - get
@@ -86,7 +86,7 @@
      403 -3min 1min
      
    - post 
-     201 -10min
+     201 -10min 7min 
      400 -5min
      403 -3min
                                 

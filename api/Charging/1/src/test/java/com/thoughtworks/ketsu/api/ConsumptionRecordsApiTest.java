@@ -226,4 +226,16 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
 
         assertThat(post.getStatus(), is(403));
     }
+
+    @Test
+    public void should_return_201_and_url_when_create_sms_record() throws Exception {
+        when(card.createSmsRecord(anyMap())).thenReturn(TestHelper.getASmsRecord());
+        when(currentUser.isUserHimself(anyInt())).thenReturn(true);
+
+        Response post = post("cards/1/consumption-records/sms-records", TestHelper.smsRecordMap());
+
+        assertThat(post.getStatus(), is(201));
+        assertThat(post.getLocation().toString().contains("/consumption-records/1"), is(true));
+
+    }
 }

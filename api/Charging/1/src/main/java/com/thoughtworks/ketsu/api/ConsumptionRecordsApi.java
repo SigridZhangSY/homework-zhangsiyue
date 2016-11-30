@@ -97,7 +97,7 @@ public class ConsumptionRecordsApi {
 
     @POST
     @Path("data-records")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createDataRecord(Map<String, Object> info,
                                      @Context Routes routes,
                                      @Context CurrentUser currentUser){
@@ -126,4 +126,15 @@ public class ConsumptionRecordsApi {
                 .collect(Collectors.toList());
         return smsRecords;
     }
+
+    @POST
+    @Path("sms-records")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createSmsRecord(Map<String, Object> info,
+                                    @Context Routes routes){
+        SmsRecord smsRecord = card.createSmsRecord(info);
+
+        return Response.created(routes.consumptionUrl(smsRecord)).build();
+    }
+
 }
