@@ -217,4 +217,13 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
 
         assertThat(post.getStatus(), is(400));
     }
+
+    @Test
+    public void should_return_403_when_create_data_record_of_other_card() throws Exception {
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response post =post("cards/1/consumption-records/call-records", TestHelper.callRecordMap());
+
+        assertThat(post.getStatus(), is(403));
+    }
 }

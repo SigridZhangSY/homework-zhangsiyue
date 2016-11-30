@@ -99,7 +99,10 @@ public class ConsumptionRecordsApi {
     @Path("data-records")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createDataRecord(Map<String, Object> info,
-                                     @Context Routes routes){
+                                     @Context Routes routes,
+                                     @Context CurrentUser currentUser){
+        if(!currentUser.isUserHimself(card.getId()))
+            throw new ForbiddenException();
 
         Validator callRecordValidator =
                 all(fieldNotEmpty("date", "date is required"),
