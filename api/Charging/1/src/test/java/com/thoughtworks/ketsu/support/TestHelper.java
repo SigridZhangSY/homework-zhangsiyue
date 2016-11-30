@@ -1,6 +1,9 @@
 package com.thoughtworks.ketsu.support;
 
 import com.thoughtworks.ketsu.domain.*;
+import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
+import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
+import com.thoughtworks.ketsu.domain.price.AmountPrice;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -52,5 +55,10 @@ public class TestHelper {
             put("amount", amount);
             put("date", date);
         }};
+    }
+
+    public static DataRecord getADataRecord(){
+        AmountPrice amountPrice = AmountPrice.createAmountPrice(10);
+        return DataRecord.createDataRecord(1, amountPrice, 100, getACard(), "20121130");
     }
 }

@@ -5,6 +5,8 @@ import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.domain.Plan;
 import com.thoughtworks.ketsu.domain.Recharge;
+import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
+import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
@@ -35,5 +37,9 @@ public class Routes {
 
     public URI rechargeUrl(Recharge recharge) {
         return URI.create(String.format("%scards/%s/recharges/%s", baseUri, recharge.getCard().getId(), recharge.getId()));
+    }
+
+    public URI consumptionUrl(ConsumptionRecord consumptionRecord) {
+        return URI.create(String.format("%scards/%s/consumption-records/%s", baseUri, consumptionRecord.getCard().getId(), consumptionRecord.getId()));
     }
 }

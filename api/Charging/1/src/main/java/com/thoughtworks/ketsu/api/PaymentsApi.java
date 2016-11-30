@@ -1,5 +1,6 @@
-package com.thoughtworks.ketsu.api.jersey;
+package com.thoughtworks.ketsu.api;
 
+import com.thoughtworks.ketsu.api.jersey.Routes;
 import com.thoughtworks.ketsu.domain.Card;
 import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.Payment;

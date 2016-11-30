@@ -27,4 +27,9 @@ public class CardApi {
     public RechargesApi getRecharges(){
         return new RechargesApi(card);
     }
+
+    @Path("consumption-records")
+    public ConsumptionRecordsApi getConsumptionRecordsApi(){
+        return new ConsumptionRecordsApi(card);
+    }
 }

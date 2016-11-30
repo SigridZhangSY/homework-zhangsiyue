@@ -47,18 +47,18 @@
    - post 
      201 -10min 7min
      400 -7min 5min
-     403 -3min
+     403 -3min 3min
 
 8. /cards/{cid}/consumption-records/{rid}
    - get 
-     200
-     404
-     403
+     200 -7min
+     404 -3min
+     403 -3min
 
 9. /cards/{cid}/consumption-records
    - get
-     200
-     403
+     200 
+     403 
 
 10. /cards/{cid}/consumption-records/call-records
    - get
