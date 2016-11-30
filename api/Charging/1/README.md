@@ -63,7 +63,7 @@
 10. /cards/{cid}/consumption-records/call-records
    - get
      200 -7min 12min
-     403 -3min
+     403 -3min 2min
      
    - post 
      201 -10min

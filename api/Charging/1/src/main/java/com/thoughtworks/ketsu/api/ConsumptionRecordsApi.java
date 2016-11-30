@@ -49,4 +49,15 @@ public class ConsumptionRecordsApi {
                 .collect(Collectors.toList());
         return callRecords;
     }
+
+    @GET
+    @Path("data-records")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<DataRecord> getDataRecordsList(){
+        List<ConsumptionRecord> consumptionRecords = card.getConsumptionRecords();
+        List<DataRecord> callRecords = consumptionRecords.stream()
+                .filter(c -> c instanceof DataRecord).map(c -> (DataRecord) c)
+                .collect(Collectors.toList());
+        return callRecords;
+    }
 }
