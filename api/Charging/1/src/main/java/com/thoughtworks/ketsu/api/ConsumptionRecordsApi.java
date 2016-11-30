@@ -6,6 +6,7 @@ import com.thoughtworks.ketsu.domain.consumptionRecord.CallRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.ConsumptionRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.DataRecord;
 import com.thoughtworks.ketsu.domain.consumptionRecord.SmsRecord;
+import com.thoughtworks.ketsu.util.Validators.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -16,6 +17,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+
+import static com.thoughtworks.ketsu.util.Validators.all;
+import static com.thoughtworks.ketsu.util.Validators.fieldNotEmpty;
+import static com.thoughtworks.ketsu.util.Validators.validate;
 
 public class ConsumptionRecordsApi {
 
@@ -60,6 +65,16 @@ public class ConsumptionRecordsApi {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createCallRecord(Map<String, Object> info,
                                      @Context Routes routes){
+
+        Validator callRecordValidator =
+                all(fieldNotEmpty("date", "date is required"),
+                        fieldNotEmpty("duration", "duration is required"),
+                        fieldNotEmpty("callNumber", "callNumber is required")
+                );
+
+        validate(callRecordValidator, info);
+
+
         CallRecord callRecord = card.createCallRecord(info);
 
         return Response.created(routes.consumptionUrl(callRecord)).build();

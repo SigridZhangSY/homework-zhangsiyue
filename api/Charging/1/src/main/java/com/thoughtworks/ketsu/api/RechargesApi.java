@@ -37,12 +37,12 @@ public class RechargesApi {
         if(!currentUser.isUserHimself(card.getId()))
             throw new ForbiddenException();
 
-        Validator userValidator =
+        Validator rechargeValidator =
                 all(fieldNotEmpty("amount", "amount is required"),
                         fieldNotEmpty("date", "date is required")
                 );
 
-        validate(userValidator, info);
+        validate(rechargeValidator, info);
 
         Recharge recharge = card.createRecharge(info);
 

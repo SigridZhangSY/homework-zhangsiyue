@@ -79,7 +79,7 @@ public class TestHelper {
         return new HashMap<String, Object>(){{
             put("date", "20161130");
             put("duration", 30);
-            put("callNumer", "12345678901");
+            put("callNumber", "12345678901");
         }};
     }
 }
