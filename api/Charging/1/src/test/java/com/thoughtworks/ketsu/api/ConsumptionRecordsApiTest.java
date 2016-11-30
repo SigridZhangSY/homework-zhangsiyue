@@ -84,4 +84,14 @@ public class ConsumptionRecordsApiTest extends ApiSupport{
         assertThat(map.get("price"), notNullValue());
         assertThat(map.get("volume"), notNullValue());
     }
+
+    @Test
+    public void should_return_403_when_try_to_get_consumption_records_lidt_of_other_card() throws Exception {
+        when(currentUser.isAdmin()).thenReturn(false);
+        when(currentUser.isUserHimself(anyInt())).thenReturn(false);
+
+        Response get = get("cards/1/consumption-records");
+
+        assertThat(get.getStatus(), is(403));
+    }
 }

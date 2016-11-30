@@ -57,36 +57,36 @@
 
 9. /cards/{cid}/consumption-records
    - get
-     200 
-     403 
+     200 -5min 3min
+     403 -5min 3min
 
 10. /cards/{cid}/consumption-records/call-records
    - get
-     200
-     403
+     200 -7min
+     403 -3min
      
    - post 
-     201
-     400
-     403
+     201 -10min
+     400 -7min
+     403 -3min
 
 11. /cards/{cid}/consumption-records/data-records
    - get
-     200
-     403
+     200 -7min
+     403 -3min
      
    - post 
-     201
-     400
-     403
+     201 -10min
+     400 -5min
+     403 -3min
 
 12. /cards/{cid}/consumption-records/sms-records
    - get
-     200
-     403
+     200 -7min
+     403 -3min
      
    - post 
-     201
-     400
-     403
+     201 -10min
+     400 -5min
+     403 -3min
                                 
