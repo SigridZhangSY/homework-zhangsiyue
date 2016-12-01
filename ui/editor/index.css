@@ -1,3 +1,11 @@
 ul, li {
     list-style-type: none;
 }
+
+.component{
+    text-align:center;
+    border: solid black 1px;
+    width: 300px;
+    height: 100px;
+    margin: 10px;
+}
