@@ -17,6 +17,9 @@ public class User implements Record {
 
     private Aggregation<Order> orders;
 
+    public User(){
+    }
+
     public User(long id, String email) {
         this.id = id;
         this.email = email;

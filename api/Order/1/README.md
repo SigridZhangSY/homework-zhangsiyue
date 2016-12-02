@@ -10,7 +10,7 @@
                      
 - /users/{uid}/products/{pid} get not found 404 -7min 10min
                               get success 200 -7min 5min
-                             
+                            
 - /users/{uid}/products  post success 201 -7min 10min
                          invalid parameter 400 -7min 5min
                          get success 200 -7min 5min     
@@ -48,7 +48,7 @@
                                      get success 200 -5min 3min
                                      
 - userRepository
-  - find by id 10min
+  - find by id 10min 30min
   - save 10min
   - find by email 10min
                                                

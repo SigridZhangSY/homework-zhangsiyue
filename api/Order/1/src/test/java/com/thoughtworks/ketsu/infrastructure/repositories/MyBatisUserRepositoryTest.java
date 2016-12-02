@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.infrastructure.repositories;
 
+import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.Users;
 import com.thoughtworks.ketsu.support.DatabaseTestRunner;
 import org.junit.Test;
@@ -18,6 +19,8 @@ public class MyBatisUserRepositoryTest {
 
     @Test
     public void should_create_and_get_user() throws Exception {
+        Optional<User> user = userRepository.findById(1);
 
+        assertThat(user.isPresent(), is(true));
     }
 }
