@@ -35,7 +35,7 @@ public class ProductApi {
                 all(fieldNotEmpty("price", "price is required"));
 
         validate(userValidator, info);
-       user.changeProductPrice(product, Double.valueOf(info.get("price").toString()));
+       user.changeProductPrice(product, info);
         return Response.status(200).build();
     }
 }

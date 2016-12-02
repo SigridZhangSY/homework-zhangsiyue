@@ -7,4 +7,18 @@
         FROM (PRICES PR, USERS U) RIGHT JOIN PRODUCTS P
         ON PR.product_id = P.id AND U.ID = P.user_id WHERE P.id = #{id}
     </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="info.id">
+        INSERT INTO PRODUCTS (name, user_id)
+        VALUES (#{info.name}, #{user_id})
+    </insert>
+
+    <insert id="savePrice" useGeneratedKeys="true" keyProperty="info.price_id">
+        INSERT INTO PRICES (price, product_id)
+        VALUES (#{info.price}, #{product_id})
+    </insert>
+
+    <update id="setPrice">
+        UPDATE PRODUCTS SET price_id = #{price_id} WHERE id = #{product_id}
+    </update>
 </mapper>

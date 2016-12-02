@@ -56,15 +56,19 @@ public class User implements Record {
     }
 
     public Product createProduct(Map<String, Object> info){
-        return null;
+        productMapper.save(info, id);
+        Long id = Long.valueOf(String.valueOf(info.get("id")));
+        Product product = productMapper.findById(id);
+        product.changePrice(info);
+        return productMapper.findById(id);
     }
 
     public List<Product> getAllProductsForUser(){
         return null;
     }
 
-    public void changeProductPrice(Product product, double price){
-        product.changePrice(price);
+    public void changeProductPrice(Product product, Map<String, Object> info){
+        product.changePrice(info);
     }
 
     public String getEmail() {

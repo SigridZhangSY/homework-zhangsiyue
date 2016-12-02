@@ -53,6 +53,7 @@
   - find by email 10min
   
 - user 
-  - find product by id 10min
+  - find product by id 10min 20min
+  - create product 15min
                                                
                                                

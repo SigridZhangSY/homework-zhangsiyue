@@ -1,6 +1,8 @@
 package com.thoughtworks.ketsu.domain.product;
 
+import com.google.inject.Inject;
 import com.thoughtworks.ketsu.domain.user.User;
+import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.ProductMapper;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
@@ -14,6 +16,9 @@ public class Product implements Record {
     private String name;
     private ProductPrice price;
     private User owner;
+
+    @Inject
+    ProductMapper productMapper;
 
     public Product(){}
 
@@ -42,7 +47,9 @@ public class Product implements Record {
         return id;
     }
 
-    public void changePrice(double price){
+    public void changePrice(Map<String, Object> info){
+        productMapper.savePrice(id, info);
+        productMapper.setPrice(id, Long.valueOf(info.get("price_id").toString()));
     }
 
     public String getName() {

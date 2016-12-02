@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.domain.product.Product;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.Users;
 import com.thoughtworks.ketsu.support.DatabaseTestRunner;
+import com.thoughtworks.ketsu.support.TestHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -29,5 +30,15 @@ public class UserTest {
         assertThat(product.get().getName(), notNullValue());
         assertThat(product.get().getPrice(), notNullValue());
         assertThat(product.get().getOwner(), notNullValue());
+    }
+
+    @Test
+    public void should_create_product() throws Exception {
+        User user = userRepository.findById(1).get();
+        Product product = user.createProduct(TestHelper.productMap("test2"));
+
+        assertThat(product.getPrice(), notNullValue());
+        assertThat(product.getName(), notNullValue());
+        assertThat(product.getOwner(), notNullValue());
     }
 }
