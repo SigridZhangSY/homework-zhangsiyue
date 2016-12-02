@@ -28,7 +28,7 @@ public class Validators {
         Optional<String> validate(Map<String, Object> info);
     }
 
-    public static Validator fieldNotEmpty(String name, String message) {
+    public static Validators.Validator fieldNotEmpty(String name, String message) {
         return (info) -> info.getOrDefault(name, "").toString().trim().isEmpty() ? Optional.of(message) : Optional.empty();
     }
 

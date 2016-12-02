@@ -19,11 +19,12 @@ public class UserRepository implements Users {
 
     @Override
     public User createUser(Map<String, Object> info) {
-        return null;
+        userMapper.save(info);
+        return userMapper.findById(Integer.valueOf(String.valueOf(info.get("id"))));
     }
 
     @Override
     public Optional<User> findBy(String email) {
-        return null;
+        return Optional.ofNullable(userMapper.findByEmail(email));
     }
 }

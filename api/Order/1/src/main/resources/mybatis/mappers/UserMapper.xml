@@ -7,4 +7,16 @@
         FROM USERS U
         WHERE U.id = #{id}
     </select>
+
+    <select id="findByEmail" resultMap="records.user">
+        SELECT
+        <include refid="columns.user"/>
+        FROM USERS U
+        WHERE U.email = #{email}
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="info.id">
+        INSERT INTO USERS (email, password)
+        VALUES (#{info.email}, #{info.password})
+    </insert>
 </mapper>

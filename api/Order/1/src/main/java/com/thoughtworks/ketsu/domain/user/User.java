@@ -17,8 +17,7 @@ public class User implements Record {
 
     private Aggregation<Order> orders;
 
-    public User(){
-    }
+    public User(){}
 
     public User(long id, String email) {
         this.id = id;
@@ -61,5 +60,9 @@ public class User implements Record {
 
     public void changeProductPrice(Product product, double price){
         product.changePrice(price);
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

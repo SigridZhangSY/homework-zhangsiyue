@@ -21,7 +21,7 @@ public class Json {
     static {
         mapper.registerModule(new JodaModule());
         mapper.registerModule(new JodaTimeModule());
-        mapper.configure(SerializationFeature.
+        mapper.configure(com.fasterxml.jackson.databind.SerializationFeature.
                 WRITE_DATES_AS_TIMESTAMPS, false);
     }
 
