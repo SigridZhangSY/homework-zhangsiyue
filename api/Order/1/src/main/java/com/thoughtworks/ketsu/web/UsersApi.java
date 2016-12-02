@@ -3,7 +3,6 @@ package com.thoughtworks.ketsu.web;
 import com.thoughtworks.ketsu.domain.CurrentUser;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.Users;
-import com.thoughtworks.ketsu.util.Validators;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
 import javax.ws.rs.*;

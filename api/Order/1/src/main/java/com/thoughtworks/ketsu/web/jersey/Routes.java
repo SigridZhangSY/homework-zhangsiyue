@@ -2,7 +2,6 @@ package com.thoughtworks.ketsu.web.jersey;
 
 
 import com.thoughtworks.ketsu.domain.order.Order;
-import com.thoughtworks.ketsu.domain.order.Payment;
 import com.thoughtworks.ketsu.domain.order.Refund;
 import com.thoughtworks.ketsu.domain.order.RefundRequest;
 import com.thoughtworks.ketsu.domain.product.Product;
@@ -10,7 +9,6 @@ import com.thoughtworks.ketsu.domain.user.User;
 
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
-import java.util.Map;
 
 public class Routes {
 

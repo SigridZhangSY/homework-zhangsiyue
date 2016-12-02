@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Product implements Record{
+public class Product implements Record {
     private long id;
     private String name;
     private List<ProductPrice> priceHistory;

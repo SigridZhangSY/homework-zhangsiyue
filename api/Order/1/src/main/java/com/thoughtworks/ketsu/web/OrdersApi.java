@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.thoughtworks.ketsu.util.Validators.all;
-import static com.thoughtworks.ketsu.util.Validators.fieldNotEmpty;
-import static com.thoughtworks.ketsu.util.Validators.validate;
+import static com.thoughtworks.ketsu.util.Validators.*;
 
 public class OrdersApi {
     private User owner;

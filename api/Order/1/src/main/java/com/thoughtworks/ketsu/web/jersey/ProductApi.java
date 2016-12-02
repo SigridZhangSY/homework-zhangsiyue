@@ -8,11 +8,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Map;
-import java.util.Optional;
 
-import static com.thoughtworks.ketsu.util.Validators.all;
-import static com.thoughtworks.ketsu.util.Validators.fieldNotEmpty;
-import static com.thoughtworks.ketsu.util.Validators.validate;
+import static com.thoughtworks.ketsu.util.Validators.*;
 
 public class ProductApi {
     private Product product;

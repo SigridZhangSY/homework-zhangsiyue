@@ -61,7 +61,6 @@ public class ApiSupport {
     protected Orders orders = mock(Orders.class);
     protected CurrentUser currentUser = mock(CurrentUser.class);
 
-
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);

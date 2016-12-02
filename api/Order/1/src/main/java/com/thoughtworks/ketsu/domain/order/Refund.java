@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Refund implements Record{
+public class Refund implements Record {
     public Refund(Order order, long id) {
         this.order = order;
         this.id = id;

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Payment implements Record{
+public class Payment implements Record {
     double totalPrice;
     Date date;
     Order order;

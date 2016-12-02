@@ -1,11 +1,12 @@
 package com.thoughtworks.ketsu.domain.user;
 
+
 import com.thoughtworks.ketsu.util.Uniqueness;
 
 import java.util.Map;
 import java.util.Optional;
 
-public interface Users extends Uniqueness<User, String>{
+public interface Users extends Uniqueness<User, String> {
 
     Optional<User> findById(long id);
 

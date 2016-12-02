@@ -46,5 +46,10 @@
 - /users/{uid}/orders/{oid}/refunds  post success 201 -5min 5min
                                           invalid parameter 400 -3min 3min
                                      get success 200 -5min 3min
+                                     
+- userRepository
+  - find by id 10min
+  - save 10min
+  - find by email 10min
                                                
                                                

@@ -1,7 +1,5 @@
 package com.thoughtworks.ketsu.domain;
 
-import com.thoughtworks.ketsu.domain.order.Order;
-
 import java.util.List;
 import java.util.Map;
 

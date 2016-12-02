@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class Order implements Record{
+public class Order implements Record {
     private long id;
     private List<OrderItem> orderItems;
     private double totalPrice;

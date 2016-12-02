@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class RefundRequest implements Record{
+public class RefundRequest implements Record {
     private long id;
     private Order order;
     private List<OrderItem> items;

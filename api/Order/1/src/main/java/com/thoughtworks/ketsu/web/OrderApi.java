@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import com.thoughtworks.ketsu.domain.order.Order;
 import com.thoughtworks.ketsu.domain.order.Payment;
 import com.thoughtworks.ketsu.domain.order.Refund;
@@ -17,9 +16,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.thoughtworks.ketsu.util.Validators.all;
-import static com.thoughtworks.ketsu.util.Validators.fieldNotEmpty;
-import static com.thoughtworks.ketsu.util.Validators.validate;
+import static com.thoughtworks.ketsu.util.Validators.*;
 
 public class OrderApi {
     private User user;

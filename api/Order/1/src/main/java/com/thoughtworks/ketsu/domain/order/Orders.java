@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface Orders {
     Optional<Order> findById(long id);
 
-    Order createOrder(Map<String, Object>info, User owner);
+    Order createOrder(Map<String, Object> info, User owner);
 
     List<Order> getOrdersForUser(User owner);
 }
