@@ -7,4 +7,16 @@
         <id column="user_id" property="id"/>
         <result column="user_email" property="email"/>
     </resultMap>
+    <resultMap id="product" type="com.thoughtworks.ketsu.domain.product.Product">
+        <id column="product_id" property="id"/>
+        <result column="product_name" property="name"/>
+        <association property="price" javaType="com.thoughtworks.ketsu.domain.product.ProductPrice">
+            <id column="price_id" property="id"/>
+            <result column="price" property="price"/>
+        </association>
+        <association property="owner" javaType="com.thoughtworks.ketsu.domain.user.User">
+            <id column="user_id" property="id"/>
+            <result column="user_email" property="email"/>
+        </association>
+    </resultMap>
 </mapper>

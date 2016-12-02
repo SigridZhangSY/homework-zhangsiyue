@@ -14,7 +14,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
 @RunWith(DatabaseTestRunner.class)
-public class MyBatisUserRepositoryTest {
+public class UserRepositoryTest {
     @Inject
     Users userRepository;
 

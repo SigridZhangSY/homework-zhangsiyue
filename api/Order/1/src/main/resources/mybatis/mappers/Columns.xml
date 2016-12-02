@@ -7,4 +7,13 @@
         U.id as user_id,
         U.email as user_email
     </sql>
+
+    <sql id="product">
+        P.id as product_id,
+        P.name as product_name,
+        PR.id as price_id,
+        PR.price as price,
+        U.id as user_id,
+        U.email as user_email
+    </sql>
 </mapper>

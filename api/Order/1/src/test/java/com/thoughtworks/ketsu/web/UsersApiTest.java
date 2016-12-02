@@ -109,7 +109,7 @@ public class UsersApiTest extends ApiSupport {
     @Test
     public void should_return_detail_when_find_product() throws Exception {
         User mockUser = mock(User.class);
-        Product product = new Product(1, "book", 10, mockUser);
+        Product product = new Product(1, "book", 1, 10, mockUser);
         when(users.findById(anyInt())).thenReturn(Optional.of(mockUser));
         when(currentUser.getCurrentUser()).thenReturn(mockUser);
         when(mockUser.findProductById(anyInt())).thenReturn(Optional.of(product));
@@ -124,7 +124,7 @@ public class UsersApiTest extends ApiSupport {
     @Test
     public void should_return_201_when_create_product() throws Exception {
         User mockUser = mock(User.class);
-        Product product = new Product(1, "book", 10, mockUser);
+        Product product = new Product(1, "book", 1, 10, mockUser);
         when(users.findById(anyInt())).thenReturn(Optional.of(mockUser));
         when(currentUser.getCurrentUser()).thenReturn(mockUser);
         when(mockUser.createProduct(anyMap())).thenReturn(product);
@@ -146,7 +146,7 @@ public class UsersApiTest extends ApiSupport {
     @Test
     public void should_return_200_when_gRet_all_products_for_user() throws Exception {
         User mockUser = mock(User.class);
-        Product product = new Product(1, "book", 10, mockUser);
+        Product product = new Product(1, "book", 1, 10, mockUser);
         when(users.findById(anyInt())).thenReturn(Optional.of(mockUser));
         when(currentUser.getCurrentUser()).thenReturn(mockUser);
         when(mockUser.getAllProductsForUser()).thenReturn(asList(product));
@@ -162,7 +162,7 @@ public class UsersApiTest extends ApiSupport {
     @Test
     public void should_return_200_when_change_product_price_success() throws Exception {
         User mockUser = mock(User.class);
-        Product product = new Product(1, "book", 10, mockUser);
+        Product product = new Product(1, "book", 1, 10, mockUser);
         when(users.findById(anyInt())).thenReturn(Optional.of(mockUser));
         when(currentUser.getCurrentUser()).thenReturn(mockUser);
         when(mockUser.findProductById(anyInt())).thenReturn(Optional.of(product));
@@ -174,7 +174,7 @@ public class UsersApiTest extends ApiSupport {
     @Test
     public void should_return_200_when_change_product_price_with_invalid_parameter() throws Exception {
         User mockUser = mock(User.class);
-        Product product = new Product(1, "book", 10, mockUser);
+        Product product = new Product(1, "book", 1, 10, mockUser);
         when(users.findById(anyInt())).thenReturn(Optional.of(mockUser));
         when(currentUser.getCurrentUser()).thenReturn(mockUser);
         when(mockUser.findProductById(anyInt())).thenReturn(Optional.of(product));

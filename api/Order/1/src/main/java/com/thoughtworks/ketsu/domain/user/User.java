@@ -1,8 +1,10 @@
 package com.thoughtworks.ketsu.domain.user;
 
+import com.google.inject.Inject;
 import com.thoughtworks.ketsu.domain.Aggregation;
 import com.thoughtworks.ketsu.domain.order.Order;
 import com.thoughtworks.ketsu.domain.product.Product;
+import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.ProductMapper;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
@@ -14,6 +16,9 @@ import java.util.Optional;
 public class User implements Record {
     private long id;
     private String email;
+
+    @Inject
+    ProductMapper productMapper;
 
     private Aggregation<Order> orders;
 
@@ -47,7 +52,7 @@ public class User implements Record {
     }
 
     public Optional<Product> findProductById(long id){
-        return null;
+        return Optional.ofNullable(productMapper.findById(id));
     }
 
     public Product createProduct(Map<String, Object> info){

@@ -12,16 +12,16 @@ import java.util.Map;
 public class Product implements Record {
     private long id;
     private String name;
-    private List<ProductPrice> priceHistory;
+    private ProductPrice price;
     private User owner;
 
-    public Product(long id, String name, double price, User owner) {
+    public Product(){}
+
+    public Product(long id, String name, long product_id, double price, User owner) {
         this.id = id;
         this.name = name;
         this.owner = owner;
-        priceHistory = new ArrayList<ProductPrice>(){{
-            add(new ProductPrice(0, price));
-        }};
+        this.price = new ProductPrice(product_id, price);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class Product implements Record {
         return new HashMap<String, Object>(){{
             put("uri", routes.productUrl(owner, Product.this));
             put("id", id);
-            put("price", priceHistory.get(priceHistory.size() - 1).getPrice());
+            put("price", price.getPrice());
         }};
     }
 
@@ -44,4 +44,17 @@ public class Product implements Record {
 
     public void changePrice(double price){
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProductPrice getPrice() {
+        return price;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
 }
