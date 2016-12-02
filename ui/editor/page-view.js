@@ -1,18 +1,7 @@
 $(document).ready(function(){
-    render();
     editClick();
     renderClick();
 });
-
-var render = function () {
-    $('.title').each(function () {
-        $(this).children('div.component').replaceWith("<div class='component'><h1 class='render'>" + $(this).attr("data") + "</h1></div>");
-    });
-
-    $('.text').each(function () {
-        $(this).children('div.component').replaceWith("<div class='component'><p class='render'>" + $(this).attr("data") + "</p></div>");
-    });
-};
 
 var editClick = function () {
     $('#edit-button').each(function () {
