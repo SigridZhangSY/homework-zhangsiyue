@@ -9,7 +9,10 @@ ul, li {
     height: 100px;
     margin: 10px;
 }
+.area{
 
+    cursor: move;
+}
 .edit{
     width: 300px;
     height: 100px;
