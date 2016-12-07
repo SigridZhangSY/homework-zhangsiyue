@@ -1,6 +1,7 @@
 <html>
 <header>
     <link rel="stylesheet" type="text/css" href="index.css"/>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
 </header>
 
 <head>
@@ -9,28 +10,29 @@
 </head>
 
 <body>
-<ul class="page">
-    <li class="row">
-        <ul class="columns">
-            <li class="column">
-                <ul class="components">
-                    <button id="render-button">render</button>
-                    <button id="edit-button">edit</button>
-                    <li class="title area" data="title">
-                        <div class="component">
-                            <h1 class="render">title</h1>
-                        </div>
-                    </li>
-                    <li class="text area" data="content">
-                        <div class="component">
-                            <p class="render">content</p>
-                        </div>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </li>
-
-</ul>
+<div class="container">
+    <ul class="page">
+        <button id="render-button">render</button>
+        <button id="edit-button">edit</button>
+        <li class="rows">
+            <ul class="columns">
+                <li class="column">
+                    <ul class="components row">
+                        <li class="title area" data="title">
+                            <div class="component">
+                                <h1 class="render">title</h1>
+                            </div>
+                        </li>
+                        <li class="text area" data="content">
+                            <div class="component">
+                                <p class="render">content</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
 </body>
 </html>
