@@ -55,7 +55,7 @@ var move = function (selector) {
                     console.log(this.className)
                     $(this).mousemove(function (event) {
                             if (isMove) {
-                                $(this).css({'left': event.pageX - abs_x, 'top': event.pageY - abs_y, 'position': 'absolute'});
+                                $(this).css({'left': event.pageX - abs_x, 'top': event.pageY - abs_y, 'position': 'absolute', 'border-radius' : '3px', 'border' : 'dotted 1px'});
                             }
                         }
                     ).mouseup(
