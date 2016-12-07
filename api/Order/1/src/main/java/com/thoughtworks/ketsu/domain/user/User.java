@@ -64,7 +64,7 @@ public class User implements Record {
     }
 
     public List<Product> getAllProductsForUser(){
-        return null;
+        return productMapper.getProductsForUser(id);
     }
 
     public void changeProductPrice(Product product, Map<String, Object> info){

@@ -56,8 +56,8 @@ public class Product implements Record {
         return name;
     }
 
-    public ProductPrice getPrice() {
-        return price;
+    public double getCurrentPrice() {
+        return price.getPrice();
     }
 
     public User getOwner() {

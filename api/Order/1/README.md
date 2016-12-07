@@ -54,6 +54,7 @@
   
 - user 
   - find product by id 10min 20min
-  - create product 15min
+  - create product 15min -6min
+  - get all products -10min
                                                
                                                

@@ -3,6 +3,7 @@ package com.thoughtworks.ketsu.infrastructure.mybatis.mappers;
 import com.thoughtworks.ketsu.domain.product.Product;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
 import java.util.Map;
 
 public interface ProductMapper {
@@ -13,4 +14,6 @@ public interface ProductMapper {
     void savePrice(@Param("product_id")long productId, @Param("info") Map<String, Object> info);
 
     void setPrice(@Param("product_id")long product_id, @Param("price_id")long price_id);
+
+    List<Product> getProductsForUser(@Param("user_id")long user_id);
 }
