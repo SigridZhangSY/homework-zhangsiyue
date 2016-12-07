@@ -24,9 +24,9 @@ ul, li {
     width: 50px;
     color: #666666;
     font: bold 12px/25px Arial, sans-serif;
-    background: #52CCCC;
+    background: #a9a9a9;
     border-radius:3px;
-    border: solid 1px #4cb0b0;
+    border: solid 1px #7c7c7c;
 }
 
 .render{
