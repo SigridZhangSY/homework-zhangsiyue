@@ -80,7 +80,7 @@ var addClick = function () {
     $('#add-button').each(function () {
         $(this).click(
             function () {
-                var innerHtml = '<li class="text area add" data="content"><div class="component"><p class="render">content</p></div></li>';
+                var innerHtml = $('.content-area').children(':last-child').prop("outerHTML");
                 $('.content-area').append(innerHtml);
             }
         );
