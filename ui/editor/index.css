@@ -1,20 +1,53 @@
 ul, li {
     list-style-type: none;
+    padding: 0px;
+}
+.button-area{
+    float: left;
+    width: 120px;
+}
+
+.content-area{
+    float: left;
+    border: solid black 1px;
+    border-radius:3px;
+    padding: 5px;
+    height: 300px;
+}
+.btn{
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    padding: 3px 20px;
+    text-align: center;
+    text-decoration: none;
+    width: 50px;
+    color: #666666;
+    font: bold 12px/25px Arial, sans-serif;
+    background: #52CCCC;
+    border-radius:3px;
+    border: solid 1px #4cb0b0;
 }
 
 .render{
     text-align:center;
-    border: solid black 1px;
     width: 300px;
-    height: 100px;
-    margin: 10px;
+    margin: 0;
 }
-.area{
 
+textarea{
+    border-radius:3px;
+    border-style: dotted;
+}
+
+.text .render, .text .edit{
+    height: 100px;
+}
+
+.area{
     cursor: move;
+    margin: 5px 0;
 }
 .edit{
     width: 300px;
-    height: 100px;
-    margin: 10px;
 }
