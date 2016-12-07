@@ -82,6 +82,9 @@ var addClick = function () {
             function () {
                 var innerHtml = $('.content-area').children(':last-child').prop("outerHTML");
                 $('.content-area').append(innerHtml);
+                move('.text');
+                editClick();
+                renderClick();
             }
         );
     });
