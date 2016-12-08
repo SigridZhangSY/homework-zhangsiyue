@@ -69,7 +69,7 @@ public class OrdersApiTest extends ApiSupport {
         Order order = new Order(1, user);
         when(orders.createOrder(anyMap(), any(User.class))).thenReturn(order);
 
-        Response response = post("/users/1/orders", TestHelper.orderMap(user));
+        Response response = post("/users/1/orders", TestHelper.orderMap());
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString().contains("/users/1/orders/1"), is(true));
     }

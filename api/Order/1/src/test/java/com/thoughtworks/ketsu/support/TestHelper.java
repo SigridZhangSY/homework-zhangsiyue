@@ -27,11 +27,11 @@ public class TestHelper {
         }};
     }
 
-    public static Map<String, Object> orderMap(User owner){
+    public static Map<String, Object> orderMap(){
         return new HashMap<String, Object>(){{
             put("items", new ArrayList<Map<String, Object>>(){{
                 add(new HashMap<String, Object>(){{
-                    put("products", "1");
+                    put("product", "1");
                     put("quantity", 2);
                 }});
             }});
@@ -42,7 +42,7 @@ public class TestHelper {
         return new HashMap<String, Object>(){{
             put("items", new ArrayList<Map<String, Object>>(){{
                 add(new HashMap<String, Object>(){{
-                    put("products", "1");
+                    put("product", "1");
                     put("quantity", 2);
                 }});
             }});
@@ -54,7 +54,7 @@ public class TestHelper {
             put("refundRequest", "1");
             put("items", new ArrayList<Map<String, Object>>(){{
                 add(new HashMap<String, Object>(){{
-                    put("products", "1");
+                    put("product", "1");
                     put("quantity", 2);
                 }});
             }});

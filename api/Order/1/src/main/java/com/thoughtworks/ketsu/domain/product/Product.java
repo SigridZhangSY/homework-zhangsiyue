@@ -64,4 +64,10 @@ public class Product implements Record {
         return owner;
     }
 
+
+    public ProductPrice getPrice() {
+        return price;
+    }
+
+
 }

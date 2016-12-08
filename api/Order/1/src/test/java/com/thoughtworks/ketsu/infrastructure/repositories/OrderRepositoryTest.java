@@ -2,7 +2,10 @@ package com.thoughtworks.ketsu.infrastructure.repositories;
 
 import com.thoughtworks.ketsu.domain.order.Order;
 import com.thoughtworks.ketsu.domain.order.Orders;
+import com.thoughtworks.ketsu.domain.user.User;
+import com.thoughtworks.ketsu.domain.user.Users;
 import com.thoughtworks.ketsu.support.DatabaseTestRunner;
+import com.thoughtworks.ketsu.support.TestHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -18,6 +21,9 @@ public class OrderRepositoryTest {
     @Inject
     Orders orderRepository;
 
+    @Inject
+    Users userRepository;
+
     @Test
     public void should_find_order_by_id() throws Exception {
         Optional<Order> order = orderRepository.findById(1);
@@ -26,5 +32,16 @@ public class OrderRepositoryTest {
         assertThat(order.get().getId(), notNullValue());
         assertThat(order.get().getOwner(), notNullValue());
         assertThat(order.get().getTotalPrice(), is(5.0));
+    }
+
+    @Test
+    public void should_create_and_find_order() throws Exception {
+        User user = userRepository.findById(1).get();
+        Order order = orderRepository.createOrder(TestHelper.orderMap(), user);
+
+        assertThat(order.getId(), notNullValue());
+        assertThat(order.getOwner(), notNullValue());
+        assertThat(order.getTotalPrice(), is(5.0));
+        assertThat(order.getOrderItems().size(), is(1));
     }
 }

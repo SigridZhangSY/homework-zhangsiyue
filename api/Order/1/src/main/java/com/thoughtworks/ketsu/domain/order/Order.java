@@ -41,6 +41,11 @@ public class Order implements Record {
         return owner;
     }
 
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
     public double getTotalPrice(){
         double totalPrice =  orderItems.stream().reduce(
                 0.0,

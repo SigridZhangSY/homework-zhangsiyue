@@ -1,6 +1,10 @@
 package com.thoughtworks.ketsu.domain.product;
 
 public class ProductPrice{
+    public long getId() {
+        return id;
+    }
+
     private long id;
     private double price;
 

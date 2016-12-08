@@ -7,7 +7,18 @@
         FROM orders O LEFT JOIN
         ((SELECT
         <include refid="columns.orderItem"/>
-        FROM (prices pr, users u) right join (products p, orderitems oi) on pr.id = oi.price_id and u.id = p.user_id) AS I, USERS U)
+        FROM (prices pr, users u) right join (products p, orderitems oi) on pr.id = oi.price_id and u.id = p.user_id) AS
+        I, USERS U)
         ON I.order_id = O.id WHERE O.id = #{id}
     </select>
+    <insert id="save" useGeneratedKeys="true" keyProperty="info.id">
+        INSERT INTO orders (user_id)
+        VALUES (#{info.user_id});
+        SET @LAST_INSERT_ORDER_ID = LAST_INSERT_ID();
+        INSERT INTO orderitems (order_id, product_id, price_id, quantity)
+        VALUES
+        <foreach collection="info.items" item="item" open="(" separator=","  close=")">
+            @LAST_INSERT_ORDER_ID, #{item.product},#{item.price_id}, #{item.quantity}
+        </foreach>
+    </insert>
 </mapper>
