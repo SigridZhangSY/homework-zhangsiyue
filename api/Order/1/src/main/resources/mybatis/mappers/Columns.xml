@@ -16,4 +16,29 @@
         U.id as user_id,
         U.email as user_email
     </sql>
+
+    <sql id="order">
+        O.id AS order_id,
+        O.user_id AS user_id,
+        O.time as order_time,
+        U.email AS user_email,
+        I.product_id AS product_id,
+        I.product_name AS product_name,
+        I.owner_id AS owner_id,
+        I.owner_email AS owner_email,
+        I.price_id AS price_id,
+        I.price AS price,
+        I.quantity AS quantity
+    </sql>
+
+    <sql id="orderItem">
+        OI.order_id AS order_id,
+        OI.quantity AS quantity,
+        P.id AS product_id,
+        P.name AS product_name,
+        U.id AS owner_id,
+        U.email as owner_email,
+        PR.id AS price_id,
+        PR.price AS price
+    </sql>
 </mapper>

@@ -1,7 +1,6 @@
 CREATE TABLE orders(
   id INT PRIMARY KEY AUTO_INCREMENT,
   user_id INT NOT NULL ,
-  total_price FLOAT NOT NULL,
   time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES USERS(id)
 );
@@ -17,5 +16,5 @@ CREATE TABLE orderItems(
   FOREIGN KEY (price_id) REFERENCES PRICES(id)
 );
 
-INSERT INTO orders(user_id, total_price) VALUES (1, 5);
+INSERT INTO orders(user_id) VALUES (1);
 INSERT INTO orderItems(order_id, product_id, price_id, quantity) VALUES (1, 1, 1, 2);

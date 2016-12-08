@@ -15,6 +15,7 @@ public class Order implements Record {
     public Order(long id, User owner) {
         this.id = id;
         this.owner = owner;
+        orderItems = new ArrayList<>();
     }
 
     public Order(){}
