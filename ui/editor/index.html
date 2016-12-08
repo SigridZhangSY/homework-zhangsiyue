@@ -1,14 +1,17 @@
 <html>
 <header>
     <link rel="stylesheet" type="text/css" href="index.css"/>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+    <!--<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">-->
 </header>
 
 <head>
     <script type="text/javascript" src="./jquery-1.7.2/jquery.min.js"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <!--<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>-->
+    <script src="jQuery-Adaptive-Switch/jquery.adaptive-switch.js"></script>
     <script src="page-view.js"></script>
+    <!--<link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">-->
+    <link rel="stylesheet" href="jQuery-Adaptive-Switch/styles.css"/>
 </head>
 
 <body>
@@ -19,8 +22,7 @@
                 <li class="column col-lg-1">
                     <ul class="components button-area">
                         <button type="button" id="add-button" class="btn btn-primary">Add</button>
-                        <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="Edit"
-                               data-off="Render" data-width="75" data-height="20">
+                        <input type="checkbox" id="toggle" data-switch-left="Render" data-switch-right="Edit"/>
                     </ul>
                 </li>
                 <li class="column col-lg-8">

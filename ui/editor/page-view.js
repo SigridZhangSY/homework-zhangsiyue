@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $('input[type="checkbox"]').adaptiveSwitch();
     addClick();
     move('.title');
     move('.text');
@@ -6,7 +7,7 @@ $(document).ready(function () {
 });
 
 var toggleClick = function () {
-    $('#toggle-event').change(function () {
+    $('#toggle').change(function () {
         if($(this).prop('checked')){
             $('.title').each(function () {
                 $(this).children('div.component').replaceWith("<div class='component'><textarea class='edit'/></div>");

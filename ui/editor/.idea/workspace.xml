@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43836432-0c77-40f4-b42d-23e3013be916" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../api/Charging/ChargingApi.numbers" afterPath="$PROJECT_DIR$/../../api/Charging/ChargingApi.numbers" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../api/Order/1/README.md" afterPath="$PROJECT_DIR$/../../api/Order/1/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../basic/rich/rich-1/README.md" afterPath="$PROJECT_DIR$/../../basic/rich/rich-1/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/GameControl.java" afterPath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/GameControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/Player.java" afterPath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/Player.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/place/Mine.java" afterPath="$PROJECT_DIR$/../../basic/rich/rich-1/src/rich/place/Mine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../basic/rich/rich-1/test/rich/commandHandler/WaitCommandHandlerRollTest.java" afterPath="$PROJECT_DIR$/../../basic/rich/rich-1/test/rich/commandHandler/WaitCommandHandlerRollTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jQuery-Adaptive-Switch/jquery.adaptive-switch.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/jQuery-Adaptive-Switch/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.css" afterPath="$PROJECT_DIR$/index.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page-view.js" afterPath="$PROJECT_DIR$/page-view.js" />
     </list>
@@ -35,28 +29,44 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+            <state relative-caret-position="-82">
+              <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="page-view.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="jquery.adaptive-switch.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jQuery-Adaptive-Switch/jquery.adaptive-switch.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jQuery-Adaptive-Switch/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page-view.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page-view.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+            <state relative-caret-position="-461">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
               <folding>
-                <element signature="e#1580#3176#0" expanded="false" />
-                <element signature="e#1615#3167#0" expanded="false" />
-                <element signature="e#1681#3143#0" expanded="false" />
-                <element signature="e#2012#2289#0" expanded="false" />
-                <element signature="e#2054#2263#0" expanded="false" />
-                <element signature="e#2357#3102#0" expanded="false" />
+                <element signature="e#2056#2333#0" expanded="false" />
+                <element signature="e#2098#2307#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -127,7 +137,7 @@
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
@@ -145,8 +155,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -165,6 +175,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="editor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery-Adaptive-Switch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -178,6 +202,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/jQuery-Adaptive-Switch" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -253,11 +278,12 @@
       <workItem from="1481010501402" duration="12000" />
       <workItem from="1481020339243" duration="17396000" />
       <workItem from="1481178212366" duration="2829000" />
+      <workItem from="1481189706892" duration="874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27309000" />
+    <option name="totallyTimeSpent" value="28183000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -267,18 +293,18 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13413015" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -312,12 +338,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1580#3176#0" expanded="false" />
-            <element signature="e#1615#3167#0" expanded="false" />
-            <element signature="e#1681#3143#0" expanded="false" />
-            <element signature="e#2012#2289#0" expanded="false" />
-            <element signature="e#2054#2263#0" expanded="false" />
-            <element signature="e#2357#3102#0" expanded="false" />
+            <element signature="e#2056#2333#0" expanded="false" />
+            <element signature="e#2098#2307#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -361,12 +383,8 @@
         <state relative-caret-position="374">
           <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding>
-            <element signature="e#1580#3176#0" expanded="false" />
-            <element signature="e#1615#3167#0" expanded="false" />
-            <element signature="e#1681#3143#0" expanded="false" />
-            <element signature="e#2012#2289#0" expanded="false" />
-            <element signature="e#2054#2263#0" expanded="false" />
-            <element signature="e#2357#3102#0" expanded="false" />
+            <element signature="e#2056#2333#0" expanded="false" />
+            <element signature="e#2098#2307#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -392,12 +410,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1580#3176#0" expanded="false" />
-            <element signature="e#1615#3167#0" expanded="false" />
-            <element signature="e#1681#3143#0" expanded="false" />
-            <element signature="e#2012#2289#0" expanded="false" />
-            <element signature="e#2054#2263#0" expanded="false" />
-            <element signature="e#2357#3102#0" expanded="false" />
+            <element signature="e#2056#2333#0" expanded="false" />
+            <element signature="e#2098#2307#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -425,16 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/jquery-1.7.2/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -451,26 +455,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page-view.js">
+    <entry file="file://$PROJECT_DIR$/test.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="89" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
+        <state relative-caret-position="221">
+          <caret line="13" column="31" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="31" />
           <folding>
-            <element signature="e#1580#3176#0" expanded="false" />
-            <element signature="e#1615#3167#0" expanded="false" />
-            <element signature="e#1681#3143#0" expanded="false" />
-            <element signature="e#2012#2289#0" expanded="false" />
-            <element signature="e#2054#2263#0" expanded="false" />
-            <element signature="e#2357#3102#0" expanded="false" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery-Adaptive-Switch/jquery.adaptive-switch.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jQuery-Adaptive-Switch/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        <state relative-caret-position="-82">
+          <caret line="13" column="69" selection-start-line="13" selection-start-column="69" selection-end-line="13" selection-end-column="69" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-view.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-461">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+          <folding>
+            <element signature="e#2056#2333#0" expanded="false" />
+            <element signature="e#2098#2307#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
