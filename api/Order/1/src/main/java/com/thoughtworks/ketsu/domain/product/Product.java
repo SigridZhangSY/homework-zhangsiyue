@@ -56,7 +56,7 @@ public class Product implements Record {
         return name;
     }
 
-    public double getCurrentPrice() {
+    public double getPriceOfTheTime() {
         return price.getPrice();
     }
 

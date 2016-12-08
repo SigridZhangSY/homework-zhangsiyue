@@ -4,21 +4,20 @@ import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 public class Order implements Record {
     private long id;
     private List<OrderItem> orderItems;
-    private double totalPrice;
     private User owner;
+    private Date time;
 
     public Order(long id, User owner) {
         this.id = id;
         this.owner = owner;
     }
+
+    public Order(){}
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
@@ -29,7 +28,7 @@ public class Order implements Record {
     public Map<String, Object> toJson(Routes routes) {
         return new HashMap<String, Object>(){{
             put("uri", routes.orderUrl(owner, Order.this));
-            put("total", totalPrice);
+            put("total", getTotalPrice());
         }};
     }
 
@@ -37,9 +36,16 @@ public class Order implements Record {
         return id;
     }
 
-
     public User getOwner() {
         return owner;
+    }
+
+    public double getTotalPrice(){
+        double totalPrice =  orderItems.stream().reduce(
+                0.0,
+                (sum, orderItem) -> sum = sum + orderItem.getTotalPrice(),
+                (u,t) -> u);
+        return totalPrice;
     }
 
     public Optional<Payment> findPayment(){
@@ -50,7 +56,7 @@ public class Order implements Record {
         return null;
     }
 
-    public Optional<RefundRequest> findRefundRequest(long requsetId){
+    public Optional<RefundRequest> findRefundRequest(long requestId){
         return null;
     }
 

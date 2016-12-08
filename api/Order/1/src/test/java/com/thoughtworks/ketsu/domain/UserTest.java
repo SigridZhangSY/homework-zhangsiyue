@@ -29,7 +29,7 @@ public class UserTest {
         assertThat(product.isPresent(), is(true));
         assertThat(product.get().getId(), notNullValue());
         assertThat(product.get().getName(), notNullValue());
-        assertThat(product.get().getCurrentPrice(), notNullValue());
+        assertThat(product.get().getPriceOfTheTime(), notNullValue());
         assertThat(product.get().getOwner(), notNullValue());
     }
 
@@ -38,7 +38,7 @@ public class UserTest {
         User user = userRepository.findById(1).get();
         Product product = user.createProduct(TestHelper.productMap("test2"));
 
-        assertThat(product.getCurrentPrice(), notNullValue());
+        assertThat(product.getPriceOfTheTime(), notNullValue());
         assertThat(product.getName(), notNullValue());
         assertThat(product.getOwner(), notNullValue());
     }
@@ -52,7 +52,7 @@ public class UserTest {
         assertThat(products.size(), is(1));
         assertThat(products.get(0).getId(), is(product.getId()));
         assertThat(products.get(0).getName(), is(product.getName()));
-        assertThat(products.get(0).getCurrentPrice(), is(product.getCurrentPrice()));
+        assertThat(products.get(0).getPriceOfTheTime(), is(product.getPriceOfTheTime()));
         assertThat(products.get(0).getOwner().getId(), is(product.getOwner().getId()));
     }
 }
