@@ -3,30 +3,13 @@ ul, li {
     padding: 0px;
 }
 .button-area{
-    float: left;
-    width: 120px;
+    padding-top: 30px;
 }
 
-.content-area{
-    float: left;
-    border: solid black 1px;
-    border-radius:3px;
-    padding: 5px;
-    height: 300px;
-}
-.btn{
-    display: inline-block;
-    position: relative;
-    margin: 10px;
-    padding: 3px 20px;
-    text-align: center;
-    text-decoration: none;
-    width: 50px;
-    color: #666666;
-    font: bold 12px/25px Arial, sans-serif;
-    background: #a9a9a9;
-    border-radius:3px;
-    border: solid 1px #7c7c7c;
+#render-button, #edit-button, #add-button{
+    margin-bottom: 5px !important;
+    /*width: 75px !important;*/
+    /*height: 35px !important;*/
 }
 
 .render{

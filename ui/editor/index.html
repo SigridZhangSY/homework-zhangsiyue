@@ -1,11 +1,13 @@
 <html>
 <header>
     <link rel="stylesheet" type="text/css" href="index.css"/>
-    <!--<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 </header>
 
 <head>
     <script type="text/javascript" src="./jquery-1.7.2/jquery.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="page-view.js"></script>
 </head>
 
@@ -13,26 +15,26 @@
 <div class="container">
     <ul class="page">
         <li class="rows">
-            <ul class="columns">
-                <li class="column">
-                    <ul class="components">
-                        <div class="button-area">
-                            <a href="#" id="render-button" class="btn">Render</a>
-                            <a href="#" id="edit-button" class="btn">Edit</a>
-                            <a href="#" id="add-button" class="btn">Add</a>
-                        </div>
-                        <div class="content-area">
-                            <li class="title area" data="title">
-                                <div class="component">
-                                    <h1 class="render">title</h1>
-                                </div>
-                            </li>
-                            <li class="text area" data="content">
-                                <div class="component">
-                                    <p class="render">content</p>
-                                </div>
-                            </li>
-                        </div>
+            <ul class="columns row">
+                <li class="column col-lg-1">
+                    <ul class="components button-area">
+                        <button type="button" id="add-button" class="btn btn-primary">Add</button>
+                        <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="Edit"
+                               data-off="Render" data-width="75" data-height="20">
+                    </ul>
+                </li>
+                <li class="column col-lg-8">
+                    <ul class="components content-area">
+                        <li class="title area" data="title">
+                            <div class="component">
+                                <h2 class="render">title</h2>
+                            </div>
+                        </li>
+                        <li class="text area" data="content">
+                            <div class="component">
+                                <p class="render">content</p>
+                            </div>
+                        </li>
                     </ul>
                 </li>
             </ul>

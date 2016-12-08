@@ -1,48 +1,39 @@
 $(document).ready(function () {
-    editClick();
-    renderClick();
     addClick();
     move('.title');
     move('.text');
+    toggleClick();
 });
 
-var editClick = function () {
-    $('#edit-button').each(function () {
-        $(this).click(
-            function () {
-                $('.title').each(function () {
-                    $(this).children('div.component').replaceWith("<div class='component'><textarea class='edit'/></div>");
-                    $(this).children('div.component').children('textarea.edit').text($(this).attr("data"));
-                });
+var toggleClick = function () {
+    $('#toggle-event').change(function () {
+        if($(this).prop('checked')){
+            $('.title').each(function () {
+                $(this).children('div.component').replaceWith("<div class='component'><textarea class='edit'/></div>");
+                $(this).children('div.component').children('textarea.edit').text($(this).attr("data"));
+            });
 
-                $('.text').each(function () {
-                    $(this).children('div.component').replaceWith("<div class='component'><textarea class='edit'/></div>");
-                    $(this).children('div.component').children('textarea.edit').text($(this).attr("data"));
-                });
-            }
-        );
+            $('.text').each(function () {
+                $(this).children('div.component').replaceWith("<div class='component'><textarea class='edit'/></div>");
+                $(this).children('div.component').children('textarea.edit').text($(this).attr("data"));
+            });
+        }else {
+            $('.title').each(function () {
+                var input_value = $(this).children('div.component').children('textarea.edit').val();
+                $(this).attr("data", input_value);
+                $(this).children('div.component').replaceWith("<div class='component'><h2 class='render'>" + $(this).attr("data") + "</h2></div>");
+            });
+
+            $('.text').each(function () {
+                var input_value = $(this).children('div.component').children('textarea.edit').val();
+                $(this).attr("data", input_value);
+                $(this).children('div.component').replaceWith("<div class='component'><p class='render'>" + $(this).attr("data") + "</p></div>");
+            });
+        }
+
     });
-};
-
-var renderClick = function () {
-    $('#render-button').each(function () {
-        $(this).click(
-            function () {
-                $('.title').each(function () {
-                    var input_value = $(this).children('div.component').children('textarea.edit').val();
-                    $(this).attr("data", input_value);
-                    $(this).children('div.component').replaceWith("<div class='component'><h1 class='render'>" + $(this).attr("data") + "</h></div>");
-                });
-
-                $('.text').each(function () {
-                    var input_value = $(this).children('div.component').children('textarea.edit').val();
-                    $(this).attr("data", input_value);
-                    $(this).children('div.component').replaceWith("<div class='component'><p class='render'>" + $(this).attr("data") + "</p></div>");
-                });
-            }
-        );
-    });
-};
+    
+}
 
 var move = function (selector) {
     $(selector).each(function () {
@@ -83,9 +74,9 @@ var addClick = function () {
                 var innerHtml = $('.content-area').children(':last-child').prop("outerHTML");
                 $('.content-area').append(innerHtml);
                 move('.text');
-                editClick();
-                renderClick();
+                move('.title');
+                toggleClick();
             }
         );
     });
-}
+};
