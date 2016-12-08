@@ -37,6 +37,6 @@ public class OrderRepository implements Orders {
 
     @Override
     public List<Order> getOrdersForUser(User owner) {
-        return null;
+        return orderMapper.getOrdersForUser(owner.getId());
     }
 }

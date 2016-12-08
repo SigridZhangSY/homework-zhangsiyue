@@ -21,4 +21,14 @@
             @LAST_INSERT_ORDER_ID, #{item.product},#{item.price_id}, #{item.quantity}
         </foreach>
     </insert>
+    <select id="getOrdersForUser" resultMap="records.order">
+        SELECT
+        <include refid="columns.order"/>
+        FROM orders O LEFT JOIN
+        ((SELECT
+        <include refid="columns.orderItem"/>
+        FROM (prices pr, users u) right join (products p, orderitems oi) on pr.id = oi.price_id and u.id = p.user_id) AS
+        I, USERS U)
+        ON I.order_id = O.id WHERE O.user_id = #{user_id}
+    </select>
 </mapper>
