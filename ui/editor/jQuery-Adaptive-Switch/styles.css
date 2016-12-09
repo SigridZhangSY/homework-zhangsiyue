@@ -1,6 +1,7 @@
 
 .adaptive-switch {
-  display: inline-block;
+  /*display: inline-block;*/
+  float: left;
   white-space: nowrap;
   line-height: 200%;
 }

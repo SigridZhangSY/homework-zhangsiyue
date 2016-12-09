@@ -2,19 +2,38 @@ ul, li {
     list-style-type: none;
     padding: 0px;
 }
+
+.column{
+    padding: 30px;
+    float: left;
+    width: 480px;
+}
 .button-area{
-    padding-top: 30px;
+    padding: 30px;
+    border-bottom: gray 1px solid;
+}
+.content-area{
+    border: dashed 1px;
+    width: 480px;
 }
 
-#render-button, #edit-button, #add-button{
-    margin-bottom: 5px !important;
-    /*width: 75px !important;*/
-    /*height: 35px !important;*/
+#add-button{
+    font-size: 12px;
+    cursor: hand;
+    width: 25px;
+    height: 25px;
+    background: #00709f;
+    border-radius: 63px;
+    color: #FFFFFF;
+    border: 0 solid #000000;
+    text-align: center;
+    padding-top: 3px;
+    margin-left: 10px;
 }
 
 .render{
     text-align:center;
-    width: 300px;
+    width: 470px;
     margin: 0;
 }
 
@@ -29,8 +48,9 @@ textarea{
 
 .area{
     cursor: move;
-    margin: 5px 0;
+    margin: 5px;
+    width: 470px;
 }
 .edit{
-    width: 300px;
+    width: 470px;
 }
