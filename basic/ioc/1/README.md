@@ -6,3 +6,4 @@ Implement a simple container with annotation in java
  
 2. bind implement and interface -10min 7min
 
+3. should not bind class to interface which it not implement -10min  30min
