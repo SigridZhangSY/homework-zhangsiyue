@@ -1,0 +1,22 @@
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+ext {
+    junit = '4.12'
+    inject = '1'
+}
+
+dependencies {
+    compile "javax.inject:javax.inject:$inject"
+    testCompile "junit:junit:$junit"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
