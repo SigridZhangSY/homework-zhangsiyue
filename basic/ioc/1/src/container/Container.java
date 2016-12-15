@@ -4,23 +4,23 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Container {
+public class Container<K,V> {
 
-    Map<Class, Class > dictionary = new HashMap<>();
+    Map<Class<K>, V > dictionary = new HashMap<>();
 
-    public <K,V> void bind(Class<K> interfaceType, Class<V> implementType) throws Exception{
+    public void bind(Class<K> interfaceType, Class<V> implementType) throws Exception{
         Class[] interfaces = implementType.getInterfaces();
         if (Arrays.asList(interfaces).contains(interfaceType))
-            dictionary.put(interfaceType, implementType);
+            dictionary.put(interfaceType, (V)implementType.newInstance());
         else
             throw new Exception();
     }
 
-    public <T> T resolve(Class<T> type) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        Class implement = dictionary.get(type);
+    public V resolve(Class<K> type) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
+        V implement = dictionary.get(type);
         if(implement != null)
-            return (T)implement.newInstance();
+            return implement;
         else
-            return (T)type.newInstance();
+            return null;
     }
 }

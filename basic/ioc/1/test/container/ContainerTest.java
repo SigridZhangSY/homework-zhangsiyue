@@ -11,16 +11,6 @@ import static org.junit.Assert.*;
 
 public class ContainerTest {
 
-
-    @Test
-    public void should_get_instance_of_simple_class() throws Exception {
-        Container container = new Container();
-
-        Object object = container.resolve(SimpleClass.class);
-
-        assertThat(object, is(notNullValue()));
-    }
-
     @Test
     public void should_bind_interface_and_implement_and_get_instance() throws Exception {
         Container container = new Container();
