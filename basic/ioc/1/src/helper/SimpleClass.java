@@ -1,4 +1,4 @@
 package helper;
 
-public class SimpleClass {
+public class SimpleClass implements SimpleInterface{
 }
