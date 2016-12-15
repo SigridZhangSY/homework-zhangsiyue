@@ -10,3 +10,4 @@ out/
 .local/
 .vagrant/
 *.swp
+classes/
