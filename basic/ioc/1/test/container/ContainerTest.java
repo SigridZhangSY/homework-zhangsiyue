@@ -1,8 +1,6 @@
 package container;
 
-import helper.OtherSimpleClass;
-import helper.SimpleClass;
-import helper.SimpleInterface;
+import helper.*;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -51,5 +49,17 @@ public class ContainerTest {
         Object object = container.resolve(SimpleInterface.class);
 
         assertThat(container.resolve(SimpleInterface.class), is(notNullValue()));
+    }
+
+    @Test
+    public void should_inject_class_with_inject_field() throws Exception {
+        Container container = new Container();
+
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        container.bind(ClassWithInjectFieldInterface.class, ClassWithInjectField.class);
+
+        ClassWithInjectFieldInterface object = (ClassWithInjectFieldInterface)container.resolve(ClassWithInjectFieldInterface.class);
+        assertThat(object, is(notNullValue()));
+        assertThat(object.getInjectField(), is(notNullValue()));
     }
 }

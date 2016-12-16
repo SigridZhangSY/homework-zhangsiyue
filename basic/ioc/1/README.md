@@ -13,3 +13,4 @@ Implement a simple container with annotation in java
     - resolve a class container not instantiate -7min 7min
     - resolve a class container instantiated -7min
  
+5. inject class with injected field - 15min 20min

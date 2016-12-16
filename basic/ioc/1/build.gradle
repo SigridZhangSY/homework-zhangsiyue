@@ -7,13 +7,14 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 
+mainClassName = "container.Container"
 ext {
     junit = '4.12'
     inject = '1'
 }
 
 dependencies {
-    compile "javax.inject:javax.inject:$inject"
+    compile group: 'javax.inject', name: 'javax.inject', version: '1'
     testCompile "junit:junit:$junit"
 }
 
