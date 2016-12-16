@@ -1,5 +1,7 @@
 package container;
 
+import container.injector.FieldInjector;
+
 import javax.inject.Inject;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
@@ -9,6 +11,7 @@ public class Container<K,V> {
 
     private Map<Class<K>, Class<V>>  dictionary = new HashMap<>();
     private Set<V> instances = new HashSet<>();
+    private FieldInjector fieldInjector = new FieldInjector();
 
     public void bind(Class<K> interfaceType, Class<V> implementType) throws Exception{
 
@@ -20,6 +23,7 @@ public class Container<K,V> {
             throw new Exception();
     }
 
+
     public V resolve(Class<?> type) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         Class<V> implementType = dictionary.get(type);
 
@@ -27,18 +31,12 @@ public class Container<K,V> {
             Optional<V> implement = instances.stream().filter(instance -> instance.getClass() == implementType ).findAny();
             if(!implement.isPresent()){
                 implement = Optional.of(implementType.newInstance());
-                Field[] fields = implement.get().getClass().getDeclaredFields();
-                for(Field field : fields){
-                    if(field.isAnnotationPresent(Inject.class)){
-                        field.setAccessible(true);
-                        field.set(implement.get(), resolve(field.getType()));
-                        field.setAccessible(false);
-                    }
-                }
+                fieldInjector.inject(implement, this);
                 instances.add(implement.get());
             }
             return implement.get();
         }
         return null;
     }
+
 }
