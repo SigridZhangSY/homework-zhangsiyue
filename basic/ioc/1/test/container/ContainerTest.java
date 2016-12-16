@@ -7,6 +7,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.*;
 
 public class ContainerTest {
@@ -32,5 +33,13 @@ public class ContainerTest {
         } catch (Exception e) {
             assertThat(e, is(notNullValue()));
         }
+    }
+
+    @Test
+    public void should_return_null_when_resolve_not_bind_class() throws Exception {
+        Container container = new Container();
+
+        Object object = container.resolve(SimpleInterface.class);
+        assertThat(object, is(nullValue()));
     }
 }
