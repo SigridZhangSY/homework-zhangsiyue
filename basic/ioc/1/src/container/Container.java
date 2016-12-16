@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Container<K,V> {
 
-    Map<Class<K>, Class<V>>  dictionary = new HashMap<>();
-    Set<V> instances = new HashSet<>();
+    private Map<Class<K>, Class<V>>  dictionary = new HashMap<>();
+    private Set<V> instances = new HashSet<>();
 
     public void bind(Class<K> interfaceType, Class<V> implementType) throws Exception{
 

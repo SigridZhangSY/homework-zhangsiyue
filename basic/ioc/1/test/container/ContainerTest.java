@@ -42,4 +42,14 @@ public class ContainerTest {
         Object object = container.resolve(SimpleInterface.class);
         assertThat(object, is(nullValue()));
     }
+
+    @Test
+    public void should_resolve_class_container_instantiated() throws Exception {
+        Container container = new Container();
+
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        Object object = container.resolve(SimpleInterface.class);
+
+        assertThat(container.resolve(SimpleInterface.class), is(notNullValue()));
+    }
 }
