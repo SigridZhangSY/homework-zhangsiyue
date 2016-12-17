@@ -2,6 +2,7 @@ package container;
 
 import container.injector.ConstructorInjector;
 import container.injector.FieldInjector;
+import container.injector.MethodInjector;
 
 import javax.inject.Inject;
 import java.lang.reflect.Array;
@@ -15,6 +16,7 @@ public class Container<K,V> {
     private Set<V> instances = new HashSet<>();
     private FieldInjector fieldInjector = new FieldInjector();
     private ConstructorInjector constructorInjector = new ConstructorInjector();
+    private MethodInjector methodInjector = new MethodInjector();
 
     public void bind(Class<K> interfaceType, Class<V> implementType) throws Exception{
 
@@ -37,6 +39,8 @@ public class Container<K,V> {
                 implement = Optional.of((V)constructorInjector.inject(implementType, this));
 
                 fieldInjector.inject(implement.get(), this);
+
+                methodInjector.inject(implement.get(), this);
 
                 instances.add(implement.get());
             }

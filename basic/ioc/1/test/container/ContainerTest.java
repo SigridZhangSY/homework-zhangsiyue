@@ -87,4 +87,14 @@ public class ContainerTest {
             assertThat(e, is(notNullValue()));
         }
     }
+
+    @Test
+    public void should_resolve_class_with_inject_method() throws Exception {
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        container.bind(ClassWithInjectFieldInterface.class, ClassWithInjectMethod.class);
+
+        ClassWithInjectFieldInterface object = (ClassWithInjectFieldInterface)container.resolve(ClassWithInjectFieldInterface.class);
+        assertThat(object, is(notNullValue()));
+        assertThat(object.getInjectField(), is(notNullValue()));
+    }
 }

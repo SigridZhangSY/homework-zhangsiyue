@@ -17,8 +17,10 @@ Implement a simple container with annotation in java
 
 6. inject constructor 
     - parameter has injected 10min 30min
-    - more than one constructor with inject annotation -> exception -7min
+    - more than one constructor with inject annotation -> exception -7min 7min
 
 7. inject method
+    - setter, parameter has been inject -15min
+    - method is not setter -15min
 
 8. @Named  register different implement of same interface

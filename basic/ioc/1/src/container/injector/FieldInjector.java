@@ -4,8 +4,6 @@ import container.Container;
 
 import javax.inject.Inject;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Optional;
 
 public class FieldInjector<V> {
     public void inject(V instance, Container container) throws Exception {
