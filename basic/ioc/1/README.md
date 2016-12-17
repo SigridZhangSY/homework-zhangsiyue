@@ -17,7 +17,6 @@ Implement a simple container with annotation in java
 
 6. inject constructor 
     - parameter has injected 10min 30min
-    - parameter not injected -> exception 10min
     - more than one constructor with inject annotation -> exception -7min
 
 7. inject method

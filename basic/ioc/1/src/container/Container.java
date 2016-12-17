@@ -27,7 +27,7 @@ public class Container<K,V> {
     }
 
 
-    public V resolve(Class<?> type) throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
+    public V resolve(Class<?> type) throws Exception {
         Class<V> implementType = dictionary.get(type);
 
         if(implementType != null){

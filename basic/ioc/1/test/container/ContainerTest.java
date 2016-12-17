@@ -74,4 +74,17 @@ public class ContainerTest {
         assertThat(object, is(notNullValue()));
         assertThat(object.getInjectField(), is(notNullValue()));
     }
+
+    @Test
+    public void should_not_resole_class_with_more_than_one_inject_constructor() throws Exception {
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        container.bind(ClassWithInjectFieldInterface.class, ClassWithSeveralInjectConstructor.class);
+
+        try {
+            container.resolve(ClassWithInjectFieldInterface.class);
+            fail();
+        } catch (Exception e) {
+            assertThat(e, is(notNullValue()));
+        }
+    }
 }
