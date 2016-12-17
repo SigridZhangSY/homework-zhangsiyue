@@ -1,7 +1,9 @@
 package container;
 
 import helper.*;
+import org.junit.Before;
 import org.junit.Test;
+import org.omg.CosNaming.NameComponent;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -10,10 +12,16 @@ import static org.junit.Assert.*;
 
 public class ContainerTest {
 
+    private Container container;
+
+    @Before
+    public void setUp() throws Exception {
+        container = new Container();
+
+    }
+
     @Test
     public void should_bind_interface_and_implement_and_get_instance() throws Exception {
-        Container container = new Container();
-
         container.bind(SimpleInterface.class, SimpleClass.class);
         Object object = container.resolve(SimpleInterface.class);
 
@@ -24,7 +32,6 @@ public class ContainerTest {
 
     @Test
     public void should_not_bind_interface_to_not_implement_class() {
-        Container container = new Container();
         try {
             container.bind(SimpleInterface.class, OtherSimpleClass.class);
             fail();
@@ -35,16 +42,13 @@ public class ContainerTest {
 
     @Test
     public void should_return_null_when_resolve_not_bind_class() throws Exception {
-        Container container = new Container();
-
         Object object = container.resolve(SimpleInterface.class);
+
         assertThat(object, is(nullValue()));
     }
 
     @Test
     public void should_resolve_class_container_instantiated() throws Exception {
-        Container container = new Container();
-
         container.bind(SimpleInterface.class, SimpleClass.class);
         Object object = container.resolve(SimpleInterface.class);
 
@@ -53,10 +57,18 @@ public class ContainerTest {
 
     @Test
     public void should_inject_class_with_inject_field() throws Exception {
-        Container container = new Container();
-
         container.bind(SimpleInterface.class, SimpleClass.class);
         container.bind(ClassWithInjectFieldInterface.class, ClassWithInjectField.class);
+
+        ClassWithInjectFieldInterface object = (ClassWithInjectFieldInterface)container.resolve(ClassWithInjectFieldInterface.class);
+        assertThat(object, is(notNullValue()));
+        assertThat(object.getInjectField(), is(notNullValue()));
+    }
+
+    @Test
+    public void should_inject_class_with_inject_constructor() throws Exception {
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        container.bind(ClassWithInjectFieldInterface.class, ClassWithInjectConstructor.class);
 
         ClassWithInjectFieldInterface object = (ClassWithInjectFieldInterface)container.resolve(ClassWithInjectFieldInterface.class);
         assertThat(object, is(notNullValue()));
