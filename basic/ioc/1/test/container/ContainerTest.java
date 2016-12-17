@@ -97,4 +97,17 @@ public class ContainerTest {
         assertThat(object, is(notNullValue()));
         assertThat(object.getInjectField(), is(notNullValue()));
     }
+
+    @Test
+    public void should_not_inject_method_not_setter() throws Exception {
+        container.bind(SimpleInterface.class, SimpleClass.class);
+        container.bind(ClassWithInjectFieldInterface.class, ClassWithInvalidInjectMethod.class);
+
+        try {
+            container.resolve(ClassWithInjectFieldInterface.class);
+            fail();
+        } catch (Exception e) {
+            assertThat(e, is(notNullValue()));
+        }
+    }
 }

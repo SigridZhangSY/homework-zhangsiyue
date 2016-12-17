@@ -18,6 +18,8 @@ public class MethodInjector<V> {
                 .collect(Collectors.toList());
 
         for (Method method : injectMethods) {
+            if (!method.getName().startsWith("set"))
+                throw new Exception();
             List<Object> parameters = new ArrayList<>();
             for (Class parameterType : method.getParameterTypes())
                 parameters.add(container.resolve(parameterType));
