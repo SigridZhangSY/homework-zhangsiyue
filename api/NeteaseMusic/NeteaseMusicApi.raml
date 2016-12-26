@@ -37,29 +37,12 @@ mediaType: application/json
               [
                 {
                   "id": "1",
-                  "uri": "/products/1",
-                  "username": "apple",
+                  "uri": "/users/1",
+                  "username": "userA",
                   "email": "xxx@xxx.com"
                 }
               ]
       403:
-        body:
-          application/json:
-            schema: |
-              {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "message": "string"
-                    },
-                    "required": ["message"]
-                  }
-              }
-            example: |
-              {
-                "message": "permission denied"
-              }
   post:
     description: as a user, I can sign up to use system
     body:
@@ -84,7 +67,6 @@ mediaType: application/json
           Location:
             description: "sign up"
             type: string
-        body:
       400:
         body:
           application/json:
@@ -131,123 +113,14 @@ mediaType: application/json
                     "email":{
                       "type": "string"
                     },
-                    "orders":{
-                        "type": "arrays",
-                        "items": {
-                          "properties": {
-                            "id": {
-                              "type": "string"
-                              },
-                            "uri": {
-                              "type": "string"
-                              },
-                            "required": ["id", "uri"]
-                            }
-                          }
+                    "membership": {
+                      "type" : "boolbean"
                       },
-                    "download": {
-                      "type": "arrays",
-                      "items": {
-                        "properties": {
-                          "id": {
-                            "type": "string"
-                            },
-                          "uri": {
-                            "type": "string"
-                            },
-                          "name": {
-                            "type": "string"
-                            },
-                            "date": {
-                              "type": "string"
-                              },
-                          "required": ["id", "uri", "name", "date"]
-                          }
-                        }
-                      },
-                    "required": ["email", "orders", "download"]
+                    "required": ["id", "uri", "email", "membership"]
                   }
                 }
         404:
-          body:
-            application/json:
-              schema: |
-                {
-                  "$schema": "http://json-schema.org/draft-04/schema#",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "message": "string"
-                      },
-                      "required": ["message"]
-                    }
-                }
-              example: |
-                {
-                  "message": "not found"
-                }
-        403:
-          body:
-            application/json:
-              schema: |
-                {
-                "$schema": "http://json-schema.org/draft-04/schema#",
-                "type": "object",
-                "properties": {
-                  "field": {
-                    "type": "array",
-                      "items":{
-                        "type": "string"
-                      }
-                    },
-                  "message":{
-                      "type": "string"
-                    },
-                  "required": ["field", "message"]
-                  }
-                }
-              example: |
-                {
-                  "field": ["email", "password"],
-                  "message": "required"
-                }
-    post:
-      description: as a user, I can update my password
-      body:
-        application/json:
-          schema: |
-            {
-            "$schema": "http://json-schema.org/draft-04/schema#",
-            "type": "object",
-            "properties": {
-              "password": {
-                "type": "string"
-                },
-              "new_password":{
-                  "type": "string"
-                },
-              "required": ["new_password", "password"]
-              }
-            }
-      responses:
-        200:
-          body:
-            application/json:
-              schema: |
-                {
-                  "$schema": "http://json-schema.org/draft-04/schema#",
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "message": "string"
-                      },
-                      "required": ["message"]
-                    }
-                }
-              example: |
-                {
-                  "message": "update success"
-                }
+          description: user not existed, or try to get other user's information
         400:
           body:
             application/json:
@@ -270,7 +143,7 @@ mediaType: application/json
                 }
               example: |
                 {
-                  "field": ["new_password", "password"],
+                  "field": ["email", "password"],
                   "message": "required"
                 }
     /session:
@@ -314,174 +187,62 @@ mediaType: application/json
                   }
                 example: |
                   {
-                    "message": "wrong password"
+                    "message": "password not match"
                   }
       delete:
         description: as a login user, I can log out
         responses:
           200:
-            body:
-              application/json:
-                schema: |
-                  {
-                    "$schema": "http://json-schema.org/draft-04/schema#",
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "message": "string"
-                        },
-                        "required": ["message"]
-                      }
-                  }
-                example: |
-                  {
-                    "message": "log out success"
-                  }
           403:
-            body:
-              application/json:
-                schema: |
-                  {
-                    "$schema": "http://json-schema.org/draft-04/schema#",
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "message": "string"
-                        },
-                        "required": ["message"]
-                      }
-                  }
-                example: |
-                  {
-                    "message": "permission denied"
-                  }
-    /orders:
-      get:
-        description: as a user himself or admin, I can get order list of a user
-        responses:
-          200:
-          403:
+    /listeningCertificats:
       post:
-        description: as a user, I can make a order
         responses:
           201:
           400:
-          403:
-      /{orderId}:
-        get:
-          description: as a user himself or admin, I can get detail of a order
-          responses:
-            200:
-            404:
-            403:
-        post:
-          description: as a user, I can update my order
-          responses:
-            200:
-            404:
-            403:
-        /payment:
-          get:
-            description: as a user himself or admin, I can get detail of a order
-            responses:
-              200:
-              404:
-              403:
-          post:
-            description: as a user, I can pay for my order
-            responses:
-              201:
-              404:
-              403:
-    /downloads:
+            description: invalid parameter or listeningCertificate based on the payment already existed
       get:
-        description: as a user himself or admin, I can get download history of a user
-        responses:
-          200:
-          403:
+      /{listeningCertificateId}:
+        get:
+    /downloadCertificats:
       post:
-        description: as a user, I download a song
+      get:
+      /{downloadCertificateId}:
+        get:
+    /musicItems:
+      post:
+      get:
+      /{musicId}:
+        get:
+        post:
+        /listenabilities:
+          post:
+          get:
+          /{listenabilityId}:
+        /downloadabilities:
+          post:
+          get:
+          /{downloadabilitiyId}:
+        /prices:
+          post:
+          get:
+          /{priceId}:
+    /products:
+      post:
+      get:
+      /{productId}:
+        post:
+        get:
+    /payments:
+      post:
+      get:
+      /{paymentId}:
+        get:
+    /downloadRecords:
+      post:
         responses:
           201:
-            headers:
-              Location:
-                type: string
-          404:
-          403:
-      /{downlodId}:
+          400:
+            description: invalid parameter or don not have access
+      get:
+      /{downloadId}:
         get:
-          description: as a user himself or admin, I can get detail of a dowmload record
-          responses:
-            200:
-            404:
-            403:
-/music-items:
-  get:
-    description: as a user or admin, I can get music item list
-    responses:
-      200:
-  post:
-    description: as a admin, I can create a new music item
-    responses:
-      201:
-        headers:
-          Location:
-            type: string
-      403:
-      400:
-  /{musicItemId}:
-    get:
-      description: as a user or admin, I can get detail of music item
-      responses:
-        200:
-        404:
-    post:
-      description: as a admin, I can chage detail of a music item
-      responses:
-        200:
-        403:
-/music-groups:
-  get:
-    description: as a admin or a user, I can get the list of music group
-    responses:
-      200:
-  post:
-    description: as a admin, I can create a new music group
-    responses:
-      201:
-      400:
-      403:
-  /{groupId}:
-    get:
-      description: as a admin or a user, I can get detail of music group
-      responses:
-        200:
-        404:
-    post:
-      description: as a admin, I can update a music group
-      responses:
-        200:
-        400:
-        403:
-/memberships:
-  get:
-    description: as a admin or a user, I can get all member ships
-    responses:
-      200:
-  post:
-    description: as a admin, I can get detail of a membership
-    responses:
-      201:
-      400:
-      403:
-  /{membershipId}:
-    get:
-      description: as a user, I get detail of a membership
-      responses:
-        200:
-    post:
-      description: as admin, I can update a membership
-      responses:
-        200:
-        400:
-        403:
