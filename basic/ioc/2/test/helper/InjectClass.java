@@ -12,9 +12,11 @@ public class InjectClass {
         this.injectFiled = injectFiled;
     }
 
-    @Inject
-    public void setInjectFiled(){
+    public InjectClass(){}
 
+    @Inject
+    public void setInjectFiled(SimpleClass injectFiled){
+        this.injectFiled = injectFiled;
     }
 
     public SimpleClass getInjectFiled() {

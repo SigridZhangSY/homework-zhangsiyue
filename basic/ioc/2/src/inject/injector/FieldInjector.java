@@ -2,7 +2,7 @@ package inject.injector;
 
 import java.lang.reflect.Field;
 
-public class FieldInjector implements Injector {
+public class FieldInjector<T> implements Injector<T> {
     private Field injectField;
 
     public FieldInjector(Field injectField) {
@@ -15,8 +15,11 @@ public class FieldInjector implements Injector {
     }
 
     @Override
-    public Object execute(Object target, Object[] dependencies) {
-        return null;
+    public T execute(T target, Object[] dependencies) throws IllegalAccessException {
+        injectField.setAccessible(true);
+        injectField.set(target, dependencies[0]);
+        injectField.setAccessible(false);
+        return target;
     }
 
     public Field getInjectField() {
