@@ -4,6 +4,7 @@ import inject.Container;
 import inject.injector.ConstructorInjector;
 import inject.injector.FieldInjector;
 import inject.injector.Injector;
+import inject.injector.MethodInjector;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -55,6 +56,17 @@ public class ContainerTest {
                 .findAny();
 
         assertThat(constructorInjector.isPresent(), is(true));
+    }
 
+    @Test
+    public void should_create_injector_for_injected_method() throws Exception {
+        List<Injector> injectors = container.resolve(InjectClass.class);
+
+        Optional<Injector> constructorInjector = injectors
+                .stream()
+                .filter(injector -> injector instanceof MethodInjector)
+                .findAny();
+
+        assertThat(constructorInjector.isPresent(), is(true));
     }
 }

@@ -11,4 +11,9 @@ public class InjectClass {
     public InjectClass() {
     }
 
+    @Inject
+    public void setInjectFiled(){
+
+    }
+
 }

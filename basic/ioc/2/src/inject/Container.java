@@ -3,6 +3,7 @@ package inject;
 import inject.injector.ConstructorInjector;
 import inject.injector.FieldInjector;
 import inject.injector.Injector;
+import inject.injector.MethodInjector;
 
 import javax.inject.Inject;
 import java.lang.reflect.Array;
@@ -17,6 +18,7 @@ import static java.util.Arrays.asList;
 public class Container {
     Injector constructorInjector = new ConstructorInjector();
     Injector fieldInjector = new FieldInjector();
+    Injector methodInjector = new MethodInjector();
 
     public List<Injector> resolve(Class<?> type) {
         List<Injector> injectors = new ArrayList<>();
@@ -37,6 +39,13 @@ public class Container {
                 .findAny()
                 .isPresent())
             injectors.add(fieldInjector);
+
+        if (asList(type.getMethods())
+                .stream()
+                .filter(field -> field.isAnnotationPresent(Inject.class))
+                .findAny()
+                .isPresent())
+            injectors.add(methodInjector);
 
         return injectors;
     }
