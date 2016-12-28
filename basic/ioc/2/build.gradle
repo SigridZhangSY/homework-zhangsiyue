@@ -7,7 +7,7 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'application'
 
-mainClassName = "container.Container"
+mainClassName = "inject.Container"
 ext {
     junit = '4.12'
     inject = '1'
