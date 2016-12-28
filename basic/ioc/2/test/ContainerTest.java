@@ -2,15 +2,14 @@ import helper.ClassWithTwoInjectConstructor;
 import helper.InjectClass;
 import inject.Container;
 import inject.injector.ConstructorInjector;
+import inject.injector.FieldInjector;
 import inject.injector.Injector;
-import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -43,6 +42,19 @@ public class ContainerTest {
         } catch (Exception e) {
             assertThat(e instanceof RuntimeException, is(true));
         }
+
+    }
+
+    @Test
+    public void should_create_injector_for_injected_filed() throws Exception {
+        List<Injector> injectors = container.resolve(InjectClass.class);
+
+        Optional<Injector> constructorInjector = injectors
+                .stream()
+                .filter(injector -> injector instanceof FieldInjector)
+                .findAny();
+
+        assertThat(constructorInjector.isPresent(), is(true));
 
     }
 }
