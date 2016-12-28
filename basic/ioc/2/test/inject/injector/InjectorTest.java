@@ -8,6 +8,8 @@ import org.junit.Test;
 import javax.inject.Inject;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,6 +56,36 @@ public class InjectorTest {
         injectors.forEach(injector -> {
             try {
                 injector.execute(target, dependencies);
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        });
+
+        assertThat(target.getInjectFiled(), is(notNullValue()));
+    }
+
+    @Test
+    public void should_set_dependencies_through_method() throws Exception {
+        Class type = InjectClass.class;
+
+        List<Method> methods = asList(type.getMethods())
+                .stream()
+                .filter(method -> method.isAnnotationPresent(Inject.class))
+                .collect(Collectors.toList());
+        List<MethodInjector> injectors = new ArrayList<>();
+        methods.forEach(method -> {
+            injectors.add(new MethodInjector(method));
+        });
+        Object[] dependencies = {new SimpleClass()};
+        InjectClass target = new InjectClass();
+
+        assertThat(target.getInjectFiled(), is(nullValue()));
+
+        injectors.forEach(injector -> {
+            try {
+                injector.execute(target, dependencies);
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
             }
