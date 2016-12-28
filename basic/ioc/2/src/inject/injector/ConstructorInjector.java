@@ -1,8 +1,9 @@
 package inject.injector;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
-public class ConstructorInjector implements Injector {
+public class ConstructorInjector<T> implements Injector<T> {
 
     private Constructor injectConstructor;
 
@@ -16,9 +17,10 @@ public class ConstructorInjector implements Injector {
     }
 
     @Override
-    public Object execute(Object target, Object[] dependencies) {
-        return null;
+    public T execute(T target, Object[] dependencies) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        return (T)injectConstructor.newInstance(dependencies);
     }
+
 
     public Constructor getInjectConstructor() {
         return injectConstructor;

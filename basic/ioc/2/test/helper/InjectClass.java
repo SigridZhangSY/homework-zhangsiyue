@@ -5,10 +5,11 @@ import javax.inject.Inject;
 public class InjectClass {
 
     @Inject
-    SimpleClass injectFiled;
+    private SimpleClass injectFiled;
 
     @Inject
-    public InjectClass() {
+    public InjectClass(SimpleClass injectFiled) {
+        this.injectFiled = injectFiled;
     }
 
     @Inject
@@ -16,4 +17,7 @@ public class InjectClass {
 
     }
 
+    public SimpleClass getInjectFiled() {
+        return injectFiled;
+    }
 }

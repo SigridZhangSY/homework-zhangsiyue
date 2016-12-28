@@ -1,6 +1,7 @@
+package inject;
+
 import helper.ClassWithTwoInjectConstructor;
 import helper.InjectClass;
-import inject.Container;
 import inject.injector.ConstructorInjector;
 import inject.injector.FieldInjector;
 import inject.injector.Injector;
@@ -9,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.inject.Inject;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
