@@ -8,9 +8,13 @@ import inject.injector.MethodInjector;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.inject.Inject;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+import static java.util.Arrays.asList;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.fail;
@@ -48,25 +52,47 @@ public class ContainerTest {
 
     @Test
     public void should_create_injector_for_injected_filed() throws Exception {
-        List<Injector> injectors = container.resolve(InjectClass.class);
+        Class type = InjectClass.class;
 
-        Optional<Injector> constructorInjector = injectors
+        List<Injector> injectors = container.resolve(type);
+
+        List<Injector> fieldInjectors = injectors
                 .stream()
                 .filter(injector -> injector instanceof FieldInjector)
-                .findAny();
+                .collect(Collectors.toList());
 
-        assertThat(constructorInjector.isPresent(), is(true));
+        asList(type.getDeclaredFields()).forEach(field -> {
+            assertThat(fieldInjectors
+                            .stream()
+                            .filter(injector -> ((FieldInjector) injector).getInjectField().equals(field))
+                            .findAny()
+                            .isPresent(),
+                    is(true));
+        });
     }
 
     @Test
     public void should_create_injector_for_injected_method() throws Exception {
-        List<Injector> injectors = container.resolve(InjectClass.class);
+        Class type = InjectClass.class;
 
-        Optional<Injector> constructorInjector = injectors
+        List<Injector> injectors = container.resolve(type);
+
+        List<Injector> methodInjectors = injectors
                 .stream()
                 .filter(injector -> injector instanceof MethodInjector)
-                .findAny();
+                .collect(Collectors.toList());
 
-        assertThat(constructorInjector.isPresent(), is(true));
+        asList(type.getMethods())
+                .stream()
+                .filter(method -> method.isAnnotationPresent(Inject.class))
+                .collect(Collectors.toList())
+                .forEach(method -> {
+                    assertThat(methodInjectors
+                                    .stream()
+                                    .filter(injector -> ((MethodInjector) injector).getInjectMethod().equals(method))
+                                    .findAny()
+                                    .isPresent(),
+                            is(true));
+                });
     }
 }

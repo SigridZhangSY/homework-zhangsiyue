@@ -8,6 +8,8 @@ import inject.injector.MethodInjector;
 import javax.inject.Inject;
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,9 +18,6 @@ import java.util.stream.Collectors;
 import static java.util.Arrays.asList;
 
 public class Container {
-    Injector constructorInjector = new ConstructorInjector();
-    Injector fieldInjector = new FieldInjector();
-    Injector methodInjector = new MethodInjector();
 
     public List<Injector> resolve(Class<?> type) {
         List<Injector> injectors = new ArrayList<>();
@@ -28,24 +27,26 @@ public class Container {
                 .collect(Collectors.toList());
         if (injectedConstructors.size() > 0) {
             if (injectedConstructors.size() == 1)
-                injectors.add(constructorInjector);
+                injectors.add(new ConstructorInjector(injectedConstructors.get(0)));
             else
                 throw new RuntimeException();
         }
 
-        if (asList(type.getDeclaredFields())
+        List<Field> fields = asList(type.getDeclaredFields())
                 .stream()
                 .filter(field -> field.isAnnotationPresent(Inject.class))
-                .findAny()
-                .isPresent())
-            injectors.add(fieldInjector);
+                .collect(Collectors.toList());
+        fields.forEach(field -> {
+            injectors.add(new FieldInjector(field));
+        });
 
-        if (asList(type.getMethods())
+        List<Method> methods = asList(type.getMethods())
                 .stream()
-                .filter(field -> field.isAnnotationPresent(Inject.class))
-                .findAny()
-                .isPresent())
-            injectors.add(methodInjector);
+                .filter(method -> method.isAnnotationPresent(Inject.class))
+                .collect(Collectors.toList());
+        methods.forEach(method -> {
+            injectors.add(new MethodInjector(method));
+        });
 
         return injectors;
     }
