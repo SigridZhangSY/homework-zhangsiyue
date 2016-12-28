@@ -19,9 +19,12 @@ public class Container {
                 .stream()
                 .filter(constructor -> constructor.isAnnotationPresent(Inject.class))
                 .collect(Collectors.toList());
-        if(injectedConstructors.size() > 0)
-            injectors.add(constructorInjector);
-
+        if(injectedConstructors.size() > 0) {
+            if (injectedConstructors.size() == 1)
+                injectors.add(constructorInjector);
+            else
+                throw new RuntimeException();
+    }
         return injectors;
     }
 }

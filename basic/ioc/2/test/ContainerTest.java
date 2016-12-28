@@ -1,15 +1,19 @@
+import helper.ClassWithTwoInjectConstructor;
 import helper.InjectClass;
 import inject.Container;
 import inject.injector.ConstructorInjector;
 import inject.injector.Injector;
+import org.hamcrest.CoreMatchers;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 import java.util.Optional;
 
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class ContainerTest {
     Container container;
@@ -29,5 +33,16 @@ public class ContainerTest {
                 .findAny();
 
         assertThat(constructorInjector.isPresent(), is(true));
+    }
+
+    @Test
+    public void should_not_create_injector_for_class_with_more_than_one_constructor() throws Exception {
+        try {
+            container.resolve(ClassWithTwoInjectConstructor.class);
+            fail();
+        } catch (Exception e) {
+            assertThat(e instanceof RuntimeException, is(true));
+        }
+
     }
 }

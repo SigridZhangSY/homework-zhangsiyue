@@ -6,7 +6,7 @@ Implement a simple container with annotation in java
     - 1.1 constructor
         1.1.1 inject constructor successfully -15min 13min
         1.1.2 inject more than one constructor -> exception -10min
-    - 1.2 field -10min
+    - 1.2 field -10min -7min
     - 1.3 method -10min
     
 2. injection execution (set dependencies)
