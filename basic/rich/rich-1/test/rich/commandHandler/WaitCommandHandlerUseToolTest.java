@@ -114,7 +114,7 @@ public class WaitCommandHandlerUseToolTest {
         player.buyTool(1);
 
         player.executed("robot");
-        System.out.println("test branch");
+
         assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
         assertThat(player.getTools().size(), is(0));
         assertThat(target.isBlocked(), is(false));
