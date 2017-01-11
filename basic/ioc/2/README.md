@@ -11,8 +11,8 @@ Implement a simple container with annotation in java
     
 2. injection execution (set dependencies)
     - 2.1 constructor -15min -6min
-    - 2.2 field -10min -5min
-    - 2.3 method -10min -5min
+    - 2.2 field -10min -5min -5min
+    - 2.3 method -10min -5min -5min
     
 3. bind
     - 2.1 bind interface and impl
