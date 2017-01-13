@@ -95,6 +95,8 @@ public class WaitCommandHandlerUseToolTest {
 
         player.executed("bomb 1");
 
+        System.out.println("test new branch");
+
         assertThat(player.getHandler() instanceof WaitCommandHandler, is(true));
         assertThat(player.getTools().size(), is(1));
         assertThat(target.isBombed(), is(false));
