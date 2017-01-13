@@ -94,6 +94,7 @@ public class WaitCommandHandlerUseToolTest {
         assertThat(player.getTools().size(), is(1));
 
         System.out.println("master commit");
+        System.out.println("master commit 2");
 
         player.executed("bomb 1");
 
