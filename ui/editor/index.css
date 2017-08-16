@@ -1,3 +1,19 @@
+.example{
+    background: blue;
+}
+
+div{
+    color: white;
+}
+
+.example-2{
+    background: #c0240b;
+}
+
+
+
+
+
 ul, li {
     list-style-type: none;
     padding: 0px;
